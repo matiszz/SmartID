@@ -3,11 +3,11 @@
 
 ## Proyecto de PTI
 
-Mario Albo Soria
-Daniel Martín Martínez
-Sergio Mazzariol
-Matias Szarfer
-Kirian Ollé
+- Mario Albo Soria
+- Daniel Martín Martínez
+- Sergio Mazzariol
+- Matias Szarfer
+- Kirian Ollé
 
 # El DNI del futuro
 **Octubre 2018**
