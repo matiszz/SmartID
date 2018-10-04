@@ -98,7 +98,7 @@ Roles de los participantes
 
 | **Paquete** | **Sergio** | **Matías** | **Daniel** | **Mario** | **Kirian** |
 | --- | --- | --- | --- | --- | --- |
-| Smart Contract | **R** |   |   |   |   |
+| Smart Contract | **R** |   |   |   | P |
 | Configurar Metamask | P |   |   |   | **R** |
 | Comunicación App-Infura |   |   | P | **R** |   |
 | Comunicación Web-Infura |   |   | **R** | P |   |
