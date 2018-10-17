@@ -2,7 +2,11 @@
     width: 120px;
 }
 
-.formulario {
+.centrado {
     margin-top: 100px;
     text-align: center;
+}
+
+.access-button {
+    height: 12em;
 }

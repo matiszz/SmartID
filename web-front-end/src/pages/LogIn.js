@@ -5,12 +5,12 @@ export default class LogIn extends React.Component {
         return (
             <div className="container">
                 <div className="row justify-content-center">
-                    <div className="col-8 formulario">
+                    <div className="col-8 centrado">
                         <h1>BlockID</h1><br/><br/>
-                        <form action="POST">
-                            <input type="email" className="form-control" name="mail" placeholder="Enter email"/>
+                        <form action="/">
+                            <input type="email" className="form-control mb-5" name="mail" placeholder="Enter email"/>
                             <br/>
-                            <input type="password" className="form-control" name="password" placeholder="Password"/>
+                            <input type="password" className="form-control mb-5" name="password" placeholder="Password"/>
                             <br/>
                             <button className="login btn btn-success" type="submit">Log In</button>
                         </form>
