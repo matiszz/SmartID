@@ -12,10 +12,10 @@ export default class Access extends React.Component {
                             <a href="/login"><button className="btn btn-secondary w-100 h-100">Scann QR</button></a>
                         </div>
                         <div className="col-6 col-lg-3 access-button">
-                            <button className="btn btn-info w-100 h-100">
+                            <a href="/basicinfo"><button className="btn btn-info w-100 h-100">
                                 <input type="text" className="align-top form-control" placeholder="ID number"/>
                                 Introduce ID number
-                            </button>
+                            </button></a>
                         </div>
                     </div>
                 </div>
