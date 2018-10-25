@@ -4,8 +4,13 @@ contract CitizensRecord {
 
     struct Citizen {
         string name;
+        string lastName;
+        string birthDate;
+        string gender;
+        string nacionality;
+        string residence;
+        string city;
         uint32 ID;
-        string personalAddress;
     }
 
     address president;
@@ -38,30 +43,57 @@ contract CitizensRecord {
 
     function register_citizen(
         string _name, 
-        uint32 _ID,
-        string _personalAddress) public onlypresident {
-           // citizensStorage.push(Citizen(_name, _ID, _adresss));
-            require(is_available( _ID ), "The ID it's not available");
-                Citizen memory citizen;
-                citizen.ID = _ID;
-                citizen.name = _name;
-                citizen.personalAddress = _personalAddress;
-                citizensStorage[_ID] = citizen;           
+        string _lastName,
+        string _birthDate,
+        string _gender,
+        string _nacionality,
+        string _residence,
+        string _city,
+        uint32 _ID ) public onlypresident {
+           
+        require(is_available( _ID ), "The ID it's not available");
+            
+            Citizen memory citizen;
+            
+            citizen.name = _name;
+            citizen.lastName = _lastName;
+            citizen.birthDate = _birthDate;
+            citizen.gender = _gender;
+            citizen.nacionality = _nacionality;
+            citizen.residence = _residence;
+            citizen.city = _city;
+            citizen.ID = _ID;
+
+            citizensStorage[_ID] = citizen;           
     }
 
     // function set_personalAddress(
     //     uint32 _ID,
     //     string _personalAddress) public onlypresident {
-        
     //         require(!is_available( _ID ), "The ID doesn't exists");
     //             Citizen memory citizen;
     //             citizen = citizensStorage[_ID];
     //             citizen.personalAddress = _personalAddress;
     // }
 
-    function query_id(uint32 _ID) public view returns (uint32, string, string ) {
+    function get_name(uint32 _ID) public view returns (uint32, string, string ) {
+        
+        return (citizensStorage[_ID].ID, citizensStorage[_ID].name, citizensStorage[_ID].lastName );
+    }
+
+    function get_residency(uint32 _ID) public view returns (uint32, string, string, string, string ) {
+        
+        return (citizensStorage[_ID].ID, citizensStorage[_ID].name, citizensStorage[_ID].nacionality, citizensStorage[_ID].residence, citizensStorage[_ID].city);
+    }
+
+    function get_basic_info(uint32 _ID) public view returns (uint32, string, string, string, string ) {
+        
+        return (citizensStorage[_ID].ID, citizensStorage[_ID].name, citizensStorage[_ID].birthDate, citizensStorage[_ID].gender, citizensStorage[_ID].nacionality);
+    }
+
+    function view_president_address() public view returns (address) {
         //require(is_available( _ID ), "The ID it's not available");
-        return (citizensStorage[_ID].ID, citizensStorage[_ID].name, citizensStorage[_ID].personalAddress);
+        return president;
     }
 }
 
