@@ -88,7 +88,7 @@ export async function getCitizenBasicInfo(id) {
         if (err) console.log('ERROR!', err);
         else {
             citizen.birthDate = res[2];
-            citizen.gender = res[2];
+            citizen.gender = res[3];
         }
     });
 
