@@ -6,37 +6,32 @@ export default class BasicInfo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            citizen: null,
-            testeo: ''
+            citizen:  {name: '', surname: '', birthDate: '', gender: '', nationality: '', residence: '', city: '', idNum: ''},
+            testing: null
         };
+
     }
 
     componentDidMount() {
         eth.getCitizenBasicInfo(1).then( res => {
             this.setState({citizen: res});
-            console.log(this.state);
         });
-    }
 
-    // For testing
-    log() {
-        console.log(this.state);
-        console.log(this.state.citizen);
-        this.setState({testeo: 'Holaaaa'});
+        setTimeout(() => this.setState({testing: 'Hey'}), 500);
     }
 
     render() {
-        if (!this.state.citizen) {
-            console.log('Nooop')
-            return <h1>Loading...</h1>
+        if (!this.state.testing) {
+            return (
+                <div>
+                    <Navbar name="John Doe"/>
+                    <h1 className="center">Loading...</h1>
+                </div>
+            )
         }
         return(
             <div>
                 <Navbar name="John Doe"/>
-                {/*For testing*/}
-                <h1>{this.state.testeo}</h1>
-                <button onClick={() => this.log()}>Log!</button>
-
                 <div className="container">
                     <form className="mt-5">
                         <div className="form-group">
@@ -52,7 +47,7 @@ export default class BasicInfo extends React.Component {
                         <div className="form-group">
                             <label htmlFor="date" className="control-label">Date of birth</label>
                             <input type="text" className="form-control" id="date" name="date"
-                                   defaultValue={this.state.citizen.birthDate}/>
+                                   defaultValue={this.state.citizen.birthDate} disabled/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="gender" className="control-label">Género</label>
@@ -62,7 +57,7 @@ export default class BasicInfo extends React.Component {
                         <div className="form-group">
                             <label htmlFor="nationality" className="control-label">Nacionalidad</label>
                             <input type="text" className="form-control" id="nationality" name="nationality"
-                                   defaultValue={this.state.citizen.nationality}/>
+                                   defaultValue={this.state.citizen.nationality} disabled/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="address" className="control-label">Address</label>
@@ -77,7 +72,7 @@ export default class BasicInfo extends React.Component {
                         <div className="form-group">
                             <label htmlFor="idNum" className="control-label">ID number</label>
                             <input type="text" className="form-control" id="idNum" name="idNum"
-                                   defaultValue={this.state.citizen.idNum}/>
+                                   defaultValue={this.state.citizen.idNum} disabled/>
                         </div>
 
                         <div className="form-group">
