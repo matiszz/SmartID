@@ -1,11 +1,16 @@
 import Web3 from 'web3';
 import IPFS from 'ipfs-api';
-// const IPFS = require('ipfs-api'); TCGW
 
+/**
+ * In this file we export all the configuration needed by the API file. Concretely:
+ * @return web3 → Class to communicate with MetaMask.
+ * @return ipfs → Class to communicate with IPFS.
+ * @return contract → Class to communicate with the Smart Contract.
+**/
 export const web3 = new Web3(window.web3.currentProvider);
 export const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
 
-const address = '0x199dcc6060469884a63e18236eb457c02c0aacf6';
+const address = '0xec658ef95a83a44575844733ef209f09f44b8b57';
 const abi = [
     {
         "constant": false,
