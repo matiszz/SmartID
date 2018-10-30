@@ -16,10 +16,10 @@ export default class LogIn extends React.Component {
                         </form>
                         <div className="row mt-5">
                             <div className="col d-flex justify-content-start">
-                                <a href="">About</a>
+                                <a href="/">About</a>
                             </div>
                             <div className="col d-flex justify-content-end">
-                                <a href="">Forgot password?</a>
+                                <a href="/">Forgot password?</a>
                             </div>
                         </div>
                     </div>

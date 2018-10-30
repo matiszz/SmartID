@@ -1,4 +1,6 @@
-import { web3, ipfs, contract } from "./config";
+import { web3 } from "./config";
+import contract from "./config";
+// Add ipfs when needed
 
 /**
  * Returns the address of the Smart Contract
@@ -11,8 +13,7 @@ export function getAddress() {
  * Returns an array with all the accounts.
  */
 export async function getAccounts() {
-    let acc = await web3.eth.getAccounts();
-    return acc;
+    return await web3.eth.getAccounts();
 }
 
 /**
@@ -59,20 +60,37 @@ export async function registerCitizen(name, lastName, birthDate, gender, nationa
  * @return {Object} citizen Object with name, surname, birth date, gender, nationality, residence and city of the citizen
  * */
 export async function getCitizenBasicInfo(id) {
-    let citizen = {name: '', surname: '', birthDate: '', gender: '', nationality: '', residence: '', city: ''};
-    contract.methods.get_name(id).send({
-        from: this.getAccounts()[0],
-    },
-        (err, transHash, citizenData) => {
-            console.log('HEY THERE', citizenData);
-        })
-}
+    let citizen = {name: '', surname: '', birthDate: '', gender: '', nationality: '', residence: '', city: '', idNum: ''};
 
-/**
- * Get the name of the citizen.
- * @param {number} id ID number
- * @return {string} name Name of the citizen
- * */
-export async function getPresidentAddress() {
+    // Get the accounts vector from our function
+    const accounts = await this.getAccounts();
 
+    // We had to split the Get's in 3 different methods in order to stop Remix complains
+    // We call contract.methods.[SmartContractMethod](params)
+    // Then .call, passing this object as parameter and assigning the elements of the res vector to our citizen object.
+    contract.methods.get_name(id).call({ from: accounts[0] }, (err, res) => {
+        if (err) console.log('ERROR!', err);
+        else {
+            citizen.idNum = res[0];
+            citizen.name = res[1];
+            citizen.surname = res[2];
+        }
+    });
+    contract.methods.get_residency(id).call({ from: accounts[0] }, (err, res) => {
+        if (err) console.log('ERROR!', err);
+        else {
+            citizen.nationality = res[2];
+            citizen.residence = res[3];
+            citizen.city = res[4];
+        }
+    });
+    contract.methods.get_basic_info(id).call({ from: accounts[0] }, (err, res) => {
+        if (err) console.log('ERROR!', err);
+        else {
+            citizen.birthDate = res[2];
+            citizen.gender = res[3];
+        }
+    });
+
+    return citizen;
 }

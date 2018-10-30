@@ -10,3 +10,8 @@
 .access-button {
     height: 12em;
 }
+
+.header-img{
+    max-width: 100%;
+    height: auto;
+}
