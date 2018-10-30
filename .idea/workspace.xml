@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7cf765f7-2acf-40f4-8917-740ef8a0a2f6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartContract/CitizensRecord.sol" beforeDir="false" afterPath="$PROJECT_DIR$/SmartContract/CitizensRecord.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-front-end/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-front-end/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-front-end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-front-end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-front-end/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/public/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-front-end/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-front-end/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/public/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-front-end/src/Ethereum/Api.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/src/Ethereum/Api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-front-end/src/Ethereum/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/src/Ethereum/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-front-end/src/components/AboutModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/src/components/AboutModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-front-end/src/components/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/src/components/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-front-end/src/components/navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/src/components/navbar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-front-end/src/images/sample-img.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/src/images/sample-img.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-front-end/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-front-end/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-front-end/src/pages/Access.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/src/pages/Access.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-front-end/src/pages/BasicInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/src/pages/BasicInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-front-end/src/pages/LogIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/src/pages/LogIn.js" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="2127162859">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1290" />
+    <option name="y" value="142" />
+    <option name="width" value="1346" />
+    <option name="height" value="702" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7cf765f7-2acf-40f4-8917-740ef8a0a2f6" name="Default Changelist" comment="" />
+      <created>1540829444528</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1540829444528</updated>
+      <workItem from="1540829449214" duration="6000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="6000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1290" y="142" width="1346" height="702" extended-state="0" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2494331" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+</project>
