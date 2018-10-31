@@ -9,7 +9,9 @@
 - Matias Szarfer
 - Kirian Ollé
 
-# El DNI del futuro
+# SMART ID
+![alt text](https://raw.githubusercontent.com/sergio8215/FIB-PTI-ID-of-the-future-using-blockchain/master/img/smartid.jpg)
+
 **Octubre 2018**
 
 ## Resumen de la propuesta
