@@ -97,6 +97,7 @@ contract CitizensRecord is RBAC {
         require(isAlive(ID), 'The citizen is dead');
 
         citizensStorage[ID].alive = false;
+        numberOfActiveUsers--;
         event UserRemoved(ID);
     }
 
@@ -150,34 +151,38 @@ contract CitizensRecord is RBAC {
         legalStorage[ID].records[recordPosition].valid = false;
     }
 
-    function getRegister(Register r) private returns (string[]) {
-        string[] res;
-        res.push(r.record);
-        res.push(r.date);
-        res.push(string(r.valid));
+    function getRegister(Register r) private returns (bytes32[]) {
+        bytes32[] res;
+        res[0] = r.record;
+        res[1] = r.date;
+        res[2] = string(r.valid);
         return res;
+    }
+
+    function getNumberClinicRecords(uint32 ID) public onlyRoles(msg.sender, [RolesEnum.Doctor, RolesEnum.Admin]) returns (uint) {
+        require(is_available(_ID), "The ID it's not available");
+        return clinicStorage[ID].records.length;
+    }
+
+    function getNumberLegalRecords(uint32 ID) public onlyRoles(msg.sender, [RolesEnum.Police, RolesEnum.Admin]) returns (uint) {
+        require(is_available(_ID), "The ID it's not available");
+        return legalStorage[ID].records.length;
     }
 
     function getClinicRecords(
-        uint32 ID
-    ) public onlyRoles(msg.sender, [RolesEnum.Doctor, RolesEnum.Admin]) returns (string[]) {
+        uint32 ID,
+        uint32 position
+    ) public onlyRoles(msg.sender, [RolesEnum.Doctor, RolesEnum.Admin]) returns (bytes32[]) {
         require(is_available(_ID), "The ID it's not available");
-        string[] res;
-        for (uint i = 0; i < clinicStorage[ID]; i++) {
-            res.push(getRegister(clinicStorage[ID][i]));
-        }
-        return res;
+        return getRegister(clinicStorage[ID].records[position]);
     }
 
     function getLegalRecords(
-        uint32 ID
-    ) public onlyRoles(msg.sender, [RolesEnum.Police, RolesEnum.Admin]) returns (string[]) {
+        uint32 ID,
+        uint32 position
+    ) public onlyRoles(msg.sender, [RolesEnum.Police, RolesEnum.Admin]) returns (bytes32[]) {
         require(is_available(_ID), "The ID it's not available");
-        string[] res;
-        for (uint i = 0; i < legalStorage[ID]; i++) {
-            res.push(getRegister(legalStorage[ID][i]));
-        }
-        return res;
+        return getRegister(legalStorage[ID].records[position]);
     }
 
     function addRole(address addr, RolesEnum roleName) public onlyAdmin {
