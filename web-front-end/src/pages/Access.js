@@ -5,15 +5,19 @@ import 'react-notifications/lib/notifications.css';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import logo from '../logos/logo-blue-no-back.png'
 import Modal from "react-responsive-modal";
+import { Redirect } from 'react-router-dom'
+import BasicInfo from "./BasicInfo";
 
 export default class Access extends React.Component {
     constructor(props) {
         super(props);
         this.state = { openModal: false, idNumber: null };
+        // this.accesInfo = this.accesInfo().bind();
     }
 
     accesInfo() {
-        console.log(this.state.idNumber)
+        console.log(this.state.idNumber);
+        return <Redirect to={"/bascinfo/" + this.state.idNumber}/>
     }
 
     onOpenModal = () => {
@@ -93,7 +97,7 @@ export default class Access extends React.Component {
                         <div className="form-group">
                             <input type="text" className="form-control" id="number" value={this.state.idNumber}/>
                         </div>
-                        <button type="submit" className="btn btn-info" onClick={this.accesInfo}>Access information</button>
+                        <button type="submit" className="btn btn-info" onClick={this.accesInfo()}>Access information</button>
                     </form>
                 </Modal>
 

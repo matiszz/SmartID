@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import * as eth from '../Ethereum/Api';
+import ReactLoading from 'react-loading';
 
 export default class BasicInfo extends React.Component {
     constructor(props) {
@@ -15,9 +16,10 @@ export default class BasicInfo extends React.Component {
     componentDidMount() {
         eth.getCitizenBasicInfo(1).then( res => {
             this.setState({citizen: res});
+            console.log(this.state.citizen);
         });
 
-        setTimeout(() => this.setState({testing: 'Hey'}), 500);
+        setTimeout(() => this.setState({testing: 'Hey'}), 1500);
     }
 
     render() {
@@ -25,7 +27,12 @@ export default class BasicInfo extends React.Component {
             return (
                 <div>
                     <Navbar name="John Doe"/>
-                    <h1 className="center">Loading...</h1>
+                    <div className="container h-100">
+                        <div className="row h-100 justify-content-center align-items-center">
+                            <ReactLoading type="cylon" color="0000"/>
+                            <h1>Loading...</h1>
+                        </div>
+                    </div>
                 </div>
             )
         }
