@@ -1,27 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7cf765f7-2acf-40f4-8917-740ef8a0a2f6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartContract/CitizensRecord.sol" beforeDir="false" afterPath="$PROJECT_DIR$/SmartContract/CitizensRecord.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-front-end/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-front-end/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/README.md" afterDir="false" />
+    <list default="true" id="c0cbdf5f-3873-4073-befc-ca10555555c7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web-front-end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-front-end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-front-end/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/public/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-front-end/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-front-end/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/public/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-front-end/src/Ethereum/Api.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/src/Ethereum/Api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-front-end/src/Ethereum/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/src/Ethereum/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-front-end/src/components/AboutModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/src/components/AboutModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-front-end/src/components/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/src/components/Navbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-front-end/src/components/navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/src/components/navbar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-front-end/src/images/sample-img.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/src/images/sample-img.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-front-end/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web-front-end/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web-front-end/src/pages/Access.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/src/pages/Access.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web-front-end/src/pages/BasicInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/src/pages/BasicInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-front-end/src/pages/LogIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/src/pages/LogIn.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -42,9 +28,128 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-505232606">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="6" />
+          <entry key="project.open.time.1" value="3" />
+          <entry key="project.open.time.12" value="2" />
+          <entry key="project.open.time.29" value="1" />
+          <entry key="project.opened" value="6" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="js" value="303" />
+          <entry key="sol" value="284" />
+          <entry key="txt" value="16" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JavaScript" value="303" />
+          <entry key="PLAIN_TEXT" value="16" />
+          <entry key="Solidity file" value="284" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="css" value="1" />
+          <entry key="jpg" value="1" />
+          <entry key="js" value="15" />
+          <entry key="json" value="5" />
+          <entry key="png" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CSS" value="1" />
+          <entry key="Image" value="5" />
+          <entry key="JSON" value="5" />
+          <entry key="JavaScript" value="15" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-front-end/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="254">
+              <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-front-end/src/Ethereum/Api.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="800">
+              <caret line="61" column="22" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web-front-end/src/pages/Access.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-front-end/src/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="14" column="55" lean-forward="true" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-front-end/src/pages/BasicInfo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2102">
+              <caret line="108" column="15" selection-start-line="108" selection-start-column="15" selection-end-line="108" selection-end-column="15" />
+              <folding>
+                <element signature="e#0#57#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>createNotification</find>
+      <find>handleSubmit</find>
+      <find>truf</find>
+      <find>ethereumjs-testrpc</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/SmartContract/v2/CitizensRecord.sol" />
+        <option value="$PROJECT_DIR$/web-front-end/src/pages/LogIn.js" />
+        <option value="$PROJECT_DIR$/web-front-end/src/pages/BasicInfo.js" />
+        <option value="$PROJECT_DIR$/web-front-end/src/index.js" />
+        <option value="$PROJECT_DIR$/web-front-end/src/pages/Access.js" />
+      </list>
+    </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -52,24 +157,87 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="1290" />
-    <option name="y" value="142" />
-    <option name="width" value="1346" />
-    <option name="height" value="702" />
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/Server/node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/SMART-ID-APP/package.json" />
+      <path value="$PROJECT_DIR$/Server/package.json" />
+      <path value="$PROJECT_DIR$/web-front-end/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1920" />
+    <option name="y" value="27" />
+    <option name="width" value="1910" />
+    <option name="height" value="1053" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="462c0819:PsiDirectoryNode" />
+              <item name="web-front-end" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="462c0819:PsiDirectoryNode" />
+              <item name="web-front-end" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="462c0819:PsiDirectoryNode" />
+              <item name="web-front-end" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="462c0819:PsiDirectoryNode" />
+              <item name="web-front-end" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Ethereum" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="462c0819:PsiDirectoryNode" />
+              <item name="web-front-end" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="462c0819:PsiDirectoryNode" />
+              <item name="web-front-end" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope" />
-      <pane id="ProjectPane" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541412087747" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -83,39 +251,248 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" factoryName="npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/web-front-end/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7cf765f7-2acf-40f4-8917-740ef8a0a2f6" name="Default Changelist" comment="" />
+      <changelist id="c0cbdf5f-3873-4073-befc-ca10555555c7" name="Default Changelist" comment="" />
       <created>1540829444528</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1540829444528</updated>
       <workItem from="1540829449214" duration="6000" />
+      <workItem from="1540980789509" duration="3723000" />
+      <workItem from="1541002497313" duration="325000" />
+      <workItem from="1541349937088" duration="5000" />
+      <workItem from="1541349988268" duration="7785000" />
+      <workItem from="1541409890356" duration="4000" />
+      <workItem from="1541409976376" duration="2066000" />
     </task>
+    <task id="LOCAL-00001" summary="stupid fix">
+      <created>1540996351522</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1540996351522</updated>
+    </task>
+    <task id="LOCAL-00002" summary="asdasd">
+      <created>1541353391364</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1541353391364</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6000" />
+    <option name="totallyTimeSpent" value="15389000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1290" y="142" width="1346" height="702" extended-state="0" />
+    <frame x="1920" y="27" width="1920" height="1053" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2494331" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18729989" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Designer" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32997763" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32885906" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32997763" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Docker" order="10" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Json Parser" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Database" order="8" />
+      <window_info anchor="right" id="Maven Projects" order="9" />
     </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="stupid fix" />
+    <MESSAGE value="asdasd" />
+    <option name="LAST_COMMIT_MESSAGE" value="asdasd" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/logos/logo-white-no-back.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logos/logo-blue-no-back.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logos/icon-back.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logos/icon.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="3" lean-forward="true" selection-start-line="11" selection-start-column="23" selection-end-line="17" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-front-end/src/components/Navbar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="41" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-front-end/src/components/Footer.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-front-end/src/images/sample-img.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-front-end/src/index.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SmartContract/v2/Roles.sol">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="12" column="24" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SmartContract/v2/RBAC-SM.sol">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2133">
+          <caret line="79" column="22" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SmartContract/v2/CitizensRecord.sol">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4725">
+          <caret line="175" column="64" selection-start-line="175" selection-start-column="64" selection-end-line="175" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-front-end/public/manifest.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-front-end/src/Ethereum/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4057" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-front-end/src/pages/LogIn.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-front-end/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-front-end/src/Ethereum/Api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="800">
+          <caret line="61" column="22" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-front-end/src/pages/BasicInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2102">
+          <caret line="108" column="15" selection-start-line="108" selection-start-column="15" selection-end-line="108" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-front-end/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="55" lean-forward="true" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-front-end/src/pages/Access.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

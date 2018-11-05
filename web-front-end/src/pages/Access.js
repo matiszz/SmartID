@@ -20,7 +20,7 @@ class Access extends React.Component {
   accesInfo = () => {
     console.log(this.state.idNumber);
     this.props.history.push({
-      pathname: `/bascinfo/${this.state.idNumber}`,
+      pathname: `/basicinfo/${this.state.idNumber}`,
     });
   };
 

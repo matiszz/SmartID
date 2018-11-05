@@ -11,8 +11,8 @@ ReactDOM.render(
     <Router>
         <div>
             <Route exact path="/" component={Access}/>
-            <Route path="/login" component={LogIn}/>
-            <Route path="/basicinfo/:id" component={BasicInfo}/>
+            <Route exact path="/login" component={LogIn}/>
+            <Route path="/basicinfo/:id?" component={BasicInfo}/>
         </div>
     </Router>,
     document.getElementById('root')
