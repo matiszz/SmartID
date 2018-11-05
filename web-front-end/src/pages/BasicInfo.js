@@ -25,8 +25,17 @@ export default class BasicInfo extends Component {
         const {match} = this.props;
         const ID = parseInt(match.params.id, 10);
 
-        eth.getCitizenBasicInfo(ID).then(res => this.setState({citizen: res}));
-        setTimeout(()=> this.setState({testing: 'Hey'}), 700);
+        const res = await eth.getCitizenBasicInfo(ID);
+        this.setState({citizen: res});
+        console.log(res);
+
+        this.setState({testing: 'Hey'});
+
+        // const {match} = this.props;
+        // const ID = parseInt(match.params.id, 10);
+        //
+        // eth.getCitizenBasicInfo(ID).then(res => this.setState({citizen: res}));
+        // setTimeout(()=> this.setState({testing: 'Hey'}), 700);
     }
 
     render() {
