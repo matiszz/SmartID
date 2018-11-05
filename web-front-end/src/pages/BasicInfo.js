@@ -26,7 +26,7 @@ class BasicInfo extends Component {
     const { match } = this.props;
     const ID = parseInt(match.params.id, 10);
 
-    const res = eth.getCitizenBasicInfo(ID);
+    const res = await eth.getCitizenBasicInfo(ID);
     this.setState({ citizen: res });
     console.log(res);
 
