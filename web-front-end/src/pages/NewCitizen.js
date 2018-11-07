@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import Navbar from '../components/Navbar';
 import * as eth from '../Ethereum/Api';
-import ReactLoading from 'react-loading';
 import { withRouter } from "react-router";
+import Modal from "react-responsive-modal";
 
-class BasicInfo extends Component {
+class NewCitizen extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,87 +18,99 @@ class BasicInfo extends Component {
                 city: '',
                 idNum: ''
             },
-            testing: null
+            transactionHash: '',
+            openModal: false
         };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    async componentDidMount() {
-        const {match} = this.props;
-        const ID = parseInt(match.params.id, 10);
+    async componentDidMount() { }
 
-        eth.getCitizenBasicInfo(ID).then(res => this.setState({citizen: res}));
-        setTimeout(()=> this.setState({testing: 'Hey'}), 700);
+    handleChange(event) {
+        let citizen = {...this.state.citizen};
+        citizen[event.target.name] = event.target.value;
+        this.setState({citizen});
     }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        eth.registerCitizen(this.state.citizen).then(
+            (res) => {
+                console.log(res);
+                if (res && res.success) this.setState({transactionHash: res.hash, openModal: true});
+            }
+        );
+    }
+
+    onCloseModal = () => {
+        this.setState({openModal: false});
+    };
 
     render() {
-        if (!this.state.testing) {
-            return (
-                <div>
-                    <Navbar name="John Doe"/>
-                    <div className="container h-100">
-                        <div className="row h-100 justify-content-center align-items-center">
-                            <ReactLoading type="cylon" color="0000"/>
-                            <h1>Loading...</h1>
-                        </div>
-                    </div>
-                </div>
-            );
-        }
         return (
             <div>
                 <Navbar name="John Doe"/>
                 <div className="container">
-                    <form className="mt-5">
+                    <form className="mt-5" onSubmit={this.handleSubmit}>
+                        <h1>New citizen</h1>
                         <div className="form-group">
                             <label htmlFor="name" className="control-label">Name</label>
                             <input type="text" className="form-control" id="name" name="name"
-                                   defaultValue={this.state.citizen.name}/>
+                                   onChange={this.handleChange}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="surname" className="control-label">Surnames</label>
                             <input type="text" className="form-control" id="surname" name="surname"
-                                   defaultValue={this.state.citizen.surname}/>
+                                   onChange={this.handleChange}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="date" className="control-label">Date of birth</label>
-                            <input type="text" className="form-control" id="date" name="date"
-                                   defaultValue={this.state.citizen.birthDate} disabled/>
+                            <input type="text" className="form-control" id="date" name="birthDate"
+                                   onChange={this.handleChange}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="gender" className="control-label">Género</label>
                             <input type="text" className="form-control" id="gender" name="gender"
-                                   defaultValue={this.state.citizen.gender}/>
+                                   onChange={this.handleChange}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="nationality" className="control-label">Nacionalidad</label>
                             <input type="text" className="form-control" id="nationality" name="nationality"
-                                   defaultValue={this.state.citizen.nationality} disabled/>
+                                   onChange={this.handleChange}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="address" className="control-label">Address</label>
-                            <input type="text" className="form-control" id="address" name="address"
-                                   defaultValue={this.state.citizen.residence}/>
+                            <input type="text" className="form-control" id="address" name="residence"
+                                   onChange={this.handleChange}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="city" className="control-label">City</label>
                             <input type="text" className="form-control" id="city" name="city"
-                                   defaultValue={this.state.citizen.city}/>
+                                   onChange={this.handleChange}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="idNum" className="control-label">ID number</label>
                             <input type="text" className="form-control" id="idNum" name="idNum"
-                                   defaultValue={this.state.citizen.idNum} disabled/>
+                                   onChange={this.handleChange}/>
                         </div>
 
                         <div className="form-group">
-                            <button type="submit" className="btn btn-primary">Save</button>
+                            <button type="submit" className="btn btn-success float-right">Add citizen</button>
                         </div>
-
                     </form>
                 </div>
+
+                {/*MODAL*/}
+                <Modal open={this.state.openModal} onClose={this.onCloseModal} center>
+                    <h4>Citizen uploaded</h4>
+                    <p>The transaction hash is: <a href={`https://ropsten.etherscan.io/tx/${this.state.transactionHash}`} target='_blank'>{this.state.transactionHash}</a></p>
+                    <button className="btn btn-info" onClick={this.accesInfo}>Access information</button>
+                </Modal>
             </div>
         );
     }
 }
 
-export default withRouter(BasicInfo);
+export default withRouter(NewCitizen);

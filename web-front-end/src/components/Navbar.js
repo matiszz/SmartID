@@ -19,7 +19,7 @@ export default class Navbar extends React.Component {
                             <a className="nav-link" href="/">Account</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/">Add Citizen</a>
+                            <a className="nav-link" href="/new">Add Citizen</a>
                         </li>
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" role="button"
