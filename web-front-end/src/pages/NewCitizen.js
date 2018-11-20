@@ -51,7 +51,7 @@ class NewCitizen extends Component {
     render() {
         return (
             <div>
-                <Navbar name="John Doe"/>
+                <Navbar/>
                 <div className="container">
                     <form className="mt-5" onSubmit={this.handleSubmit}>
                         <h1>New citizen</h1>
@@ -105,7 +105,7 @@ class NewCitizen extends Component {
                 {/*MODAL*/}
                 <Modal open={this.state.openModal} onClose={this.onCloseModal} center>
                     <h4>Citizen uploaded</h4>
-                    <p>The transaction hash is: <a href={`https://ropsten.etherscan.io/tx/${this.state.transactionHash}`} target='_blank'>{this.state.transactionHash}</a></p>
+                    <p>The transaction hash is: <a href={`https://ropsten.etherscan.io/tx/${this.state.transactionHash}`} target='_blank' rel="noopener noreferrer">{this.state.transactionHash}</a></p>
                     <button className="btn btn-info" onClick={this.accesInfo}>Access information</button>
                 </Modal>
             </div>

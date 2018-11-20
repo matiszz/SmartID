@@ -16,7 +16,7 @@ class Access extends React.Component {
     accesInfo = () => {
         console.log(this.state.idNumber);
         this.props.history.push({
-            pathname: `/basicinfo/${this.state.idNumber}`,
+            pathname: `/citizen/${this.state.idNumber}`,
         });
     };
 
@@ -87,8 +87,7 @@ class Access extends React.Component {
 
                     <h1 className="text-center mt-5">What is Smart<b>ID</b>?</h1>
                     <p className="text-center mb-5">Smart<b>ID</b> is a prototype of the ID ofv the future. It does not
-                        make
-                        sense to be in full 2018 and have to queue at the police station to ask for the municipal
+                        make sense to be in full 2018 and have to queue at the police station to ask for the municipal
                         registration papers, then another queue at the town hall to ask for a change of address, and
                         another to renew your passport. SmartID wants to put an end to bureaucracy and wasting time
                         waiting for documents. We want to democratize the citizens' data, because they are ours. We want

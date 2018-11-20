@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import Navbar from '../components/Navbar';
-import * as eth from '../Ethereum/Api';
+import Navbar from '../../components/Navbar';
+import * as eth from '../../Ethereum/Api';
 import ReactLoading from 'react-loading';
 import { withRouter } from "react-router";
-import {registerCitizen} from "../Ethereum/Api";
 
 class BasicInfo extends Component {
     constructor(props) {
@@ -27,7 +26,6 @@ class BasicInfo extends Component {
         if (!this.state.testing) {
             return (
                 <div>
-                    <Navbar name="John Doe"/>
                     <div className="container h-100">
                         <div className="row h-100 justify-content-center align-items-center">
                             <ReactLoading type="cylon" color="0000"/>
@@ -39,7 +37,6 @@ class BasicInfo extends Component {
         }
         return (
             <div>
-                <Navbar name="John Doe"/>
                 <div className="container">
                     {this.state.records.map((elem) =>
                         <div className="list-group-item list-group-item-action flex-column align-items-start">
