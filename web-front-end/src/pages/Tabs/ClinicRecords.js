@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Navbar from '../../components/Navbar';
 import * as eth from '../../Ethereum/Api';
 import ReactLoading from 'react-loading';
 import { withRouter } from "react-router";

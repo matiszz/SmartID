@@ -78,7 +78,7 @@ class Citizen extends Component {
                                 </div>
                                 <div className="col-4">
                                     {/*TODO: Image from IPFS*/}
-                                    <img className="rounded img-fluid float-right profile-img" src={imagen} alt="Card image cap"/>
+                                    <img className="rounded img-fluid float-right profile-img" src={imagen} alt=""/>
                                 </div>
                             </div>
 

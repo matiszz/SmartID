@@ -15,7 +15,8 @@ class BasicInfo extends Component {
                 nationality: '',
                 residence: '',
                 city: '',
-                idNum: ''
+                idNum: '',
+                picture: null
             },
             testing: null
         };
@@ -27,6 +28,13 @@ class BasicInfo extends Component {
 
         eth.getCitizenBasicInfo(ID).then(res => this.setState({citizen: res}));
         setTimeout(()=> this.setState({testing: 'Hey'}), 700);
+    }
+
+    getImgLabel() {
+        if (this.state.citizen.picture)
+            return this.state.citizen.picture.split("\\")[2];
+        else
+            return "Select picture";
     }
 
     render() {
@@ -46,6 +54,7 @@ class BasicInfo extends Component {
             <div className="container">
                 <form>
                     <div className="row">
+                        {/*First Col*/}
                         <div className="col">
                             <div className="form-group">
                                 <label htmlFor="name" className="control-label">Name</label>
@@ -67,13 +76,15 @@ class BasicInfo extends Component {
                                 <input type="text" className="form-control" id="gender" name="gender"
                                        defaultValue={this.state.citizen.gender}/>
                             </div>
-                        </div>
-                        <div className="col">
                             <div className="form-group">
                                 <label htmlFor="nationality" className="control-label">Nacionalidad</label>
                                 <input type="text" className="form-control" id="nationality" name="nationality"
                                        defaultValue={this.state.citizen.nationality} disabled/>
                             </div>
+                        </div>
+
+                        {/*Second Col*/}
+                        <div className="col">
                             <div className="form-group">
                                 <label htmlFor="address" className="control-label">Address</label>
                                 <input type="text" className="form-control" id="address" name="address"
@@ -89,10 +100,16 @@ class BasicInfo extends Component {
                                 <input type="text" className="form-control" id="idNum" name="idNum"
                                        defaultValue={this.state.citizen.idNum} disabled/>
                             </div>
+                            <label htmlFor="picture" className="control-label">Picture</label>
+                            <div className="custom-file">
+                                <input type="file" className="custom-file-input" id="picture" name="picture"
+                                       onChange={this.handleChange}/>
+                                <label className="custom-file-label" htmlFor="customFile">{this.getImgLabel()}</label>
+                            </div>
+                            <div className="form-group mt-5">
+                                <button type="submit" className="btn btn-primary float-right">Save</button>
+                            </div>
                         </div>
-                    </div>
-                    <div className="form-group">
-                        <button type="submit" className="btn btn-primary float-right">Save</button>
                     </div>
                 </form>
             </div>

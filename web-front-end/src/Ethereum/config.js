@@ -172,5 +172,6 @@ const abi = [
         "type": "function"
     }
 ];
+
 let contract = new web3.eth.Contract(abi, address);
 export default contract;
