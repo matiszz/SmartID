@@ -96,7 +96,7 @@ contract CitizensRecord is RBAC {
         emit UserAdded(_ID);
     }
 
-    function modofy_citizen(
+    function modify_citizen(
         string _name,
         string _lastName,
         string _birthDate,
