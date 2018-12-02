@@ -88,14 +88,14 @@ class Citizen extends Component {
                     {/*Tabs*/}
                     <Tabs className="mt-2">
                         <TabList>
-                            <Tab>Basic information</Tab>
-                            {/*<Tab>Legal records</Tab>*/}
-                            <Tab>Clinic records</Tab>
+                            {/** TODO: If(hasRole)*/}<Tab>Basic information</Tab>
+                            {/** TODO: If(hasRole)*/}{/*<Tab>Legal records</Tab>*/}
+                            {/** TODO: If(hasRole)*/}<Tab>Clinic records</Tab>
                         </TabList>
 
-                        <TabPanel><BasicInfo></BasicInfo></TabPanel>
-                        {/*<TabPanel><LegalRecords></LegalRecords></TabPanel>*/}
-                        <TabPanel><ClinicRecords></ClinicRecords></TabPanel>
+                        {/** TODO: If(hasRole)*/}<TabPanel><BasicInfo></BasicInfo></TabPanel>
+                        {/** TODO: If(hasRole)*/}{/*<TabPanel><LegalRecords></LegalRecords></TabPanel>*/}
+                        {/** TODO: If(hasRole)*/}<TabPanel><ClinicRecords></ClinicRecords></TabPanel>
                     </Tabs>
                 </div>
             </div>

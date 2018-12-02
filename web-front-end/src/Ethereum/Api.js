@@ -1,5 +1,6 @@
 import { web3 } from "./config";
 import contract from "./config";
+// Add ipfs when needed
 
 /**
  * Returns the address of the Smart Contract
@@ -33,20 +34,23 @@ export async function getTransactionReceipt(trasnsactionHash) {
 /**
  * Registers a new citizen.
  *
- * @param {Object} citizen Citizen object
+ * @param {string} name Name of the citizen
+ * @param {string} lastName Surname of the citizen
+ * @param {string} gender Gender of the citizen
+ * @param {string} nationality Nationality of the citizen
+ * @param {string} residence Residence of the citizen
+ * @param {string} city City of the citizen
+ * @param {number} ID ID number of the citizen
  *
  * @return {Object} transHash Returns the Transaction Hash.
  */
-export async function registerCitizen(citizen) {
-    // Get the accounts vector from our function
-    const accounts = await this.getAccounts();
-
-    contract.methods.register_citizen(citizen.name, citizen.surname, citizen.birthDate, citizen.gender, citizen.nationality, citizen.residence, citizen.city, citizen.idNum).send({
-            from: accounts[0]
-        },
+export async function registerCitizen(name, lastName, birthDate, gender, nationality, residence, city, ID) {
+    contract.methods.register_citizen(name, lastName, birthDate, gender, nationality, residence, city, ID).send({
+        from: this.getAccounts()[0]
+    },
         (err, transHash) => {
-            if (err) return {success: false};
-            else return {success: true, hash: transHash};
+            if (err) console.error("Error al registrar ciudadano", err);
+            else return transHash;
         });
 }
 
