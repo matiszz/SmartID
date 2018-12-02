@@ -1,0 +1,26 @@
+
+*** These modified files were found in JOE when it aborted on Sun Dec  2 16:59:01 2018
+*** JOE was aborted because the terminal closed
+
+*** File '(Unnamed)'
+/home/alumne/Desktop/FIB-PTI-ID-of-the-future-using-blockchain/.git/COMMIT_EDITMSG
+
+*** File '/home/alumne/Desktop/FIB-PTI-ID-of-the-future-using-blockchain/.git/COMMIT_EDITMSG'
+		
+# Please
+ enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch api2
+# Your branch is up to date with 'origin/api2'.
+#
+# Changes to be committed:
+#	modified:   ../web-front-end/src/Ethereum/api_2.js
+#	modified:   ../web-front-end/src/Ethereum/config.js
+#
+
+*** File '* Startup Log *'
+Processing '/etc/joe/editorrc'...
+Processing '/etc/joe/ftyperc'...
+Finished processing /etc/joe/ftyperc
+Finished processing /etc/joe/editorrc

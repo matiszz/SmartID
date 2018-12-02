@@ -45,6 +45,26 @@ export async function registerCitizen(citizen) {
 }
 
 /**
+ * Change some atributes from a citizen.
+ *
+ * @param {Object} citizen Citizen object
+ *
+ * @return {Object} transHash Returns the Transaction Hash.
+ */
+export async function modify_citizen(citizen) {
+    // Get the accounts vector from our function
+    const accounts = await this.getAccounts();
+
+    contract.methods.modify_citizen(citizen.name, citizen.surname, citizen.birthDate, citizen.gender, citizen.nationality, citizen.residence, citizen.city, citizen.idNum, citizen.profilePic).send({
+            from: accounts[0]
+        },
+        (err, transHash) => {
+            if (err) return {success: false};
+            else return {success: true, hash: transHash};
+        });
+}
+
+/**
  * Remove a citizen.
  *
  * @param {number} id ID number
@@ -297,6 +317,42 @@ export async function removeRole(addr, roleName) {
             if (err) return {success: false};
             else return {success: true, hash transHash};
         });
+}
+
+/**
+ * Sais if an user have an specific role
+ *
+ * @param {address} address
+ *
+ * @param {RolesEnum} roleName
+ *
+ * @return {Bool} Boolean value of the question has Specific Role.
+ */
+export async function hasSpecificRole(addr, roleName) {
+    let has_role = false;
+    const accounts = await this.getAccounts();
+
+    contract.methods.hasSpecificRole(addr, roleName).call({ from: accounts[0] }, (err, h_role) => {
+        if (err) console.log('ERROR!', err);
+        else has_role = h_role;
+    });
+    return has_role;
+}
+
+/**
+ * Return admin address
+ *
+ * @return {Adress} Return the address of the admin.
+ */
+export async function view_president_address(addr, roleName) {
+    let adm = '';
+    const accounts = await this.getAccounts();
+
+    contract.methods.view_president_address().call({ from: accounts[0] }, (err, admin) => {
+        if (err) console.log('ERROR!', err);
+        else adm = admin;
+    });
+    return adm;
 }
 
 /**
