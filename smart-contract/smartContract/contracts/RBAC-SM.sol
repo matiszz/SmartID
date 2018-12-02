@@ -5,13 +5,14 @@ import "./Roles.sol";
 
 contract RBAC {
     using Roles for Roles.Role;
-    enum RolesEnum {Government, Police, Doctor, Admin}
-    mapping (uint => uint) testMapping
+    //enum RolesEnum {Government, Police, Doctor, Admin}
+    // RolesEnum =       [0,        1,      2,     3]
+    //mapping (uint => uint) testMapping;
 
-    mapping(RolesEnum => Roles.Role) private roles;
+    mapping(uint8 => Roles.Role) private roles;
 
-    event RoleAdded(address addr, bytes32 roleName);
-    event RoleRemoved(address addr, bytes32 roleName);
+    event RoleAdded(address addr, uint8 roleName);
+    event RoleRemoved(address addr, uint8 roleName);
 
 
     /**
@@ -19,9 +20,16 @@ contract RBAC {
     * @param r RolesEnum
     * @return uint
     */
-    function getUintValue(RolesEnum r) constant internal returns(uint){
-        return testMapping[uint(r)];
-    }
+//    function getUintValue(RolesEnum r) constant internal returns(uint){
+//        return testMapping[uint(r)];
+//    }
+
+//    function getEnum(uint roleNumber) internal returns(RolesEnum) {
+//        if (roleNumber == 0) return RolesEnum.Government;
+//        if (roleNumber == 0) return RolesEnum.Police;
+//        if (roleNumber == 0) return RolesEnum.Doctor;
+//        if (roleNumber == 0) return RolesEnum.Admin;
+//    }
 
     /**
      * @dev reverts if addr does not have role
@@ -29,8 +37,8 @@ contract RBAC {
      * @param roleName the name of the role
      * // reverts
      */
-    function checkRole(address addr, RolesEnum roleName) view public {
-        roles[getUintValue(roleName)].check(addr);
+    function checkRole(address addr, uint8 roleName) internal view {
+        roles[roleName].check(addr);
     }
 
     /**
@@ -39,8 +47,8 @@ contract RBAC {
      * @param roleName the name of the role
      * @return bool
      */
-    function hasRole(address addr, RolesEnum roleName) view public returns (bool) {
-        return roles[getUintValue(roleName)].has(addr);
+    function hasRole(address addr, uint8 roleName) internal view returns (bool) {
+        return roles[roleName].has(addr);
     }
 
     /**
@@ -48,8 +56,8 @@ contract RBAC {
      * @param addr address
      * @param roleName the name of the role
      */
-    function addRole(address addr, RolesEnum roleName) internal {
-        roles[getUintValue(roleName)].add(addr);
+    function giveRole(address addr, uint8 roleName) internal {
+        roles[roleName].add(addr);
         emit RoleAdded(addr, roleName);
     }
 
@@ -58,8 +66,8 @@ contract RBAC {
      * @param addr address
      * @param roleName the name of the role
      */
-    function removeRole(address addr, RolesEnum roleName) internal {
-        roles[getUintValue(roleName)].remove(addr);
+    function takeAwayRole(address addr, uint8 roleName) internal {
+        roles[roleName].remove(addr);
         emit RoleRemoved(addr, roleName);
     }
 
@@ -68,7 +76,7 @@ contract RBAC {
      * @param roleName the name of the role
      * // reverts
      */
-    modifier onlyRole(address addr, RolesEnum roleName) {
+    modifier onlyRole(address addr, uint8 roleName) {
         checkRole(addr, roleName);
         _;
     }
@@ -77,9 +85,9 @@ contract RBAC {
      * @dev modifier to scope access to a set of roles (uses msg.sender as addr)
      * @param roleNames the names of the roles to scope access to
      */
-    modifier onlyRoles(address addr, RolesEnum[] roleNames) {
+    modifier onlyRoles(address addr, uint8[2] roleNames) {
         bool hasAnyRole = false;
-        for (uint8 i = 0; i < roleNames.length; i++) {
+        for (uint8 i = 0; i < 2; i++) {
             if (hasRole(addr, roleNames[i])) {
                 hasAnyRole = true;
                 break;

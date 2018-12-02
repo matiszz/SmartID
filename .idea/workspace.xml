@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c0cbdf5f-3873-4073-befc-ca10555555c7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="4965b76a-1a83-49c6-a08f-d2cd4e142d89" name="Default Changelist" comment="Merge branch 'master' of https://github.com/sergio8215/FIB-PTI-ID-of-the-future-using-blockchain&#10;&#10;# Conflicts:&#10;#&#9;web-front-end/src/pages/BasicInfo.js">
+      <change afterPath="$PROJECT_DIR$/smart-contract/smartContract/build/contracts/CitizensRecord.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/smart-contract/smartContract/build/contracts/Migrations.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/smart-contract/smartContract/build/contracts/RBAC.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/smart-contract/smartContract/build/contracts/Roles.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/smart-contract/smartContract/contracts/Migrations.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/smart-contract/smartContract/migrations/1_initial_migration.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/smart-contract/smartContract/truffle-config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/smart-contract/smartContract/truffle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-front-end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-front-end/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-front-end/src/pages/Access.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/src/pages/Access.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-front-end/src/pages/BasicInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-front-end/src/pages/BasicInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartContract/CitizensRecord.sol" beforeDir="false" afterPath="$PROJECT_DIR$/smart-contract/CitizensRecord.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartContract/v2/CitizensRecord.sol" beforeDir="false" afterPath="$PROJECT_DIR$/smart-contract/smartContract/contracts/CitizensRecord.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartContract/v2/RBAC-SM.sol" beforeDir="false" afterPath="$PROJECT_DIR$/smart-contract/smartContract/contracts/RBAC-SM.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartContract/v2/Roles.sol" beforeDir="false" afterPath="$PROJECT_DIR$/smart-contract/smartContract/contracts/Roles.sol" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -49,7 +57,7 @@
         <counts>
           <entry key="JavaScript" value="303" />
           <entry key="PLAIN_TEXT" value="16" />
-          <entry key="Solidity file" value="284" />
+          <entry key="Solidity file" value="285" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -73,58 +81,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-front-end/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-front-end/src/Ethereum/Api.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="800">
-              <caret line="61" column="22" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web-front-end/src/pages/Access.js">
+        <entry file="file://$PROJECT_DIR$/smart-contract/smartContract/contracts/CitizensRecord.sol">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="184">
+              <caret line="107" column="42" selection-start-line="107" selection-start-column="42" selection-end-line="107" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-front-end/src/index.js">
+        <entry file="file://$PROJECT_DIR$/smart-contract/smartContract/contracts/RBAC-SM.sol">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="14" column="55" lean-forward="true" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="231">
+              <caret line="39" column="66" selection-start-line="39" selection-start-column="66" selection-end-line="39" selection-end-column="66" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-front-end/src/pages/BasicInfo.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2102">
-              <caret line="108" column="15" selection-start-line="108" selection-start-column="15" selection-end-line="108" selection-end-column="15" />
-              <folding>
-                <element signature="e#0#57#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/smart-contract/smartContract/contracts/Roles.sol">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -148,6 +125,7 @@
         <option value="$PROJECT_DIR$/web-front-end/src/pages/BasicInfo.js" />
         <option value="$PROJECT_DIR$/web-front-end/src/index.js" />
         <option value="$PROJECT_DIR$/web-front-end/src/pages/Access.js" />
+        <option value="$PROJECT_DIR$/smart-contract/smartContract/contracts/CitizensRecord.sol" />
       </list>
     </option>
   </component>
@@ -188,54 +166,21 @@
             <path>
               <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="b2602c69:ProjectViewProjectNode" />
               <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="462c0819:PsiDirectoryNode" />
-              <item name="web-front-end" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="462c0819:PsiDirectoryNode" />
-              <item name="web-front-end" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="462c0819:PsiDirectoryNode" />
-              <item name="web-front-end" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="462c0819:PsiDirectoryNode" />
-              <item name="web-front-end" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Ethereum" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="462c0819:PsiDirectoryNode" />
-              <item name="web-front-end" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="462c0819:PsiDirectoryNode" />
-              <item name="web-front-end" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="smart-contract" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541412087747" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543714885544" />
+    <property name="ignore_missing_gitignore" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
@@ -304,19 +249,20 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15389000" />
+    <option name="totallyTimeSpent" value="15421000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="27" width="1920" height="1053" extended-state="6" />
+    <frame x="0" y="34" width="1920" height="1046" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18729989" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20171674" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Capture Tool" order="6" />
+      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32997763" />
@@ -376,7 +322,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="stupid fix" />
     <MESSAGE value="asdasd" />
-    <option name="LAST_COMMIT_MESSAGE" value="asdasd" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/sergio8215/FIB-PTI-ID-of-the-future-using-blockchain&#10;&#10;# Conflicts:&#10;#&#9;web-front-end/src/pages/BasicInfo.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/sergio8215/FIB-PTI-ID-of-the-future-using-blockchain&#10;&#10;# Conflicts:&#10;#&#9;web-front-end/src/pages/BasicInfo.js" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/logos/logo-white-no-back.png">
@@ -414,27 +361,9 @@
     <entry file="file://$PROJECT_DIR$/web-front-end/src/index.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/SmartContract/v2/Roles.sol">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="12" column="24" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SmartContract/v2/RBAC-SM.sol">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2133">
-          <caret line="79" column="22" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SmartContract/v2/CitizensRecord.sol">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4725">
-          <caret line="175" column="64" selection-start-line="175" selection-start-column="64" selection-end-line="175" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/SmartContract/v2/Roles.sol" />
+    <entry file="file://$PROJECT_DIR$/SmartContract/v2/RBAC-SM.sol" />
+    <entry file="file://$PROJECT_DIR$/SmartContract/v2/CitizensRecord.sol" />
     <entry file="file://$PROJECT_DIR$/web-front-end/public/manifest.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -468,9 +397,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2102">
           <caret line="108" column="15" selection-start-line="108" selection-start-column="15" selection-end-line="108" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#57#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -478,9 +404,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="14" column="55" lean-forward="true" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -488,9 +411,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

@@ -1,6 +1,6 @@
 pragma solidity ^0.4.21;
 
-import "./RBAC.sol";
+import "./RBAC-SM.sol";
 
 
 contract CitizensRecord is RBAC {
@@ -23,6 +23,7 @@ contract CitizensRecord is RBAC {
         string residence;
         string city;
         uint32 ID;
+        bytes32 image;
     }
 
     struct ClinicRecords {
@@ -34,9 +35,9 @@ contract CitizensRecord is RBAC {
     }
 
     struct Register {
-        string record;
-        string date;
-        bool valid;
+        bytes32 record;
+        bytes32 date;
+        bytes32 valid;
     }
 
     event UserAdded(uint32 ID);
@@ -45,7 +46,7 @@ contract CitizensRecord is RBAC {
 
     constructor() public {
         admin = msg.sender;
-        addRole(msg.sender, RolesEnum.Admin);
+        addRole(msg.sender, 3);
     }
 
     modifier onlyAdmin() {
@@ -72,7 +73,8 @@ contract CitizensRecord is RBAC {
         string _nacionality,
         string _residence,
         string _city,
-        uint32 _ID) public onlyAdmin {
+        uint32 _ID,
+        bytes32 _image) public onlyAdmin {
 
         require(is_available(_ID), "The ID it's not available");
 
@@ -86,6 +88,7 @@ contract CitizensRecord is RBAC {
         citizen.residence = _residence;
         citizen.city = _city;
         citizen.ID = _ID;
+        citizen.image = _image;
         citizen.alive = true;
 
         citizensStorage[_ID] = citizen;
@@ -93,40 +96,67 @@ contract CitizensRecord is RBAC {
         emit UserAdded(_ID);
     }
 
+    function modofy_citizen(
+        string _name,
+        string _lastName,
+        string _birthDate,
+        string _gender,
+        string _nacionality,
+        string _residence,
+        string _city,
+        uint32 _ID,
+        bytes32 _image) public onlyAdmin {
+
+        require(!is_available(_ID), "there is no one with this ID");
+
+        Citizen storage citizen = citizensStorage[_ID];
+
+        citizen.name = _name;
+        citizen.lastName = _lastName;
+        citizen.birthDate = _birthDate;
+        citizen.gender = _gender;
+        citizen.nacionality = _nacionality;
+        citizen.residence = _residence;
+        citizen.city = _city;
+        citizen.ID = _ID;
+        citizen.image = _image;
+        citizen.alive = true;
+    }
+
     function removeUser(uint32 ID) public onlyAdmin {
         require(isAlive(ID), 'The citizen is dead');
 
         citizensStorage[ID].alive = false;
         numberOfActiveUsers--;
-        event UserRemoved(ID);
+        emit UserRemoved(ID);
     }
 
     function registerClinicRecord(
         uint32 ID,
-        string record,
-        string date
-    ) public onlyRoles(msg.sender, [RolesEnum.Doctor, RolesEnum.Admin]) {
+        bytes32 record,
+        bytes32 date
+    ) public onlyRoles(msg.sender, [2, 3]) {
         require(isAlive(ID), 'The citizen is dead');
 
         Register memory reg;
         reg.record = record;
         reg.date = date;
-        reg.valid = true;
+        reg.valid = 'true';
 
         clinicStorage[ID].records.push(reg);
     }
 
     function registerLegalRecord(
         uint32 ID,
-        string record,
-        string date
-    ) onlyRoles(msg.sender, [RolesEnum.Police, RolesEnum.Admin]) {
+        bytes32 record,
+        bytes32 date
+    ) public onlyRoles(msg.sender, [1, 3]) {
         require(isAlive(ID), 'The citizen is dead');
 
         Register memory reg;
         reg.record = record;
         reg.date = date;
-        reg.valid = true;
+        reg.valid = 'true';
 
         legalStorage[ID].records.push(reg);
     }
@@ -134,79 +164,79 @@ contract CitizensRecord is RBAC {
     function deleteClinicRecord(
         uint32 ID,
         uint32 recordPosition
-    ) public onlyRoles(msg.sender, [RolesEnum.Doctor, RolesEnum.Admin]) {
+    ) public onlyRoles(msg.sender, [2, 3]) {
         require(isAlive(ID), 'The citizen is dead');
-        require(clinicStorage[ID].records[recordPosition].valid, "The incident does not exist");
+        require(clinicStorage[ID].records[recordPosition].valid == 'true', "The incident does not exist");
 
-        clinicStorage[ID].records[recordPosition].valid = false;
+        clinicStorage[ID].records[recordPosition].valid = 'false';
     }
 
     function deleteLegalRecord(
         uint32 ID,
         uint32 recordPosition
-    ) public onlyRoles(msg.sender, [RolesEnum.Police, RolesEnum.Admin]) {
+    ) public onlyRoles(msg.sender, [1, 3]) {
         require(isAlive(ID), 'The citizen is dead');
-        require(legalStorage[ID].records[recordPosition].valid, "The incident does not exist");
+        require(legalStorage[ID].records[recordPosition].valid == 'true', "The incident does not exist");
 
-        legalStorage[ID].records[recordPosition].valid = false;
+        legalStorage[ID].records[recordPosition].valid = 'false';
     }
 
-    function getRegister(Register r) private returns (bytes32[]) {
-        bytes32[] res;
+    function getRegister(Register r) private returns (bytes32[3]) {
+        bytes32[3] res;
         res[0] = r.record;
         res[1] = r.date;
-        res[2] = string(r.valid);
+        res[2] = r.valid;
         return res;
     }
 
-    function getNumberClinicRecords(uint32 ID) public onlyRoles(msg.sender, [RolesEnum.Doctor, RolesEnum.Admin]) returns (uint) {
-        require(is_available(_ID), "The ID it's not available");
+    function getNumberClinicRecords(uint32 ID) public view onlyRoles(msg.sender, [2, 3]) returns (uint) {
+        require(is_available(ID), "The ID it's not available");
         return clinicStorage[ID].records.length;
     }
 
-    function getNumberLegalRecords(uint32 ID) public onlyRoles(msg.sender, [RolesEnum.Police, RolesEnum.Admin]) returns (uint) {
-        require(is_available(_ID), "The ID it's not available");
+    function getNumberLegalRecords(uint32 ID) public view onlyRoles(msg.sender, [1, 3]) returns (uint) {
+        require(is_available(ID), "The ID it's not available");
         return legalStorage[ID].records.length;
     }
 
     function getClinicRecords(
         uint32 ID,
         uint32 position
-    ) public onlyRoles(msg.sender, [RolesEnum.Doctor, RolesEnum.Admin]) returns (bytes32[]) {
-        require(is_available(_ID), "The ID it's not available");
+    ) public onlyRoles(msg.sender, [2, 3]) returns (bytes32[3]) {
+        require(is_available(ID), "The ID it's not available");
         return getRegister(clinicStorage[ID].records[position]);
     }
 
     function getLegalRecords(
         uint32 ID,
         uint32 position
-    ) public onlyRoles(msg.sender, [RolesEnum.Police, RolesEnum.Admin]) returns (bytes32[]) {
-        require(is_available(_ID), "The ID it's not available");
+    ) public onlyRoles(msg.sender, [1, 3]) returns (bytes32[3]) {
+        require(is_available(ID), "The ID it's not available");
         return getRegister(legalStorage[ID].records[position]);
     }
 
-    function addRole(address addr, RolesEnum roleName) public onlyAdmin {
-        addRole(addr, roleName);
+
+    function addRole(address addr, uint8 roleNumber) public onlyAdmin {
+        require(roleNumber >= 0 && roleNumber < 4, 'Role not in the list');
+        giveRole(addr, roleNumber);
     }
 
-    function removeRole(address addr, RolesEnum roleName) public onlyAdmin {
-        removeRole(addr, roleName);
+    function removeRole(address addr, uint8 roleNumber) public onlyAdmin {
+        require(roleNumber >= 0 && roleNumber < 4, 'Role not in the list');
+        takeAwayRole(addr, roleNumber);
     }
+
+    function hasSpecificRole(address addr, uint8 roleName) public view returns (bool) {
+        return hasRole(addr, roleName);
+    }
+
+
+
 
     function changeStatus(bool st) public onlyAdmin {
         status = st;
         emit StatusChanged(st);
     }
-
-
-    // function set_personalAddress(
-    //     uint32 _ID,
-    //     string _personalAddress) public onlypresident {
-    //         require(!is_available( _ID ), "The ID doesn't exists");
-    //             Citizen memory citizen;
-    //             citizen = citizensStorage[_ID];
-    //             citizen.personalAddress = _personalAddress;
-    // }
 
     function get_name(uint32 _ID) public view returns (uint32, string, string) {
 
@@ -218,13 +248,12 @@ contract CitizensRecord is RBAC {
         return (citizensStorage[_ID].ID, citizensStorage[_ID].name, citizensStorage[_ID].nacionality, citizensStorage[_ID].residence, citizensStorage[_ID].city);
     }
 
-    function get_basic_info(uint32 _ID) public view returns (uint32, string, string, string, string) {
+    function get_basic_info(uint32 _ID) public view returns (uint32, string, string, string, string, bytes32) {
 
-        return (citizensStorage[_ID].ID, citizensStorage[_ID].name, citizensStorage[_ID].birthDate, citizensStorage[_ID].gender, citizensStorage[_ID].nacionality);
+        return (citizensStorage[_ID].ID, citizensStorage[_ID].name, citizensStorage[_ID].birthDate, citizensStorage[_ID].gender, citizensStorage[_ID].nacionality, citizensStorage[_ID].image);
     }
 
     function view_president_address() public view returns (address) {
-        //require(is_available( _ID ), "The ID it's not available");
         return admin;
     }
 
