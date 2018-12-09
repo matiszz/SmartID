@@ -2,55 +2,104 @@ import React, { Component } from "react";
 import {
     View,
     Text,
-    StyleSheet,
     Button,
     Image,
+    ScrollView,
+    Dimensions,
+    StyleSheet,
     AppRegistry,
     SafeAreaView,
-    ScrollView,
-    Dimensions
+    ActivityIndicator,
 } from "react-native";
-//import * as eth from '../Ethereum/Api';
-
 import {Header,Left,Right,Icon} from 'native-base'
+import * as eth from '../Ethereum/Api';
 
 class MedicalScreen extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+        citizen: {
+            name: '',
+            surname: '',
+            birthDate: '',
+            gender: '',
+            nationality: '',
+            residence: '',
+            city: '',
+            idNum: '',
+            image: ''
+        },
+        testing: null
+    };
+  }
+  
+  async componentDidMount() {
+    const {match} = this.props;
+    //const ID = parseInt(match.params.id, 1);
+    console.log(this.props.navigation.state.params.user);
+          this.setState({loading: true})
+
+    const res = await eth.getCitizenBasicInfo(this.props.navigation.state.params.user)
+    this.setState({citizen: res, loading: false});
+
+  }
+
+  async componentDidUpdate(prevProps) {
+    console.log(this.props.navigation.state.params.user);
+    if (this.props.navigation.state.params.user !== prevProps.navigation.state.params.user) {
+      const {match} = this.props;
+      //const ID = parseInt(match.params.id, 1);
+      console.log(this.props.navigation.state.params.user); 
+      this.setState({loading: true})
+    const res = await eth.getCitizenBasicInfo(this.props.navigation.state.params.user)
+    this.setState({citizen: res, loading: false});
+    }
+  } 
     
   static navigationOptions = {
     drawerIcon : ( {tintColor}) => (
         <Icon name="heart" style={{fontSize:24, color:tintColor}}/>
       )
   }    
-  callFun = () =>
-  {
-    alert("Show QR Code");
-  }
   
   render() {
-    var pic = require ('../assets/john-doe.jpg');
-    
-    return (
-      <View style={styles.container}>
-        <Header style={styles.header}> 
-          <Left>
-            <Icon name="menu" onPress={() =>
-              this.props.navigation.openDrawer()} />  
-          </Left>
-          </Header>
-          <View style={{flexDirection: 'row', flex: 1}}>
-            <View style={styles.infoblock}>
-                <Text style={styles.title}>Medical Information</Text>
-                <Text style={styles.id}>ID: 1234567Z </Text>
-                <Text style={styles.info}>Name: John Doe</Text>
-                <Text style={styles.info}>Alergies: xxxx</Text>
-                <Text style={styles.info}>Download blood tests: Download</Text>
-                <Text style={styles.info}>Blood: O+</Text>
-                <Text style={styles.info}>Last Dr.: Maria Roma</Text>
-            </View>
+    //var pic = require ('../assets/john-doe.jpg');
+
+    return this.state.loading
+        ? (<ActivityIndicator size="large" color="#0000ff" />)
+        : (
+          <View style={styles.container}>
+              <Header style={styles.header}> 
+                <Left>
+                  <Icon name="menu" onPress={() =>
+                    this.props.navigation.openDrawer()} />  
+                </Left>
+              </Header>
+              <View style={{flexDirection: 'row', flex: 1}}> 
+                  <View style={styles.infoblock}>
+                      <Text style={styles.title}>Medical Information</Text>
+                      <Text style={styles.id}>ID: {this.state.citizen.idNum}</Text>
+                      <Text style={styles.info}>Name: {this.state.citizen.name} {this.state.citizen.surname}</Text>
+                      <Text style={styles.info}>Alergies: </Text>
+                      <Text style={styles.info}>Download blood tests: Download</Text>
+                      <Text style={styles.info}>Blood: </Text>
+                      <Text style={styles.info}>Last Dr.: </Text>
+                  </View>
+                  <View style={styles.picblock}>
+
+                      <Image source={{uri:`https://cloudflare-ipfs.com/ipfs/${this.state.citizen.image}`}} style={styles.image}/> 
+                  </View>
+              </View>
+              <View style={styles.QR}>
+
+               
+              </View>
           </View>
-        </View>
-    );
+      );
   }
+
+
 }
 export default MedicalScreen;
 
@@ -85,8 +134,13 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 0
   },
+   infoblock: {
+    marginLeft: 30,
+    marginTop: 50,
+  },
   header: {
-    backgroundColor: '#3700B3',
-    marginTop: 22
+    backgroundColor: '#ffffff',
+    paddingTop: 25,
+    height: 80,
   }
 }); 

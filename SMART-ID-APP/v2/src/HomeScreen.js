@@ -98,23 +98,7 @@ class HomeScreen extends Component {
               </View>
               <View style={styles.QR}>
 
-                  <Button
-                      onPress={this.callFun}
-                      //onPress={onPressLearnMore}
-                      title="Show QR"
-                      color="#BB86FC"
-                      containerStyle={{
-                        width: 200,
-                        height: 40,
-                        marginTop: 20,
-                      }}
-                      buttonStyle={{
-                        width: 200,
-                        height: 40,
-                        marginTop: 20,
-                      }}
-                      
-                    />
+               
               </View>
           </View>
       );
@@ -156,10 +140,31 @@ const styles = StyleSheet.create({
   },
   infoblock: {
     marginLeft: 30,
+    marginTop: 50,
   },
   header: {
-    backgroundColor: '#3700B3',
-    padding: 22
+    backgroundColor: '#ffffff',
+    paddingTop: 25,
+    height: 80,
   }
   
 }); 
+
+/*
+   <Button
+                      onPress={this.callFun}
+                      //onPress={onPressLearnMore}
+                      title="Show QR"
+                      color="#BB86FC"
+                      containerStyle={{
+                        width: 200,
+                        height: 40,
+                        marginTop: 20,
+                      }}
+                      buttonStyle={{
+                        width: 200,
+                        height: 40,
+                        marginTop: 20,
+                      }}
+                      
+                    />*/

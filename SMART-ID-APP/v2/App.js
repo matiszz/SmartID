@@ -24,9 +24,9 @@ import truffleConfig from './truffle';
 import Main from './src/Main';
 import Container from './src/Container';
 import BasicInfo from './src/BasicInfo'; 
-import LoginScreen from './src/LoginScreen'
-import HomeScreen from './src/HomeScreen'
-
+import LoginScreen from './src/LoginScreen';
+import HomeScreen from './src/HomeScreen';
+import MedicalScreen from './src/MedicalScreen';
 
 export default class App extends React.Component {
   render() {
@@ -50,7 +50,8 @@ const CustomDrawerComponent = (props) => (
 
   const AppDrawerNavigator = createDrawerNavigator({
     Login: LoginScreen,
-    Home: HomeScreen
+    Home: HomeScreen,
+    Medical: MedicalScreen
   }, {
     ContentComponent: CustomDrawerComponent,
     contentOptions:{
