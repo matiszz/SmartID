@@ -27,7 +27,8 @@ class HomeScreen extends Component {
             nationality: '',
             residence: '',
             city: '',
-            idNum: ''
+            idNum: '',
+            image: ''
         },
         testing: null
     };
@@ -68,8 +69,8 @@ class HomeScreen extends Component {
   }
     
   render() {
-      var pic = require ('../assets/john-doe.jpg');
-    
+      //var pic = require ('../assets/john-doe.jpg');
+      
       return this.state.loading
         ? (<ActivityIndicator size="large" color="#0000ff" />)
         : (
@@ -91,7 +92,8 @@ class HomeScreen extends Component {
                       <Text style={styles.info}>City: {this.state.citizen.city}</Text>
                   </View>
                   <View style={styles.picblock}>
-                      <Image source={pic} style={styles.image}/> 
+
+                      <Image source={{uri:`https://cloudflare-ipfs.com/ipfs/${this.state.citizen.image}`}} style={styles.image}/> 
                   </View>
               </View>
               <View style={styles.QR}>
