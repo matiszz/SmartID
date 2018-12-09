@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4965b76a-1a83-49c6-a08f-d2cd4e142d89" name="Default Changelist" comment="Merge branch 'master' of https://github.com/sergio8215/FIB-PTI-ID-of-the-future-using-blockchain&#10;&#10;# Conflicts:&#10;#&#9;web-front-end/src/pages/BasicInfo.js">
-      <change afterPath="$PROJECT_DIR$/smart-contract/smartContract/build/contracts/CitizensRecord.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/smart-contract/smartContract/build/contracts/Migrations.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/smart-contract/smartContract/build/contracts/RBAC.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/smart-contract/smartContract/build/contracts/Roles.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/smart-contract/smartContract/contracts/Migrations.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/smart-contract/smartContract/migrations/1_initial_migration.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/smart-contract/smartContract/truffle-config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/smart-contract/smartContract/truffle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+    <list default="true" id="4965b76a-1a83-49c6-a08f-d2cd4e142d89" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/smart-contract/smartContract/test/citizensRecord.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartContract/CitizensRecord.sol" beforeDir="false" afterPath="$PROJECT_DIR$/smart-contract/CitizensRecord.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartContract/v2/CitizensRecord.sol" beforeDir="false" afterPath="$PROJECT_DIR$/smart-contract/smartContract/contracts/CitizensRecord.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartContract/v2/RBAC-SM.sol" beforeDir="false" afterPath="$PROJECT_DIR$/smart-contract/smartContract/contracts/RBAC-SM.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartContract/v2/Roles.sol" beforeDir="false" afterPath="$PROJECT_DIR$/smart-contract/smartContract/contracts/Roles.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/smart-contract/smartContract/build/contracts/CitizensRecord.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/smart-contract/smartContract/build/contracts/Migrations.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/smart-contract/smartContract/build/contracts/RBAC.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/smart-contract/smartContract/build/contracts/Roles.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/smart-contract/smartContract/contracts/CitizensRecord.sol" beforeDir="false" afterPath="$PROJECT_DIR$/smart-contract/smartContract/contracts/CitizensRecord.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/smart-contract/smartContract/migrations/1_initial_migration.js" beforeDir="false" afterPath="$PROJECT_DIR$/smart-contract/smartContract/migrations/1_initial_migration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/smart-contract/smartContract/truffle.js" beforeDir="false" afterPath="$PROJECT_DIR$/smart-contract/smartContract/truffle.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,85 +22,25 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="2127162859">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="1" />
-          <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="1" />
-        </counts>
-      </usages-collector>
-    </session>
-    <session id="-505232606">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="6" />
-          <entry key="project.open.time.1" value="3" />
-          <entry key="project.open.time.12" value="2" />
-          <entry key="project.open.time.29" value="1" />
-          <entry key="project.opened" value="6" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="js" value="303" />
-          <entry key="sol" value="284" />
-          <entry key="txt" value="16" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JavaScript" value="303" />
-          <entry key="PLAIN_TEXT" value="16" />
-          <entry key="Solidity file" value="285" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="css" value="1" />
-          <entry key="jpg" value="1" />
-          <entry key="js" value="15" />
-          <entry key="json" value="5" />
-          <entry key="png" value="4" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="CSS" value="1" />
-          <entry key="Image" value="5" />
-          <entry key="JSON" value="5" />
-          <entry key="JavaScript" value="15" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/smart-contract/smartContract/contracts/CitizensRecord.sol">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="107" column="42" selection-start-line="107" selection-start-column="42" selection-end-line="107" selection-end-column="42" />
+            <state relative-caret-position="109">
+              <caret line="209" column="4" selection-start-line="209" selection-start-column="4" selection-end-line="209" selection-end-column="4" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/smart-contract/smartContract/contracts/RBAC-SM.sol">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="39" column="66" selection-start-line="39" selection-start-column="66" selection-end-line="39" selection-end-column="66" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/smart-contract/smartContract/contracts/Roles.sol">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -112,6 +48,11 @@
       <find>handleSubmit</find>
       <find>truf</find>
       <find>ethereumjs-testrpc</find>
+      <find>equal</find>
+      <find>id</find>
+      <find>networks</find>
+      <find>filter</find>
+      <find>records</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -125,37 +66,29 @@
         <option value="$PROJECT_DIR$/web-front-end/src/pages/BasicInfo.js" />
         <option value="$PROJECT_DIR$/web-front-end/src/index.js" />
         <option value="$PROJECT_DIR$/web-front-end/src/pages/Access.js" />
+        <option value="$PROJECT_DIR$/smart-contract/smartContract/contracts/Migrations.sol" />
+        <option value="$PROJECT_DIR$/smart-contract/smartContract/contracts/Roles.sol" />
+        <option value="$PROJECT_DIR$/smart-contract/smartContract/contracts/RBAC-SM.sol" />
+        <option value="$PROJECT_DIR$/smart-contract/smartContract/test/CitizensRecord.js" />
+        <option value="$PROJECT_DIR$/smart-contract/smartContract/truffle-config.js" />
+        <option value="$PROJECT_DIR$/smart-contract/smartContract/truffle.js" />
+        <option value="$PROJECT_DIR$/smart-contract/smartContract/migrations/1_initial_migration.js" />
+        <option value="$PROJECT_DIR$/smart-contract/smartContract/test/citizensRecord.js" />
         <option value="$PROJECT_DIR$/smart-contract/smartContract/contracts/CitizensRecord.sol" />
       </list>
     </option>
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="NodeModulesDirectoryManager">
-    <handled-path value="$PROJECT_DIR$/Server/node_modules" />
-  </component>
-  <component name="NodePackageJsonFileManager">
-    <packageJsonPaths>
-      <path value="$PROJECT_DIR$/SMART-ID-APP/package.json" />
-      <path value="$PROJECT_DIR$/Server/package.json" />
-      <path value="$PROJECT_DIR$/web-front-end/package.json" />
-    </packageJsonPaths>
-  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1920" />
-    <option name="y" value="27" />
-    <option name="width" value="1910" />
-    <option name="height" value="1053" />
+    <option name="y" value="34" />
+    <option name="width" value="1920" />
+    <option name="height" value="1046" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -168,18 +101,30 @@
               <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="462c0819:PsiDirectoryNode" />
               <item name="smart-contract" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="462c0819:PsiDirectoryNode" />
+              <item name="smart-contract" type="462c0819:PsiDirectoryNode" />
+              <item name="smartContract" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FIB-PTI-ID-of-the-future-using-blockchain" type="462c0819:PsiDirectoryNode" />
+              <item name="smart-contract" type="462c0819:PsiDirectoryNode" />
+              <item name="smartContract" type="462c0819:PsiDirectoryNode" />
+              <item name="contracts" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543714885544" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544385149841" />
     <property name="ignore_missing_gitignore" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -197,7 +142,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="start" type="js.build_tools.npm" factoryName="npm" temporary="true" nameIsGenerated="true">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/web-front-end/package.json" />
       <command value="run" />
       <scripts>
@@ -218,7 +163,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c0cbdf5f-3873-4073-befc-ca10555555c7" name="Default Changelist" comment="" />
+      <changelist id="4965b76a-1a83-49c6-a08f-d2cd4e142d89" name="Default Changelist" comment="" />
       <created>1540829444528</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -230,6 +175,10 @@
       <workItem from="1541349988268" duration="7785000" />
       <workItem from="1541409890356" duration="4000" />
       <workItem from="1541409976376" duration="2066000" />
+      <workItem from="1543829431581" duration="340000" />
+      <workItem from="1544192465602" duration="15807000" />
+      <workItem from="1544277016851" duration="3474000" />
+      <workItem from="1544383790213" duration="1306000" />
     </task>
     <task id="LOCAL-00001" summary="stupid fix">
       <created>1540996351522</created>
@@ -245,24 +194,37 @@
       <option name="project" value="LOCAL" />
       <updated>1541353391364</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Merge branch 'master' of https://github.com/sergio8215/FIB-PTI-ID-of-the-future-using-blockchain&#10;&#10;# Conflicts:&#10;#&#9;web-front-end/src/pages/BasicInfo.js">
+      <created>1543714940719</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1543714940719</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Merge branch 'master' of https://github.com/sergio8215/FIB-PTI-ID-of-the-future-using-blockchain&#10;&#10;# Conflicts:&#10;#&#9;web-front-end/src/pages/BasicInfo.js">
+      <created>1543715073295</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1543715073295</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15421000" />
+    <option name="totallyTimeSpent" value="36584000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="34" width="1920" height="1046" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20171674" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17274678" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Capture Tool" order="6" />
-      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32997763" />
@@ -270,21 +232,23 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32885906" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32788798" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32997763" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="10" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Json Parser" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Database" order="8" />
-      <window_info anchor="right" id="Maven Projects" order="9" />
+      <window_info anchor="bottom" id="Messages" order="12" />
+      <window_info anchor="right" id="Maven" order="0" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Json Parser" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Database" order="9" />
+      <window_info anchor="right" id="Maven Projects" order="10" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,9 +279,20 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="stupid fix" />
@@ -411,6 +386,85 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smart-contract/CitizensRecord.sol">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smart-contract/smartContract/contracts/Roles.sol">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="23" selection-start-column="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smart-contract/smartContract/build/contracts/CitizensRecord.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="24088" column="11" selection-start-line="24088" selection-start-column="3" selection-end-line="24088" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smart-contract/smartContract/build/contracts/Migrations.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="1376" column="11" selection-start-line="1376" selection-start-column="3" selection-end-line="1376" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smart-contract/smartContract/contracts/Migrations.sol">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="22" selection-start-column="22" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smart-contract/smartContract/truffle-config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="18" lean-forward="true" selection-start-line="14" selection-end-line="18" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smart-contract/smartContract/migrations/1_initial_migration.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smart-contract/smartContract/truffle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smart-contract/smartContract/contracts/RBAC-SM.sol">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="11" lean-forward="true" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smart-contract/smartContract/test/citizensRecord.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smart-contract/smartContract/contracts/CitizensRecord.sol">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="209" column="4" selection-start-line="209" selection-start-column="4" selection-end-line="209" selection-end-column="4" />
         </state>
       </provider>
     </entry>
