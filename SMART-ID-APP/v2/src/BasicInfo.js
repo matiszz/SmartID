@@ -28,7 +28,8 @@ export default class BasicInfo extends Component {
                 nationality: '',
                 residence: '',
                 city: '',
-                idNum: ''
+                idNum: '',
+                image: ''
             },
             testing: null
         };

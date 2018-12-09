@@ -32,7 +32,8 @@ export const web3 = new Web3(web3Provider);
 
 
 //export const address = '0x4c26222547d46f6310309340abf2acb94fe87209';
-export const address = '0xfbdc4a89ac808efb20565a862de720dc51d1d5a4';
+//export const address = '0xfbdc4a89ac808efb20565a862de720dc51d1d5a4'; // contrato matias 
+export const address = '0x374b8ce4ac89110ee2e3bcc3d76eeff8d7f38234';
 export const abi = [
     {
         "constant": false,
@@ -68,6 +69,10 @@ export const abi = [
             {
                 "name": "_ID",
                 "type": "uint32"
+            },
+            {
+                "name": "_image",
+                "type": "string"
             }
         ],
         "name": "register_citizen",
@@ -95,6 +100,10 @@ export const abi = [
             {
                 "name": "",
                 "type": "uint32"
+            },
+            {
+                "name": "",
+                "type": "string"
             },
             {
                 "name": "",

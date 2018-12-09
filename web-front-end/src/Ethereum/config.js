@@ -10,7 +10,7 @@ import IPFS from 'ipfs-api';
 export const web3 = new Web3(window.web3.currentProvider);
 export const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
 
-const address = '0xec658ef95a83a44575844733ef209f09f44b8b57';
+const address = '0xfbdc4a89ac808efb20565a862de720dc51d1d5a4'; // Old one -> '0xec658ef95a83a44575844733ef209f09f44b8b57';
 const abi = [
     {
         "constant": false,
@@ -172,5 +172,6 @@ const abi = [
         "type": "function"
     }
 ];
+
 let contract = new web3.eth.Contract(abi, address);
 export default contract;

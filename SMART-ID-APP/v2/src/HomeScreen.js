@@ -27,7 +27,8 @@ class HomeScreen extends Component {
             nationality: '',
             residence: '',
             city: '',
-            idNum: ''
+            idNum: '',
+            image: ''
         },
         testing: null
     };
@@ -68,8 +69,8 @@ class HomeScreen extends Component {
   }
     
   render() {
-      var pic = require ('../assets/john-doe.jpg');
-    
+      //var pic = require ('../assets/john-doe.jpg');
+      
       return this.state.loading
         ? (<ActivityIndicator size="large" color="#0000ff" />)
         : (
@@ -91,28 +92,13 @@ class HomeScreen extends Component {
                       <Text style={styles.info}>City: {this.state.citizen.city}</Text>
                   </View>
                   <View style={styles.picblock}>
-                      <Image source={pic} style={styles.image}/> 
+
+                      <Image source={{uri:`https://cloudflare-ipfs.com/ipfs/${this.state.citizen.image}`}} style={styles.image}/> 
                   </View>
               </View>
               <View style={styles.QR}>
 
-                  <Button
-                      onPress={this.callFun}
-                      //onPress={onPressLearnMore}
-                      title="Show QR"
-                      color="#BB86FC"
-                      containerStyle={{
-                        width: 200,
-                        height: 40,
-                        marginTop: 20,
-                      }}
-                      buttonStyle={{
-                        width: 200,
-                        height: 40,
-                        marginTop: 20,
-                      }}
-                      
-                    />
+               
               </View>
           </View>
       );
@@ -154,10 +140,31 @@ const styles = StyleSheet.create({
   },
   infoblock: {
     marginLeft: 30,
+    marginTop: 50,
   },
   header: {
-    backgroundColor: '#3700B3',
-    padding: 22
+    backgroundColor: '#ffffff',
+    paddingTop: 25,
+    height: 80,
   }
   
 }); 
+
+/*
+   <Button
+                      onPress={this.callFun}
+                      //onPress={onPressLearnMore}
+                      title="Show QR"
+                      color="#BB86FC"
+                      containerStyle={{
+                        width: 200,
+                        height: 40,
+                        marginTop: 20,
+                      }}
+                      buttonStyle={{
+                        width: 200,
+                        height: 40,
+                        marginTop: 20,
+                      }}
+                      
+                    />*/
