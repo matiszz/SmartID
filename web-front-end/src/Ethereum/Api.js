@@ -1,3 +1,6 @@
+import { web3 } from "./config";
+import contract from "./config";
+
 export function getAddress() {
     return contract.options.address;
 }
@@ -101,12 +104,12 @@ export async function registerClinicRecord(id, record, date) {
         },
         (err, transHash) => {
             if (err) return {success: false};
-            else return {success: true, hash transHash};
+            else return {success: true, hash: transHash};
         });
 }
 
 /**
- * Register a new legal record to citiced
+ * Register a new legal record to citizen
  *
  * @param {number} id ID number
  * @param {Object} record String object
@@ -122,7 +125,7 @@ export async function registerLegalRecord(id, record, date) {
         },
         (err, transHash) => {
             if (err) return {success: false};
-            else return {success: true, hash transHash};
+            else return {success: true, hash: transHash};
         });
 }
 
@@ -142,7 +145,7 @@ export async function deleteClinicRecord(id, record_position) {
         },
         (err, transHash) => {
             if (err) return {success: false};
-            else return {success: true, hash transHash};
+            else return {success: true, hash: transHash};
         });
 }
 
@@ -162,27 +165,7 @@ export async function deleteLegalRecord(id, record_position) {
         },
         (err, transHash) => {
             if (err) return {success: false};
-            else return {success: true, hash transHash};
-        });
-}
-
-/**
- * Remove a legal record from the citizen
- *
- * @param {number} id ID number
- * @param {Object} record_position Integer object
- *
- * @return {Object} transHash Returns the Transaction Hash.
- */
-export async function deleteLegalRecord(id, record_position) {
-    const accounts = await this.getAccounts();
-
-    contract.methods.deleteLegalRecord(id, record_position).send({
-            from: accounts[0]
-        },
-        (err, transHash) => {
-            if (err) return {success: false};
-            else return {success: true, hash transHash};
+            else return {success: true, hash: transHash};
         });
 }
 
@@ -273,7 +256,7 @@ export async function changeStatus(state) {
         },
         (err, transHash) => {
             if (err) return {success: false};
-            else return {success: true, hash transHash};
+            else return {success: true, hash: transHash};
         });
 }
 
@@ -294,7 +277,7 @@ export async function addRole(addr, roleName) {
         },
         (err, transHash) => {
             if (err) return {success: false};
-            else return {success: true, hash transHash};
+            else return {success: true, hash: transHash};
         });
 }
 
@@ -315,7 +298,7 @@ export async function removeRole(addr, roleName) {
         },
         (err, transHash) => {
             if (err) return {success: false};
-            else return {success: true, hash transHash};
+            else return {success: true, hash: transHash};
         });
 }
 
@@ -344,7 +327,7 @@ export async function hasSpecificRole(addr, roleName) {
  *
  * @return {Adress} Return the address of the admin.
  */
-export async function view_president_address(addr, roleName) {
+export async function view_president_address() {
     let adm = '';
     const accounts = await this.getAccounts();
 
@@ -396,3 +379,9 @@ export async function getCitizenBasicInfo(id) {
 
     return citizen;
 }
+
+/*
+TODO:
+- Funcion añadir foto a IPFS
+- Probar todas las funciones (hacer un programita)
+ */
