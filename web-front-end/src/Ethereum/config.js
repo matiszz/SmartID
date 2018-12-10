@@ -159,7 +159,7 @@ const abi = [
             },
             {
                 "name": "_image",
-                "type": "bytes32"
+                "type": "string"
             }
         ],
         "name": "modify_citizen",
@@ -294,7 +294,7 @@ const abi = [
             },
             {
                 "name": "_image",
-                "type": "bytes32"
+                "type": "string"
             }
         ],
         "name": "register_citizen",
