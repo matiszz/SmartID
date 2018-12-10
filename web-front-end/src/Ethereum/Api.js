@@ -385,4 +385,5 @@ TODO:
 - Funcion añadir foto a IPFS
 - Probar todas las funciones (hacer un programita)
 - Cambiar byte32 por strings SOLO de la imagen
+- Añadir promises (ver Api de la App Movil)
  */
