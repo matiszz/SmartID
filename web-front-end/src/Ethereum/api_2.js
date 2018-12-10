@@ -1,6 +1,3 @@
-import { web3 } from "./config";
-import contract from "./config";
-
 export function getAddress() {
     return contract.options.address;
 }
@@ -104,12 +101,12 @@ export async function registerClinicRecord(id, record, date) {
         },
         (err, transHash) => {
             if (err) return {success: false};
-            else return {success: true, hash: transHash};
+            else return {success: true, hash transHash};
         });
 }
 
 /**
- * Register a new legal record to citizen
+ * Register a new legal record to citiced
  *
  * @param {number} id ID number
  * @param {Object} record String object
@@ -125,7 +122,7 @@ export async function registerLegalRecord(id, record, date) {
         },
         (err, transHash) => {
             if (err) return {success: false};
-            else return {success: true, hash: transHash};
+            else return {success: true, hash transHash};
         });
 }
 
@@ -145,7 +142,7 @@ export async function deleteClinicRecord(id, record_position) {
         },
         (err, transHash) => {
             if (err) return {success: false};
-            else return {success: true, hash: transHash};
+            else return {success: true, hash transHash};
         });
 }
 
@@ -160,21 +157,33 @@ export async function deleteClinicRecord(id, record_position) {
 export async function deleteLegalRecord(id, record_position) {
     const accounts = await this.getAccounts();
 
-    const hashDel = new Promise (resolve => {
-	    contract.deleteLegalRecord(id, record_position,{from: accounts[0]},function(err, transHash) {
-	            if (err) return {success: false};
-	            else {
-	            	const res = (transHash);
-	            	return {
-	            		success: true,
-	            		hash: res
-	            	};
-	            	console.log(res);
-	        	}
-	        	resolve();
-	        });
-    	})
-    }
+    contract.methods.deleteLegalRecord(id, record_position).send({
+            from: accounts[0]
+        },
+        (err, transHash) => {
+            if (err) return {success: false};
+            else return {success: true, hash transHash};
+        });
+}
+
+/**
+ * Remove a legal record from the citizen
+ *
+ * @param {number} id ID number
+ * @param {Object} record_position Integer object
+ *
+ * @return {Object} transHash Returns the Transaction Hash.
+ */
+export async function deleteLegalRecord(id, record_position) {
+    const accounts = await this.getAccounts();
+
+    contract.methods.deleteLegalRecord(id, record_position).send({
+            from: accounts[0]
+        },
+        (err, transHash) => {
+            if (err) return {success: false};
+            else return {success: true, hash transHash};
+        });
 }
 
 /**
@@ -188,18 +197,10 @@ export async function getNumberClinicRecords(id) {
     let lenght = -1;
     const accounts = await this.getAccounts();
 
-    const lnght = new Promise(resolve => {
-	    contract.getNumberClinicRecords(id, function(err, len) {
-	        if (err) console.error(err);
-	        else {
-	        	const res = (len);
-	        	lenght = res;
-	        	console.log(res);
-	     	}
-        resolve();
-    	});
-	})
-    await Promise.all(lnght)
+    contract.methods.getNumberClinicRecords(id).call({ from: accounts[0] }, (err, len) => {
+        if (err) console.log('ERROR!', err);
+        else lenght = len;
+    });
     return lenght;
 }
 
@@ -214,18 +215,10 @@ export async function getNumberLegalRecords(id) {
     let lenght = -1;
     const accounts = await this.getAccounts();
 
-    const lnght = new Promise(resolve => {
-	    contract.getNumberLegalRecords(id, function(err, len) {
-	        if (err) console.error(err);
-	        else {
-	        	const res = (len);
-	        	lenght = res;
-	        	console.log(res);
-	     	}
-        resolve();
-    	});
-	})
-    await Promise.all(lnght)
+    contract.methods.getNumberLegalRecords(id).call({ from: accounts[0] }, (err, len) => {
+        if (err) console.log('ERROR!', err);
+        else lenght = len;
+    });
     return lenght;
 }
 
@@ -240,18 +233,10 @@ export async function getClinicRecords(id, position) {
     let record = '';
     const accounts = await this.getAccounts();
 
-    const pos = new Promise(resolve => {
-	    contract.getClinicRecords(id, position, function(err, rec) {
-	        if (err) console.error(err);
-	        else {
-	        	const res = (rec);
-	        	record = res;
-	        	console.log(res);
-	        }
-	        resolve();
-		});
-	})
-	await Promise.all(pos)
+    contract.methods.getClinicRecords(id, position).call({ from: accounts[0] }, (err, rec) => {
+        if (err) console.log('ERROR!', err);
+        else record = rec;
+    });
     return record;
 }
 
@@ -266,18 +251,10 @@ export async function getLegalRecords(id, position) {
     let record = '';
     const accounts = await this.getAccounts();
 
-    const pos = new Promise(resolve => {
-	    contract.getLegalRecords(id, position, function(err, rec) {
-	        if (err) console.error(err);
-	        else {
-	        	const res = (rec);
-	        	record = res;
-	        	console.log(res);
-	        }
-	        resolve();
-	    });
-	})
-	await Promise.all(pos)
+    contract.methods.getLegalRecords(id, position).call({ from: accounts[0] }, (err, rec) => {
+        if (err) console.log('ERROR!', err);
+        else record = rec;
+    });
     return record;
 }
 
@@ -296,7 +273,7 @@ export async function changeStatus(state) {
         },
         (err, transHash) => {
             if (err) return {success: false};
-            else return {success: true, hash: transHash};
+            else return {success: true, hash transHash};
         });
 }
 
@@ -317,7 +294,7 @@ export async function addRole(addr, roleName) {
         },
         (err, transHash) => {
             if (err) return {success: false};
-            else return {success: true, hash: transHash};
+            else return {success: true, hash transHash};
         });
 }
 
@@ -338,7 +315,7 @@ export async function removeRole(addr, roleName) {
         },
         (err, transHash) => {
             if (err) return {success: false};
-            else return {success: true, hash: transHash};
+            else return {success: true, hash transHash};
         });
 }
 
@@ -355,18 +332,10 @@ export async function hasSpecificRole(addr, roleName) {
     let has_role = false;
     const accounts = await this.getAccounts();
 
-    const rName = new Promise (resolve => {
-	    contract.hasSpecificRole(addr, roleName,function(err,  h_role) {
-	        if (err) console.error(err);
-	        else {
-	        	const res = (h_role);
-	        	has_role = res;
-	        	console.log(res);
-	        }
-	        resolve();
-	    });
-	})
-	await Promise.all(rName)
+    contract.methods.hasSpecificRole(addr, roleName).call({ from: accounts[0] }, (err, h_role) => {
+        if (err) console.log('ERROR!', err);
+        else has_role = h_role;
+    });
     return has_role;
 }
 
@@ -375,22 +344,14 @@ export async function hasSpecificRole(addr, roleName) {
  *
  * @return {Adress} Return the address of the admin.
  */
-export async function view_president_address() {
+export async function view_president_address(addr, roleName) {
     let adm = '';
     const accounts = await this.getAccounts();
 
-    const address = new Promise(resolve => {
-	    contract.view_president_address(function(err, result1) {
-	        if (err) console.error(err);
-	        else {
-	        	const res = (result1);
-	        	adm = res;
-	        	console.log(res)
-	        }
-	        resolve();
-	    });
-	})
-    await Promise.all(address)
+    contract.methods.view_president_address().call({ from: accounts[0] }, (err, admin) => {
+        if (err) console.log('ERROR!', err);
+        else adm = admin;
+    });
     return adm;
 }
 
@@ -408,61 +369,30 @@ export async function getCitizenBasicInfo(id) {
     // We had to split the Get's in 3 different methods in order to stop Remix complains
     // We call contract.methods.[SmartContractMethod](params)
     // Then .call, passing this object as parameter and assigning the elements of the res vector to our citizen object.
-    
+    contract.methods.get_name(id).call({ from: accounts[0] }, (err, res) => {
+        if (err) console.log('ERROR!', err);
+        else {
+            citizen.idNum = res[0];
+            citizen.name = res[1];
+            citizen.surname = res[2];
+        }
+    });
+    contract.methods.get_residency(id).call({ from: accounts[0] }, (err, res) => {
+        if (err) console.log('ERROR!', err);
+        else {
+            citizen.nationality = res[2];
+            citizen.residence = res[3];
+            citizen.city = res[4];
+        }
+    });
+    contract.methods.get_basic_info(id).call({ from: accounts[0] }, (err, res) => {
+        if (err) console.log('ERROR!', err);
+        else {
+            citizen.birthDate = res[2];
+            citizen.gender = res[3];
+            citizen.profilePic = res[5];
+        }
+    });
 
-    const name = new Promise(resolve =>  {
-	    contract.get_name(id, function(err, result1) {
-	        if (err) console.error(err);
-	        else {
-	        	const res = (result1);
-	            citizen.idNum = res[0];
-	            citizen.name = res[1];
-	            citizen.surname = res[2];
-	            console.log(res);
-	        }
-	        resolve();
-	    });
-	})
-
-	   
-	const residency = new Promise(resolve => {    
-	    contract.get_residency(id, function(err, result2) {
-	        if (err) console.error(err);
-	        else {
-	        	const res = (result2);
-	            citizen.nationality = res[2];
-	            citizen.residence = res[3];
-	            citizen.city = res[4];
-	            console.log(res);
-	        }
-	        resolve();
-	    });
-	})
-
-    const basic = new Promise(resolve => {
-	    contract.get_basic_info(id, function(err, result3) {
-	        if (err) console.error(err);
-	        else {
-	        	const res = (result3);
-	            citizen.birthDate = res[2];
-	            citizen.gender = res[3];
-	            citizen.profilePic = res[5];
-	            console.log(res);
-	        }
-	        resolve();
-	    });
-	})
-
-    //await Promise.all([name, residency, basic])
-	//console.log(citizen)
-	await Promise.all([name, residency, basic])
     return citizen;
 }
-
-/*
-TODO:
--	 Funcion añadir foto a IPFS
--	 Probar todas las funciones (hacer un programita)
--X	 Cambiar byte32 por strings SOLO de la imagen 
--	 Añadir promises (ver Api de la App Movil)
- */
