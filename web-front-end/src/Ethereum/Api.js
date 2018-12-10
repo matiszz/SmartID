@@ -384,4 +384,5 @@ export async function getCitizenBasicInfo(id) {
 TODO:
 - Funcion añadir foto a IPFS
 - Probar todas las funciones (hacer un programita)
+- Cambiar byte32 por strings SOLO de la imagen
  */
