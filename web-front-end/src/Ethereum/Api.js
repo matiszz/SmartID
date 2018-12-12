@@ -1,5 +1,6 @@
 import { web3 } from "./config";
 import contract from "./config";
+import ipfs from './ipfs';
 
 export function getAddress() {
     return contract.options.address;

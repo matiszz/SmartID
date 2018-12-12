@@ -23,7 +23,7 @@ contract CitizensRecord is RBAC {
         string residence;
         string city;
         uint32 ID;
-        bytes32 image;
+        string image;
     }
 
     struct ClinicRecords {
@@ -74,7 +74,7 @@ contract CitizensRecord is RBAC {
         string _residence,
         string _city,
         uint32 _ID,
-        bytes32 _image) public onlyAdmin {
+        string _image) public onlyAdmin {
 
         require(is_available(_ID), "The ID it's not available");
 
@@ -105,7 +105,7 @@ contract CitizensRecord is RBAC {
         string _residence,
         string _city,
         uint32 _ID,
-        bytes32 _image) public onlyAdmin {
+        string _image) public onlyAdmin {
 
         require(!is_available(_ID), "there is no one with this ID");
 
@@ -248,7 +248,7 @@ contract CitizensRecord is RBAC {
         return (citizensStorage[_ID].ID, citizensStorage[_ID].name, citizensStorage[_ID].nacionality, citizensStorage[_ID].residence, citizensStorage[_ID].city);
     }
 
-    function get_basic_info(uint32 _ID) public view returns (uint32, string, string, string, string, bytes32) {
+    function get_basic_info(uint32 _ID) public view returns (uint32, string, string, string, string, string) {
 
         return (citizensStorage[_ID].ID, citizensStorage[_ID].name, citizensStorage[_ID].birthDate, citizensStorage[_ID].gender, citizensStorage[_ID].nacionality, citizensStorage[_ID].image);
     }

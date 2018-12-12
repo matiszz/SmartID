@@ -10,7 +10,7 @@ import IPFS from 'ipfs-api';
 export const web3 = new Web3(window.web3.currentProvider);
 export const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
 
-const address = '0xec658ef95a83a44575844733ef209f09f44b8b57';
+const address = '0x6237Cd1E8dC4e6ab81d4654E826708182E88017f';
 const abi = [
     {
         "constant": false,
@@ -126,52 +126,6 @@ const abi = [
         "constant": false,
         "inputs": [
             {
-                "name": "_name",
-                "type": "string"
-            },
-            {
-                "name": "_lastName",
-                "type": "string"
-            },
-            {
-                "name": "_birthDate",
-                "type": "string"
-            },
-            {
-                "name": "_gender",
-                "type": "string"
-            },
-            {
-                "name": "_nacionality",
-                "type": "string"
-            },
-            {
-                "name": "_residence",
-                "type": "string"
-            },
-            {
-                "name": "_city",
-                "type": "string"
-            },
-            {
-                "name": "_ID",
-                "type": "uint32"
-            },
-            {
-                "name": "_image",
-                "type": "string"
-            }
-        ],
-        "name": "modify_citizen",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
                 "name": "ID",
                 "type": "uint32"
             },
@@ -258,52 +212,6 @@ const abi = [
         "type": "function"
     },
     {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "_name",
-                "type": "string"
-            },
-            {
-                "name": "_lastName",
-                "type": "string"
-            },
-            {
-                "name": "_birthDate",
-                "type": "string"
-            },
-            {
-                "name": "_gender",
-                "type": "string"
-            },
-            {
-                "name": "_nacionality",
-                "type": "string"
-            },
-            {
-                "name": "_residence",
-                "type": "string"
-            },
-            {
-                "name": "_city",
-                "type": "string"
-            },
-            {
-                "name": "_ID",
-                "type": "uint32"
-            },
-            {
-                "name": "_image",
-                "type": "string"
-            }
-        ],
-        "name": "register_citizen",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
         "constant": true,
         "inputs": [],
         "name": "numberOfActiveUsers",
@@ -344,6 +252,52 @@ const abi = [
             }
         ],
         "name": "removeRole",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_name",
+                "type": "string"
+            },
+            {
+                "name": "_lastName",
+                "type": "string"
+            },
+            {
+                "name": "_birthDate",
+                "type": "string"
+            },
+            {
+                "name": "_gender",
+                "type": "string"
+            },
+            {
+                "name": "_nacionality",
+                "type": "string"
+            },
+            {
+                "name": "_residence",
+                "type": "string"
+            },
+            {
+                "name": "_city",
+                "type": "string"
+            },
+            {
+                "name": "_ID",
+                "type": "uint32"
+            },
+            {
+                "name": "_image",
+                "type": "string"
+            }
+        ],
+        "name": "modify_citizen",
         "outputs": [],
         "payable": false,
         "stateMutability": "nonpayable",
@@ -491,11 +445,57 @@ const abi = [
             },
             {
                 "name": "",
-                "type": "bytes32"
+                "type": "string"
             }
         ],
         "payable": false,
         "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_name",
+                "type": "string"
+            },
+            {
+                "name": "_lastName",
+                "type": "string"
+            },
+            {
+                "name": "_birthDate",
+                "type": "string"
+            },
+            {
+                "name": "_gender",
+                "type": "string"
+            },
+            {
+                "name": "_nacionality",
+                "type": "string"
+            },
+            {
+                "name": "_residence",
+                "type": "string"
+            },
+            {
+                "name": "_city",
+                "type": "string"
+            },
+            {
+                "name": "_ID",
+                "type": "uint32"
+            },
+            {
+                "name": "_image",
+                "type": "string"
+            }
+        ],
+        "name": "register_citizen",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
         "type": "function"
     },
     {
