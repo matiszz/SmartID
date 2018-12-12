@@ -1,6 +1,22 @@
 import { web3 } from "./config";
 import contract from "./config";
-import ipfs from './ipfs';
+import { ipfs } from './config';
+
+
+export async function getImageIPFS(imageHash) {
+    const Http = new XMLHttpRequest();
+    const url='https://gateway.ipfs.io/ipfs/' + imageHash;
+    Http.open("GET", url);
+    Http.send();
+    
+    Http.onreadystatechange=function(){
+        //comprobar si la petición se ha servido correctamente
+        if(this.readyState==4 && this.status==200) {
+            return(Http.responseText);
+        }
+        else return -1;
+    }
+}
 
 export function getAddress() {
     return contract.options.address;
@@ -38,14 +54,25 @@ export async function getTransactionReceipt(trasnsactionHash) {
 export async function registerCitizen(citizen) {
     // Get the accounts vector from our function
     const accounts = await this.getAccounts();
+    const rt = 0;
 
-    contract.methods.register_citizen(citizen.name, citizen.surname, citizen.birthDate, citizen.gender, citizen.nationality, citizen.residence, citizen.city, citizen.idNum, citizen.profilePic).send({
-            from: accounts[0]
-        },
-        (err, transHash) => {
-            if (err) return {success: false};
-            else return {success: true, hash: transHash};
+
+    const hashReg = new Promise (resolve => {
+        contract.methods.register_citizen(citizen.name, citizen.surname, citizen.birthDate, citizen.gender, citizen.nationality, citizen.residence, citizen.city, citizen.idNum, citizen.profilePic,{from: accounts[0]},function(err, transHash) {
+            if (err) {
+                console.error(err);
+                return {success: false};
+            }
+            else {
+                const res = (transHash);
+                console.log(res);
+                rt = res;
+            }
+            resolve();
         });
+    })
+    await Promise.all(hashReg)
+    return {success: true, hash: rt};
 }
 
 /**
@@ -58,14 +85,24 @@ export async function registerCitizen(citizen) {
 export async function modify_citizen(citizen) {
     // Get the accounts vector from our function
     const accounts = await this.getAccounts();
+    const rt = 0;
 
-    contract.methods.modify_citizen(citizen.name, citizen.surname, citizen.birthDate, citizen.gender, citizen.nationality, citizen.residence, citizen.city, citizen.idNum, citizen.profilePic).send({
-            from: accounts[0]
-        },
-        (err, transHash) => {
-            if (err) return {success: false};
-            else return {success: true, hash: transHash};
+    const hashModify = new Promise ( resolve => {
+        contract.modify_citizen(citizen.name, citizen.surname, citizen.birthDate, citizen.gender, citizen.nationality, citizen.residence, citizen.city, citizen.idNum, citizen.profilePic,{from: accounts[0]},function(err, transHash) {
+            if (err) {
+                console.error(err);
+                return {success: false};
+            }
+            else {
+                const res = (transHash);
+                console.log(res);
+                rt = res;
+            }
+            resolve();
         });
+    })
+    await Promise.all(hashModify)
+    return {success: true, hash: rt};
 }
 
 /**
@@ -78,14 +115,24 @@ export async function modify_citizen(citizen) {
 export async function removeCitizen(id) {
     // Get the accounts vector from our function
     const accounts = await this.getAccounts();
+    const rt = 0;
 
-    contract.methods.removeUser(id).send({
-            from: accounts[0]
-        },
-        (err, transHash) => {
-            if (err) return {success: false};
-            else return {success: true, hash: transHash};
+    const hashReg = new Promise ( resolve => {
+        contract.removeUser(id, {from: accounts[0]},function(err, transHash) {
+            if (err) {
+                console.error(err);
+                return {success: false};
+            }
+            else {
+                const res = (transHash);
+                console.log(res);
+                rt = res;
+            }
+            resolve();
         });
+    })
+    await Promise.all(hashReg)
+    return {success: true, hash: rt};
 }
 
 /**
@@ -99,14 +146,24 @@ export async function removeCitizen(id) {
  */
 export async function registerClinicRecord(id, record, date) {
     const accounts = await this.getAccounts();
+    const rt = 0;
 
-    contract.methods.registerClinicRecord(id, record, date).send({
-            from: accounts[0]
-        },
-        (err, transHash) => {
-            if (err) return {success: false};
-            else return {success: true, hash: transHash};
-        });
+    const hashReg = new Promise ( resolve => {
+        contract.registerClinicRecord(id, record, date,{from: accounts[0]}, function(err, transHash) {
+                if (err) {
+                    console.error(err);
+                    return {success: false};
+                }
+                else {
+                    const res = (transHash);
+                    console.log(res);
+                    rt = res;
+                }
+                resolve();
+            });
+        })
+    await Promise.all(hashReg)
+    return {success: true, hash: rt};
 }
 
 /**
@@ -120,14 +177,24 @@ export async function registerClinicRecord(id, record, date) {
  */
 export async function registerLegalRecord(id, record, date) {
     const accounts = await this.getAccounts();
+    const rt = 0;
 
-    contract.methods.registerLegalRecord(id, record, date).send({
-            from: accounts[0]
-        },
-        (err, transHash) => {
-            if (err) return {success: false};
-            else return {success: true, hash: transHash};
-        });
+    const hashReg = new Promise ( resolve => {
+        contract.methods.registerLegalRecord(id, record, date,{from: accounts[0]}, function(err, transHash) {
+                if (err) {
+                    console.error(err);
+                    return {success: false};
+                }
+                else {
+                    const res = (transHash);
+                    console.log(res);
+                    rt = res;
+                }
+                resolve();
+            });
+        })
+    await Promise.all(hashReg)
+    return {success: true, hash: rt};
 }
 
 /**
@@ -140,14 +207,24 @@ export async function registerLegalRecord(id, record, date) {
  */
 export async function deleteClinicRecord(id, record_position) {
     const accounts = await this.getAccounts();
+    const rt = 0; 
 
-    contract.methods.deleteClinicRecord(id, record_position).send({
-            from: accounts[0]
-        },
-        (err, transHash) => {
-            if (err) return {success: false};
-            else return {success: true, hash: transHash};
+    const hashDel = new Promise(resolve => {
+        contract.deleteClinicRecord(id, record_position,{from: accounts[0]},function(err, transHash) {
+            if (err) {
+                console.error(err);
+                return {success: false};
+            }
+            else { 
+                const res = (transHash);
+                console.log(res);
+                rt = res;
+            }
+            resolve();
         });
+    })
+    await Promise.all(hashDel)
+    return {success: true, hash: rt};
 }
 
 /**
@@ -160,22 +237,24 @@ export async function deleteClinicRecord(id, record_position) {
  */
 export async function deleteLegalRecord(id, record_position) {
     const accounts = await this.getAccounts();
+    const rt = '';
 
     const hashDel = new Promise (resolve => {
 	    contract.deleteLegalRecord(id, record_position,{from: accounts[0]},function(err, transHash) {
-	            if (err) return {success: false};
-	            else {
-	            	const res = (transHash);
-	            	return {
-	            		success: true,
-	            		hash: res
-	            	};
-	            	console.log(res);
-	        	}
-	        	resolve();
-	        });
-    	})
-    }
+            if (err) {
+                console.error(err);
+                return {success: false};
+            }
+            else { 
+                const res = (transHash);
+                console.log(res);
+                rt = res;
+            }
+            resolve();
+        });
+    })
+    await Promise.all(hashDel)
+    return {success: true, hash: rt};
 }
 
 /**
@@ -291,14 +370,24 @@ export async function getLegalRecords(id, position) {
  */
 export async function changeStatus(state) {
     const accounts = await this.getAccounts();
+    const rt = 0;
 
-    contract.methods.changeStatus(state).send({
-            from: accounts[0]
-        },
-        (err, transHash) => {
-            if (err) return {success: false};
-            else return {success: true, hash: transHash};
+    const hashChange = new Promise(resolve => {
+        contract.methods.changeStatus(state,{from: accounts[0]},function(err, transHash) {
+            if (err) {
+                console.error(err);
+                return {success: false};
+            }
+            else {
+                const res = (transHash);
+                rt = res;
+                console.log(res)
+            }
+            resolve();
         });
+    })
+    await Promise.all(hashChange)
+    return {success: true, hash: rt};
 }
 
 /**
@@ -312,14 +401,23 @@ export async function changeStatus(state) {
  */
 export async function addRole(addr, roleName) {
     const accounts = await this.getAccounts();
+    const rt = 0;
 
-    contract.methods.addRole(addr, roleName).send({
-            from: accounts[0]
-        },
-        (err, transHash) => {
-            if (err) return {success: false};
-            else return {success: true, hash: transHash};
-        });
+    const hashAdd = new Promise(resolve => {
+        contract.addRole(addr, roleName,{from: accounts[0]},function(err, transHash) {
+                if (err) {
+                    console.error(err);
+                    return {success: false};}
+                else {
+                    const res = (transHash);
+                    rt = res;
+                    console.log(res)
+                }
+                resolve();
+            });
+    })
+    await Promise.all(hashAdd)
+    return {success: true, hash: rt};
 }
 
 /**
@@ -333,14 +431,24 @@ export async function addRole(addr, roleName) {
  */
 export async function removeRole(addr, roleName) {
     const accounts = await this.getAccounts();
+    const rt = 0;
 
-    contract.methods.removeRole(addr, roleName).send({
-            from: accounts[0]
-        },
-        (err, transHash) => {
-            if (err) return {success: false};
-            else return {success: true, hash: transHash};
+    const hashRemove = new Promise(resolve => {
+        contract.methods.removeRole(addr, roleName,{from: accounts[0]},function(err, transHash) {
+            if (err) {
+                console.error(err);
+                return {success: false};
+            }
+            else {
+                const res = (transHash);
+                console.log(res);
+                rt = res;
+            }
+            resolve();
         });
+    })
+    await Promise.all(hashRemove)
+    return {success: true, hash: rt};
 }
 
 /**
@@ -462,8 +570,8 @@ export async function getCitizenBasicInfo(id) {
 
 /*
 TODO:
--	 Funcion añadir foto a IPFS
+-X	 Funcion añadir foto a IPFS
 -	 Probar todas las funciones (hacer un programita)
 -X	 Cambiar byte32 por strings SOLO de la imagen 
--	 Añadir promises (ver Api de la App Movil)
+-X	 Añadir promises (ver Api de la App Movil)
  */
