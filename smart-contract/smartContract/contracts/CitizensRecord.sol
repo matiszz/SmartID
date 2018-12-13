@@ -139,7 +139,7 @@ contract CitizensRecord is RBAC {
     ) public onlyRoles(msg.sender, [2, 3]) {
         require(isAlive(ID), 'The citizen is dead');
 
-        Register[] storage aux = legalStorage[ID].records;
+        Register[] storage aux = clinicStorage[ID].records;
 
         Register memory reg;
         reg.record = record;
