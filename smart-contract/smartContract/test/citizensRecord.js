@@ -110,8 +110,8 @@ contract('CitizensRecord', (accounts) => {
 
     await contractInstance.registerLegalRecord(
       ID,
-      web3.toHex('multa parking'),
-      web3.toHex('1/2/3')
+      'multa parking',
+      '1/2/3'
     );
 
     num = await contractInstance.getNumberLegalRecords(ID);
@@ -120,7 +120,7 @@ contract('CitizensRecord', (accounts) => {
     const legalRecord = await contractInstance.getLegalRecords(ID, 0);
 
     truffleAssert.eventEmitted(legalRecord, 'SendRegister', (ev) => {
-      return web3.toUtf8(ev.record) === 'multa parking' && web3.toUtf8(ev.date) === '1/2/3' && ev.valid === true;
+      return ev.record === 'multa parking' && ev.date === '1/2/3' && ev.valid === true;
     });
   });
 
@@ -136,7 +136,7 @@ contract('CitizensRecord', (accounts) => {
     const legalRecord = await contractInstance.getLegalRecords(ID, 0);
 
     truffleAssert.eventEmitted(legalRecord, 'SendRegister', (ev) => {
-      return web3.toUtf8(ev.record) === 'multa parking' && web3.toUtf8(ev.date) === '1/2/3' && ev.valid === false;
+      return ev.record === 'multa parking' && ev.date === '1/2/3' && ev.valid === false;
     });
 
   });
