@@ -47,7 +47,11 @@ class LoginScreen extends Component {
         style={{padding: 10, marginBottom: 10, height: 40, width: 200, backgroundColor:'white'}}
       />
       <Button
-        onPress={()=> this.props.navigation.navigate('Home', {user: this.state.id})}
+        onPress={()=> {
+          console.log(this.props)
+          this.props.updateUser(this.state.id)
+          this.props.navigation.navigate('Home', {user: this.state.id})
+        }}
         //onPress={onPressLearnMore}
         title="Login"
         color="#BB86FC"

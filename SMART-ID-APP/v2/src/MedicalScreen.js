@@ -29,31 +29,27 @@ class MedicalScreen extends Component {
             city: '',
             idNum: '',
             image: ''
-        },
-        testing: null
+        }
     };
   }
   
+
   async componentDidMount() {
     const {match} = this.props;
-    //const ID = parseInt(match.params.id, 1);
-    console.log(this.props.navigation.state.params.user);
+    //console.log(this.props.user);
           this.setState({loading: true})
 
-    const res = await eth.getCitizenBasicInfo(this.props.navigation.state.params.user)
+    const res = await eth.getCitizenBasicInfo(this.props.user)
     this.setState({citizen: res, loading: false});
-
   }
 
   async componentDidUpdate(prevProps) {
-    console.log(this.props.navigation.state.params.user);
-    if (this.props.navigation.state.params.user !== prevProps.navigation.state.params.user) {
+    //console.log(this.props.user);
+    if (this.props.user !== prevProps.user) {
       const {match} = this.props;
-      //const ID = parseInt(match.params.id, 1);
-      console.log(this.props.navigation.state.params.user); 
       this.setState({loading: true})
-    const res = await eth.getCitizenBasicInfo(this.props.navigation.state.params.user)
-    this.setState({citizen: res, loading: false});
+      const res = await eth.getCitizenBasicInfo(this.props.user)
+      this.setState({citizen: res, loading: false});
     }
   } 
     
@@ -64,10 +60,10 @@ class MedicalScreen extends Component {
   }    
   
   render() {
-    //var pic = require ('../assets/john-doe.jpg');
+    var pic = require ('../assets/smart-ID.png');
 
     return this.state.loading
-        ? (<ActivityIndicator size="large" color="#0000ff" />)
+        ? (<ActivityIndicator style={styles.loader} size="large" color="#0000ff" />)
         : (
           <View style={styles.container}>
               <Header style={styles.header}> 
@@ -79,21 +75,16 @@ class MedicalScreen extends Component {
               <View style={{flexDirection: 'row', flex: 1}}> 
                   <View style={styles.infoblock}>
                       <Text style={styles.title}>Medical Information</Text>
-                      <Text style={styles.id}>ID: {this.state.citizen.idNum}</Text>
+                      <Text style={styles.id}>ID: {this.props.user}</Text>
                       <Text style={styles.info}>Name: {this.state.citizen.name} {this.state.citizen.surname}</Text>
                       <Text style={styles.info}>Alergies: </Text>
                       <Text style={styles.info}>Download blood tests: Download</Text>
                       <Text style={styles.info}>Blood: </Text>
                       <Text style={styles.info}>Last Dr.: </Text>
                   </View>
-                  <View style={styles.picblock}>
-
-                      <Image source={{uri:`https://cloudflare-ipfs.com/ipfs/${this.state.citizen.image}`}} style={styles.image}/> 
-                  </View>
               </View>
               <View style={styles.QR}>
-
-               
+                <Image source={pic} style={styles.image2}/> 
               </View>
           </View>
       );
@@ -142,5 +133,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     paddingTop: 25,
     height: 80,
+  },
+  loader: {
+    marginTop: 300
+  },
+  image2: {
+    marginBottom:50,
+    marginLeft:50,
+    width: 200,
+    height: 60,
   }
 }); 

@@ -36,8 +36,7 @@ class HomeScreen extends Component {
   
   async componentDidMount() {
     const {match} = this.props;
-    //const ID = parseInt(match.params.id, 1);
-    console.log(this.props.navigation.state.params.user);
+    //console.log(this.props.navigation.state.params.user);
           this.setState({loading: true})
 
     const res = await eth.getCitizenBasicInfo(this.props.navigation.state.params.user)
@@ -46,11 +45,9 @@ class HomeScreen extends Component {
   }
 
   async componentDidUpdate(prevProps) {
-    console.log(this.props.navigation.state.params.user);
+    //console.log(this.props.navigation.state.params.user);
     if (this.props.navigation.state.params.user !== prevProps.navigation.state.params.user) {
       const {match} = this.props;
-      //const ID = parseInt(match.params.id, 1);
-      console.log(this.props.navigation.state.params.user); 
       this.setState({loading: true})
     const res = await eth.getCitizenBasicInfo(this.props.navigation.state.params.user)
     this.setState({citizen: res, loading: false});
@@ -69,11 +66,11 @@ class HomeScreen extends Component {
   }
     
   render() {
-      //var pic = require ('../assets/john-doe.jpg');
+      var pic = require ('../assets/smart-ID.png');
       
       return this.state.loading
-        ? (<ActivityIndicator size="large" color="#0000ff" />)
-        : (
+        ? (<ActivityIndicator style={styles.loader} size="large" color="#0000ff" />)
+        : ( 
           <View style={styles.container}>
               <Header style={styles.header}> 
                 <Left>
@@ -84,12 +81,30 @@ class HomeScreen extends Component {
               <View style={{flexDirection: 'row', flex: 1}}>
                   <View style={styles.infoblock}>
                       <Text style={styles.title}>Information</Text>
-                      <Text style={styles.info}>Name: {this.state.citizen.name} {this.state.citizen.surname}</Text>
-                      <Text style={styles.info}>Birthday: {this.state.citizen.birthDate}</Text>
-                      <Text style={styles.info}>Gender: {this.state.citizen.gender}</Text>
-                      <Text style={styles.info}>Nacionality: {this.state.citizen.nationality}</Text>
-                      <Text style={styles.info}>Address: {this.state.citizen.residence}</Text>
-                      <Text style={styles.info}>City: {this.state.citizen.city}</Text>
+                      <Text style={styles.info}>
+                        <Text style={{fontWeight: "bold"}}>Name:</Text>
+                        <Text> {this.state.citizen.name} {this.state.citizen.surname}</Text>
+                      </Text>
+                      <Text style={styles.info}>
+                        <Text style={{fontWeight: "bold"}}>Birthday:</Text>
+                        <Text> {this.state.citizen.birthDate}</Text>
+                      </Text>
+                      <Text style={styles.info}>
+                        <Text style={{fontWeight: "bold"}}>Gender:</Text>
+                        <Text> {this.state.citizen.gender}</Text>
+                      </Text>
+                      <Text style={styles.info}>
+                        <Text style={{fontWeight: "bold"}}>Nacionality:</Text>
+                        <Text> {this.state.citizen.nationality}</Text>
+                      </Text>
+                      <Text style={styles.info}>
+                        <Text style={{fontWeight: "bold"}}>Address:</Text>
+                        <Text> {this.state.citizen.residence}</Text>
+                      </Text>
+                      <Text style={styles.info}>
+                        <Text style={{fontWeight: "bold"}}>City:</Text>
+                        <Text> {this.state.citizen.city}</Text>
+                      </Text>
                   </View>
                   <View style={styles.picblock}>
 
@@ -97,8 +112,7 @@ class HomeScreen extends Component {
                   </View>
               </View>
               <View style={styles.QR}>
-
-               
+                <Image source={pic} style={styles.image2}/> 
               </View>
           </View>
       );
@@ -146,6 +160,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     paddingTop: 25,
     height: 80,
+  },
+  loader: {
+    marginTop: 300
+  },
+  image2: {
+    marginBottom:50,
+    marginLeft:50,
+    width: 200,
+    height: 60,
   }
   
 }); 

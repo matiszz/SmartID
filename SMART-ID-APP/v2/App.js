@@ -27,9 +27,11 @@ import BasicInfo from './src/BasicInfo';
 import LoginScreen from './src/LoginScreen';
 import HomeScreen from './src/HomeScreen';
 import MedicalScreen from './src/MedicalScreen';
+import sharedState  from './src/sharedState';
 
 export default class App extends React.Component {
   render() {
+    console.log(sharedState)
     return (
   		<MyApp />
     );
@@ -49,9 +51,10 @@ const CustomDrawerComponent = (props) => (
   )
 
   const AppDrawerNavigator = createDrawerNavigator({
-    Login: LoginScreen,
-    Home: HomeScreen,
-    Medical: MedicalScreen
+    //Login: LoginScreen,
+    Login: (props) => <LoginScreen {...props} updateUser={sharedState.set} />,
+    Home: (props) => <HomeScreen {...props} user={sharedState.get()} />,
+    Medical: (props) => <MedicalScreen {...props}  user={sharedState.get()} />
   }, {
     ContentComponent: CustomDrawerComponent,
     contentOptions:{
