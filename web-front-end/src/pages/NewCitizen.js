@@ -5,6 +5,7 @@ import { withRouter } from "react-router";
 import Modal from "react-responsive-modal";
 
 class NewCitizen extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -27,25 +28,27 @@ class NewCitizen extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    async componentDidMount() { }
-
+    /* Handler for inputs */
     handleChange(event) {
         let citizen = {...this.state.citizen};
         citizen[event.target.name] = event.target.value;
         this.setState({citizen});
-        console.log(this.state.citizen);
     }
 
-    handleSubmit(event) {
+    /* Handler for submit */
+    async handleSubmit(event) {
         event.preventDefault();
-        eth.registerCitizen(this.state.citizen).then(
-            (res) => {
-                console.log(res);
-                if (res && res.success) this.setState({transactionHash: res.hash, openModal: true});
-            }
-        );
+        let res = await eth.registerCitizen(this.state.citizen);
+        console.log('heyy', res);
+        //     .then(
+        //     (res) => {
+        //         console.log(res);
+        //         if (res && res.success) this.setState({transactionHash: res.hash, openModal: true});
+        //     }
+        // );
     }
 
+    /* To display the image label */
     getImgLabel() {
         if (this.state.citizen.picture)
             return this.state.citizen.picture.split("\\")[2];
@@ -53,8 +56,30 @@ class NewCitizen extends Component {
             return "Select picture";
     }
 
+    /* Close the modal */
     onCloseModal = () => {
         this.setState({openModal: false});
+    };
+
+    /* Capture uploaded file */
+    captureFile = event => {
+        event.stopPropagation();
+        event.preventDefault();
+
+        const file = event.target.files[0];
+        let reader = new window.FileReader();
+        reader.readAsArrayBuffer(file);
+        reader.onloadend = () => this.convertToBuffer(reader);
+    };
+
+    /* Convert file to buffer and set it in state*/
+    convertToBuffer = async reader => {
+        // Primero convertimos a buffer el archivo
+        const buffer = await Buffer.from(reader.result);
+        // Luego lo asignamos a nuestro state
+        let ctz = this.state.citizen;
+        ctz.picture = buffer;
+        this.setState({citizen: ctz});
     };
 
     render() {
@@ -114,8 +139,8 @@ class NewCitizen extends Component {
                                 <label htmlFor="picture" className="control-label">Picture</label>
                                 <div className="custom-file">
                                     <input type="file" className="custom-file-input" id="picture" name="picture"
-                                           onChange={this.handleChange}/>
-                                        <label className="custom-file-label" htmlFor="customFile">{this.getImgLabel()}</label>
+                                           onChange={this.captureFile}/>
+                                        <label className="custom-file-label" htmlFor="customFile">Image</label>
                                 </div>
 
                                 <div className="form-group mt-5">

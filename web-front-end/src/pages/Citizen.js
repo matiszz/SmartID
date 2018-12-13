@@ -13,33 +13,25 @@ import ClinicRecords from './Tabs/ClinicRecords';
 import * as eth from '../Ethereum/Api';
 
 class Citizen extends Component {
+
     constructor(props) {
         super(props);
-        this.state = {
-            citizen: {
-                name: '',
-                surname: '',
-                birthDate: '',
-                gender: '',
-                nationality: '',
-                residence: '',
-                city: '',
-                idNum: ''
-            },
-            loading: null
-        };
+        this.state = {};
     }
 
     async componentDidMount() {
+        // Get ID and Citizen
         const {match} = this.props;
         const ID = parseInt(match.params.id, 10);
+        let citizen = await eth.getCitizenBasicInfo(ID);
 
-        eth.getCitizenBasicInfo(ID).then(res => this.setState({citizen: res}));
-        setTimeout(()=> this.setState({loading: "Hey"}), 700);
+        // Set State
+        this.setState({citizen: citizen});
     }
 
     render() {
-        if (!this.state.loading) {
+        // Loading
+        if (!this.state.citizen) {
             return (
                 <div>
                     <Navbar/>
@@ -52,6 +44,7 @@ class Citizen extends Component {
                 </div>
             );
         }
+        // Loaded
         return (
             <div>
                 <Navbar/>
