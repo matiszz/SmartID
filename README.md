@@ -10,7 +10,7 @@
 - Kirian Ollé
 
 # SMART ID
-![SMART ID](https://raw.githubusercontent.com/sergio8215/FIB-PTI-ID-of-the-future-using-blockchain/master/logos/logo-blue-no-back.png?token=AWXl9IgFMA3lj00R8OAZf9cikWjs5BIwks5b4qliwA%3D%3D)
+![SMART ID](https://github.com/sergio8215/FIB-PTI-ID-of-the-future-using-blockchain/blob/master/logos/logo-blue-no-back.png?raw=true)
 **Octubre 2018**
 
 ## Resumen de la propuesta
