@@ -7,9 +7,7 @@ class BasicInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            records: [{date: "29/01/2018", record: "Tiene que tomar ibuprofeno", valid: true},
-                {date: "10/01/2018", record: "Alergia al polen", valid: true}],
-            testing: null
+            records: [],
         };
     }
 
@@ -17,8 +15,9 @@ class BasicInfo extends Component {
         const {match} = this.props;
         const ID = parseInt(match.params.id, 10);
 
-        eth.getCitizenBasicInfo(ID).then(res => this.setState({citizen: res}));
-        setTimeout(()=> this.setState({testing: 'Hey'}), 700);
+        let records = await eth.getLegalRecords(ID);
+        this.setState({records: records})
+        console.log(this.state.records);
     }
 
     render() {

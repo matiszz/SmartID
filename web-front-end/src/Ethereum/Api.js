@@ -33,6 +33,7 @@ export function getAddress() {
  * Returns an array with all the accounts.
  */
 export async function getAccounts() {
+    let tmp = await web3.eth.getAccounts();
     return await web3.eth.getAccounts();
 }
 
@@ -329,7 +330,7 @@ export async function getNumberLegalRecords(id) {
     const accounts = await this.getAccounts();
 
     const lnght = new Promise(resolve => {
-	    contract.getNumberLegalRecords(id, function(err, len) {
+	    contract.methods.getNumberLegalRecords(id).call({ from: accounts[0] }, (err, len) => {
 	        if (err) console.error(err);
 	        else {
 	        	const res = (len);
@@ -350,7 +351,7 @@ export async function getNumberLegalRecords(id) {
  *
  * @return {Object} clinic record.
  */
-export async function getClinicRecords(id, position) {
+export async function getClinicRecord(id, position) {
     let record = '';
     const accounts = await this.getAccounts();
 
@@ -376,12 +377,12 @@ export async function getClinicRecords(id, position) {
  *
  * @return {Object} legal record.
  */
-export async function getLegalRecords(id, position) {
+export async function getLegalRecord(id, position) {
     let record = '';
     const accounts = await this.getAccounts();
 
     const pos = new Promise(resolve => {
-	    contract.getLegalRecords(id, position, function(err, rec) {
+	    contract.methods.getLegalRecords(id, position).call({ from: accounts[0] }, (err, rec) => {
 	        if (err) console.error(err);
 	        else {
 	        	const res = (rec);
@@ -394,6 +395,26 @@ export async function getLegalRecords(id, position) {
 	await Promise.all(pos);
     return record;
 }
+
+/**
+ * Give all the clinic records of the citizen
+ *
+ * @param {number} id ID number
+ *
+ * @return {Object} LegalRecords Legal records array
+ */
+export async function getLegalRecords(id) {
+    let records = [];
+
+    let num = await getNumberLegalRecords(id);
+    for (let i = 0; i < num; ++i) {
+        let newRecord = await getLegalRecord(id, i);
+        records.push(newRecord);
+    }
+
+    return records;
+}
+
 
 /**
  * Change the Smart Contract stete 
