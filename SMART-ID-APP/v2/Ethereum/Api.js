@@ -60,8 +60,32 @@ export async function getCitizenBasicInfo(id) {
     });
   })
 
+
 //await Promise.all([name, residency, basic])
 //console.log(citizen)
 await Promise.all([name, residency, basic])
 return citizen;
+}
+ 
+/**
+ * Give the number of clinic records of the citizen
+ * @param {number} id ID number
+ * @return {Object} number of clinic records.
+ */
+export async function getNumberClinicRecords(id) {
+    let lenght = -1;
+    const lnght = new Promise(resolve => {
+      contract.getNumberClinicRecords(id, function(err, len) {
+          if (err){
+           console.error(err);
+         } else {
+            const res = (len);
+            lenght = res;
+            console.log(res);
+        }
+        resolve();
+      });
+  });
+  await Promise.all(lnght);
+  return lenght;
 }

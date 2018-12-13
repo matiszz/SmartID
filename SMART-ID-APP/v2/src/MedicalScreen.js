@@ -19,28 +19,17 @@ class MedicalScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        citizen: {
-            name: '',
-            surname: '',
-            birthDate: '',
-            gender: '',
-            nationality: '',
-            residence: '',
-            city: '',
-            idNum: '',
-            image: ''
-        }
+        lenght: ''
     };
   }
   
-
   async componentDidMount() {
     const {match} = this.props;
     //console.log(this.props.user);
           this.setState({loading: true})
 
-    const res = await eth.getCitizenBasicInfo(this.props.user)
-    this.setState({citizen: res, loading: false});
+    const res = await eth.getNumberClinicRecords(this.props.user)
+    this.setState({lenght: res, loading: false});
   }
 
   async componentDidUpdate(prevProps) {
@@ -48,8 +37,8 @@ class MedicalScreen extends Component {
     if (this.props.user !== prevProps.user) {
       const {match} = this.props;
       this.setState({loading: true})
-      const res = await eth.getCitizenBasicInfo(this.props.user)
-      this.setState({citizen: res, loading: false});
+      const res = await eth.getNumberClinicRecords(this.props.user)
+      this.setState({lenght: res, loading: false});
     }
   } 
     
@@ -76,7 +65,7 @@ class MedicalScreen extends Component {
                   <View style={styles.infoblock}>
                       <Text style={styles.title}>Medical Information</Text>
                       <Text style={styles.id}>ID: {this.props.user}</Text>
-                      <Text style={styles.info}>Name: {this.state.citizen.name} {this.state.citizen.surname}</Text>
+                      <Text style={styles.info}>Name: {this.state.lenght}</Text>
                       <Text style={styles.info}>Alergies: </Text>
                       <Text style={styles.info}>Download blood tests: Download</Text>
                       <Text style={styles.info}>Blood: </Text>
@@ -84,7 +73,7 @@ class MedicalScreen extends Component {
                   </View>
               </View>
               <View style={styles.QR}>
-                <Image source={pic} style={styles.image2}/> 
+                <Image source={pic} style={styles.image2}/>
               </View>
           </View>
       );
