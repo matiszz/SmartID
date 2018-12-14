@@ -35,15 +35,15 @@ contract CitizensRecord is RBAC {
     }
 
     struct Register {
-        bytes32 record;
-        bytes32 date;
+        string record;
+        string date;
         bool valid;
     }
 
     event UserAdded(uint32 ID);
     event UserRemoved(uint32 ID);
     event StatusChanged(bool Status);
-    event SendRegister(bytes32 record, bytes32 date, bool valid);
+    event SendRegister(string record, string date, bool valid);
 
     constructor() public {
         admin = msg.sender;
@@ -134,12 +134,12 @@ contract CitizensRecord is RBAC {
 
     function registerClinicRecord(
         uint32 ID,
-        bytes32 record,
-        bytes32 date
+        string record,
+        string date
     ) public onlyRoles(msg.sender, [2, 3]) {
         require(isAlive(ID), 'The citizen is dead');
 
-        Register[] storage aux = legalStorage[ID].records;
+        Register[] storage aux = clinicStorage[ID].records;
 
         Register memory reg;
         reg.record = record;
@@ -151,8 +151,8 @@ contract CitizensRecord is RBAC {
 
     function registerLegalRecord(
         uint32 ID,
-        bytes32 record,
-        bytes32 date
+        string record,
+        string date
     ) public onlyRoles(msg.sender, [1, 3]) {
         require(isAlive(ID), 'The citizen is dead');
 
@@ -199,7 +199,7 @@ contract CitizensRecord is RBAC {
     function getClinicRecords(
         uint32 ID,
         uint32 position
-    ) public onlyRoles(msg.sender, [2, 3]) returns (bytes32, bytes32, bool) {
+    ) public onlyRoles(msg.sender, [2, 3]) returns (string, string, bool) {
         require(!is_available(ID), "The ID it's not available");
         Register storage r = clinicStorage[ID].records[position];
 
@@ -211,7 +211,7 @@ contract CitizensRecord is RBAC {
     function getLegalRecords(
         uint32 ID,
         uint32 position
-    ) public onlyRoles(msg.sender, [1, 3]) returns (bytes32, bytes32, bool) {
+    ) public onlyRoles(msg.sender, [1, 3]) returns (string, string, bool) {
         require(!is_available(ID), "The ID it's not available");
         Register storage r = legalStorage[ID].records[position];
 
