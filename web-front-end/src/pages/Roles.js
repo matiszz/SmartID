@@ -1,24 +1,46 @@
 import React, {Component} from 'react';
 import * as eth from '../Ethereum/Api';
-import ReactLoading from 'react-loading';
 import { withRouter } from "react-router";
-
 import Navbar from '../components/Navbar';
 
 class Roles extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            addr: ''
+        };
 
-    state = {
-        isOpen: false
+        this.handleChange = this.handleChange.bind(this);
+        this.selectedRole = this.selectedRole.bind(this);
     };
 
-    toggleOpen = () => this.setState({isOpen: !this.state.isOpen});
+    handleChange(event) {
+        this.setState({addr: event.target.value});
+    }
+
     selectedRole = (role) => {
-        this.setState({isOpen: false});
-        // TODO: Link with API
+        if (this.state.addr != '') {
+            this.setState({isOpen: false});
+            eth.addRole(this.state.addr, role.target.name)
+        }
     };
 
     render() {
-        const menuClass = `dropdown-menu${this.state.isOpen ? " show" : ""}`;
+        // If no permissions enough
+        if (!(eth.isAdmin() || eth.isPresi())) {
+            return (
+                <div>
+                    <Navbar/>
+                    <div className="container h-100">
+                        <div className="row h-100 justify-content-center align-items-center">
+                            <h1>Only President and Admin can manage roles</h1>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+
+        // If has permissions
         return (
             <div>
                 <Navbar/>
@@ -30,19 +52,16 @@ class Roles extends Component {
                                 <div className="form-group">
                                     <label htmlFor="addr" className="control-label">Address</label>
                                     <input type="text" className="form-control" id="addr" name="addr"
-                                           placeholder="0x74a9d333Bc7a58CF3995CF3E3GC581T7be3649C0"/>
+                                           placeholder="0x74a9d333Bc7a58CF3995CF3E3GC581T7be3649C0"
+                                           onChange={this.handleChange}/>
                                 </div>
                             </div>
-                            <div className="col-4">
-                                <div className="btn-group mt-4">
-                                    <button type="button" className="btn btn-info dropdown-toggle" onClick={this.toggleOpen}>
-                                        Roles
-                                    </button>
-                                    <div className={menuClass}>
-                                        <a className="dropdown-item" href="#" onClick={this.selectedRole}>Admin</a>
-                                        <a className="dropdown-item" href="#" onClick={this.selectedRole}>Doctor</a>
-                                        <a className="dropdown-item" href="#" onClick={this.selectedRole}>Policeman</a>
-                                    </div>
+
+                            <div className="col-4 roles">
+                                <div className="btn-group" role="group" aria-label="Basic example">
+                                    <button type="button" className="btn btn-secondary" name="Doctor" onClick={this.selectedRole}>Doctor</button>
+                                    <button type="button" className="btn btn-secondary" name="Policeman" onClick={this.selectedRole}>Policeman</button>
+                                    <button type="button" className="btn btn-secondary" name="Admin" onClick={this.selectedRole}>Admin</button>
                                 </div>
                             </div>
                         </div>

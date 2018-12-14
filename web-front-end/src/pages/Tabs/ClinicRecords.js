@@ -16,7 +16,7 @@ class BasicInfo extends Component {
         const ID = parseInt(match.params.id, 10);
 
         let records = await eth.getLegalRecords(ID);
-        this.setState({records: records})
+        this.setState({records: records});
         console.log(this.state.records);
     }
 

@@ -199,7 +199,7 @@ export async function removeCitizen(id) {
             resolve();
         });
     });
-    await Promise.all(hashReg);
+    await Promise.all([hashReg]);
     return {success: true, hash: rt};
 }
 
@@ -230,7 +230,7 @@ export async function registerClinicRecord(id, record, date) {
             resolve();
         });
     });
-    await Promise.all(hashReg);
+    await Promise.all([hashReg]);
     return {success: true, hash: rt};
 }
 
@@ -261,7 +261,7 @@ export async function registerLegalRecord(id, record, date) {
                 resolve();
             });
         });
-    await Promise.all(hashReg);
+    await Promise.all([hashReg]);
     return {success: true, hash: rt};
 }
 
@@ -321,7 +321,7 @@ export async function deleteLegalRecord(id, record_position) {
             resolve();
         });
     });
-    await Promise.all(hashDel);
+    await Promise.all([hashDel]);
     return {success: true, hash: rt};
 }
 
@@ -347,7 +347,7 @@ export async function getNumberClinicRecords(id) {
         resolve();
     	});
 	});
-    await Promise.all(lnght);
+    await Promise.all([lnght]);
     return lenght;
 }
 
@@ -373,7 +373,7 @@ export async function getNumberLegalRecords(id) {
         resolve();
     	});
 	});
-    await Promise.all(lnght);
+    await Promise.all([lnght]);
     return lenght;
 }
 
@@ -399,7 +399,7 @@ export async function getClinicRecord(id, position) {
 	        resolve();
 		});
 	})
-	await Promise.all(pos);
+	await Promise.all([pos]);
     return record;
 }
 
@@ -410,7 +410,7 @@ export async function getClinicRecord(id, position) {
  *
  * @return {Object} legal record.
  */
-export async function getLegalRecords(id, position) {
+export async function getLegalRecord(id, position) {
     let record = '';
     const accounts = await this.getAccounts();
 
@@ -420,13 +420,13 @@ export async function getLegalRecords(id, position) {
 	        if (err) console.error(err);
 	        else {
 	        	const res = (rec);
-	        	record = res;
+	        	record = web3.utils.hexToUtf8(res);
 	        	console.log(res);
 	        }
 	        resolve();
 	    });
-	})
-	await Promise.all(pos);
+	});
+	await Promise.all([pos]);
     return record;
 }
 
@@ -437,18 +437,19 @@ export async function getLegalRecords(id, position) {
  *
  * @return {Object} LegalRecords Legal records array
  */
-/*export async function getLegalRecords(id) {
+export async function getLegalRecords(id) {
     let records = [];
 
-    let num = await getNumberLegalRecords(id);
-    for (let i = 0; i < num; ++i) {
-        let newRecord = await getLegalRecord(id, i);
-        records.push(newRecord);
+    let len = await this.getNumberLegalRecords(id);
+    if (len != 0) {
+        for (let i = 0; i < len; ++i) {
+            let newRecord = await this.getLegalRecord(id, i);
+            records.push(newRecord);
+        }
     }
 
     return records;
-}*/
-
+}
 
 /**
  * Change the Smart Contract stete 
@@ -475,7 +476,7 @@ export async function changeStatus(state) {
             resolve();
         });
     });
-    await Promise.all(hashChange);
+    await Promise.all([hashChange]);
     return {success: true, hash: rt};
 }
 
@@ -492,8 +493,14 @@ export async function addRole(addr, roleName) {
     const accounts = await this.getAccounts();
     let rt = 0;
 
+    let roleNum;
+    if      (roleName == 'Presi')  roleNum = 0;
+    else if (roleName == 'Police') roleNum = 1;
+    else if (roleName == 'Doctor') roleNum = 2;
+    else if (roleName == 'Admin')  roleNum = 3;
+
     const hashAdd = new Promise(resolve => {
-        contract.methods.addRole(addr, roleName).send({from: accounts[0]},(err, transHash) => {
+        contract.methods.addRole(addr, roleNum).send({from: accounts[0]},(err, transHash) => {
                 if (err) {
                     console.error(err);
                     return {success: false};}
@@ -505,7 +512,7 @@ export async function addRole(addr, roleName) {
                 resolve();
             });
     });
-    await Promise.all(hashAdd);
+    await Promise.all([hashAdd]);
     return {success: true, hash: rt};
 }
 
@@ -522,8 +529,14 @@ export async function removeRole(addr, roleName) {
     const accounts = await this.getAccounts();
     let rt = 0;
 
+    let roleNum;
+    if      (roleName == 'Presi')  roleNum = 0;
+    else if (roleName == 'Police') roleNum = 1;
+    else if (roleName == 'Doctor') roleNum = 2;
+    else if (roleName == 'Admin')  roleNum = 3;
+
     const hashRemove = new Promise(resolve => {
-        contract.methods.removeRole(addr, roleName).send({from: accounts[0]},(err, transHash) =>{
+        contract.methods.removeRole(addr, roleNum).send({from: accounts[0]},(err, transHash) =>{
             if (err) {
                 console.error(err);
                 return {success: false};
@@ -536,16 +549,16 @@ export async function removeRole(addr, roleName) {
             resolve();
         });
     });
-    await Promise.all(hashRemove);
+    await Promise.all([hashRemove]);
     return {success: true, hash: rt};
 }
 
 /**
- * Sais if an user have an specific role
+ * Says if an user have an specific role
  *
  * @param {address} address
  *
- * @param {RolesEnum} roleName
+ * @param {RolesEnum} roleName Role: Presi, Police, Doctor or Admin
  *
  * @return {Bool} Boolean value of the question has Specific Role.
  */
@@ -553,8 +566,14 @@ export async function hasSpecificRole(addr, roleName) {
     let has_role = false;
     const accounts = await this.getAccounts();
 
+    let roleNum;
+    if      (roleName == 'Presi')  roleNum = 0;
+    else if (roleName == 'Police') roleNum = 1;
+    else if (roleName == 'Doctor') roleNum = 2;
+    else if (roleName == 'Admin')  roleNum = 3;
+
     const rName = new Promise (resolve => {
-	    contract.methods.hasSpecificRole(addr, roleName,function(err,  h_role) {
+	    contract.methods.hasSpecificRole(addr, roleNum).call({ from: accounts[0] }, (err,  h_role) => {
 	        if (err) console.error(err);
 	        else {
 	        	const res = (h_role);
@@ -564,8 +583,60 @@ export async function hasSpecificRole(addr, roleName) {
 	        resolve();
 	    });
 	});
-	await Promise.all(rName);
+	await Promise.all([rName]);
     return has_role;
+}
+
+/**
+ * Returns true if is Admin
+ *
+ * @return {Bool} Boolean value of the question has Specific Role.
+ */
+export async function isAdmin() {
+    const accounts = await this.getAccounts();
+    let user = accounts[0];
+
+    let result = await this.hasSpecificRole(user, 'Admin');
+    return result;
+}
+
+/**
+ * Returns true if is Doctor
+ *
+ * @return {Bool} Boolean value of the question has Specific Role.
+ */
+export async function isDoctor() {
+    const accounts = await this.getAccounts();
+    let user = accounts[0];
+
+    let result = await this.hasSpecificRole(user, 'Doctor');
+    return result;
+}
+
+/**
+ * Returns true if is President
+ *
+ * @return {Bool} Boolean value of the question has Specific Role.
+ */
+export async function isPresi() {
+    const accounts = await this.getAccounts();
+    let user = accounts[0];
+
+    let result = await this.hasSpecificRole(user, 'Presi');
+    return result;
+}
+
+/**
+ * Returns true if is Police
+ *
+ * @return {Bool} Boolean value of the question has Specific Role.
+ */
+export async function isPolice() {
+    const accounts = await this.getAccounts();
+    let user = accounts[0];
+
+    let result = await this.hasSpecificRole(user, 'Police');
+    return result;
 }
 
 /**
@@ -588,7 +659,7 @@ export async function view_president_address() {
 	        resolve();
 	    });
 	});
-    await Promise.all(address);
+    await Promise.all([address]);
     return adm;
 }
 

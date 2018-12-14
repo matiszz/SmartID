@@ -1,7 +1,20 @@
 import React from 'react'
 import logo from '../logos/logo-white-no-back.png';
+import * as eth from '../Ethereum/Api';
 
 export default class Navbar extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            admin: false
+        };
+    }
+
+    async componentDidMount() {
+        let result = await eth.isAdmin();
+        this.setState({admin: result})
+    }
+
     render() {
         return (
             <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-5">
@@ -17,6 +30,7 @@ export default class Navbar extends React.Component {
                         <li className="nav-item">
                             <a className="nav-link" href="/new">Add Citizen</a>
                         </li>
+                        {this.state.admin && <li className="nav-item"> <a className="nav-link" href="/roles">Manage Roles</a> </li>}
                     </ul>
                 </div>
             </nav>
