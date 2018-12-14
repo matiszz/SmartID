@@ -64,7 +64,7 @@ export async function registerCitizen(citizen) {
     const accounts = await this.getAccounts();
     let rt = 0;
     const hashReg = new Promise (resolve => {
-        ipfs.method.add(citizen.picture, (err, ipfsHash) => {
+        ipfs.add(citizen.picture, (err, ipfsHash) => {
             if (err) {
                 return {success: false};
             } else {
@@ -79,7 +79,6 @@ export async function registerCitizen(citizen) {
                     citizen.idNum,
                     ipfsHash[0].hash)
                     .send({from: accounts[0]}, (err, transHash) => {
-                        console.log(ipfsHash[0].hash)
                         if (err) {
                             console.error('Error on register', err);
                             return {success: false};
@@ -112,18 +111,51 @@ export async function modify_citizen(citizen) {
     let rt = 0;
 
     // TODO: Falta subir la imagen a IPFS (mirar registerCitizen)
-
-    const hashModify = new Promise ( resolve => {
-        contract.methods.modify_citizen(
-            citizen.name,
-            citizen.surname,
-            citizen.birthDate,
-            citizen.gender,
-            citizen.nationality,
-            citizen.residence,
-            citizen.city,
-            citizen.idNum,
-            citizen.picture).send({from: accounts[0]}, (err, transHash) => {
+    if (citizen.pictureChange) {
+        const imagePromise = new Promise (resolve => {
+            ipfs.add(citizen.picture, (err, ipfsHash) => {
+                if (err) {
+                    return {success: false};
+                } else {
+                    contract.methods.modify_citizen(
+                        citizen.name,
+                        citizen.surname,
+                        citizen.birthDate,
+                        citizen.gender,
+                        citizen.nationality,
+                        citizen.residence,
+                        citizen.city,
+                        citizen.idNum,
+                        ipfsHash[0].hash)
+                        .send({from: accounts[0]}, (err, transHash) => {
+                            if (err) {
+                                console.error('Error on register', err);
+                                return {success: false};
+                            }
+                            else {
+                                const res = (transHash);
+                                console.log('Success', res);
+                                rt = res;
+                            }
+                            resolve();
+                        });
+                }
+            });
+        });
+        await Promise.all([imagePromise]);
+        return {success: true, hash: rt};
+    } else {
+        const hashModify = new Promise ( resolve => {
+            contract.methods.modify_citizen(
+                citizen.name,
+                citizen.surname,
+                citizen.birthDate,
+                citizen.gender,
+                citizen.nationality,
+                citizen.residence,
+                citizen.city,
+                citizen.idNum,
+                citizen.picture).send({from: accounts[0]}, (err, transHash) => {
                 if (err) {
                     console.error(err);
                     return {success: false};
@@ -135,9 +167,10 @@ export async function modify_citizen(citizen) {
                 }
                 resolve();
             });
-    });
-    await Promise.all(hashModify);
-    return {success: true, hash: rt};
+        });
+        await Promise.all([hashModify]);
+        return {success: true, hash: rt};
+    }
 }
 
 /**
@@ -565,7 +598,7 @@ export async function view_president_address() {
  * @return {Object} citizen Object with name, surname, birth date, gender, nationality, residence, city of the citizen and profile picture
  * */
 export async function getCitizenBasicInfo(id) {
-    let citizen = {name: '', surname: '', birthDate: '', gender: '', nationality: '', residence: '', city: '', idNum: '', profilePic: ''};
+    let citizen = {name: '', surname: '', birthDate: '', gender: '', nationality: '', residence: '', city: '', idNum: '', picture: ''};
 
     // Get the accounts vector from our function
     const accounts = await this.getAccounts();
@@ -606,7 +639,7 @@ export async function getCitizenBasicInfo(id) {
 	        	const res = (result3);
 	            citizen.birthDate = res[2];
 	            citizen.gender = res[3];
-	            citizen.profilePic = res[5];
+	            citizen.picture = res[5];
 	        }
 	        resolve();
 	    });

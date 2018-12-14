@@ -49,6 +49,7 @@ class BasicInfo extends Component {
         // Luego lo asignamos a nuestro state
         let ctz = this.state.citizen;
         ctz.picture = buffer;
+        ctz.pictureChange = true;
         this.setState({citizen: ctz});
     };
 
@@ -143,7 +144,7 @@ class BasicInfo extends Component {
                             <div className="custom-file">
                                 <input type="file" className="custom-file-input" id="picture" name="picture"
                                        onChange={this.captureFile}/>
-                                <label className="custom-file-label" htmlFor="customFile">{this.getImgLabel()}</label>
+                                <label className="custom-file-label" htmlFor="customFile">Image</label>
                             </div>
                             <div className="form-group mt-5">
                                 <button type="submit" className="btn btn-primary float-right">Save</button>
