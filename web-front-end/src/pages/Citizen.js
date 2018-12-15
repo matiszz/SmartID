@@ -4,8 +4,6 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import ReactLoading from 'react-loading';
 
-import imagen from '../images/john-doe.jpg';
-
 import Navbar from '../components/Navbar';
 import BasicInfo from './Tabs/BasicInfo';
 import ClinicRecords from './Tabs/ClinicRecords';
@@ -70,8 +68,8 @@ class Citizen extends Component {
                                     </p>
                                 </div>
                                 <div className="col-4">
-                                    {/*TODO: Image from IPFS*/}
-                                    <img className="rounded img-fluid float-right profile-img" src={imagen} alt=""/>
+                                    <img className="rounded img-fluid float-right profile-img" alt=""
+                                         src={'https://gateway.ipfs.io/ipfs/' + this.state.citizen.picture}/>
                                 </div>
                             </div>
 

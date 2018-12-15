@@ -3,6 +3,11 @@ import * as eth from '../Ethereum/Api';
 import { withRouter } from "react-router";
 import Navbar from '../components/Navbar';
 
+import refreshIcon from '../images/Refresh.png';
+
+import * as Notification from '../components/Notification';
+import { NotificationContainer } from "react-notifications";
+
 class Roles extends Component {
     constructor(props) {
         super(props);
@@ -16,10 +21,14 @@ class Roles extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.selectedRole = this.selectedRole.bind(this);
         this.getColor = this.getColor.bind(this);
+        this.refresh = this.refresh.bind(this);
     };
 
-    async handleChange(event) {
+    handleChange(event) {
         this.setState({addr: event.target.value});
+    }
+
+    async refresh() {
         if (this.state.addr.length === 42) {
 
             let Doctor = await eth.hasSpecificRole(this.state.addr, 'Doctor');
@@ -34,12 +43,17 @@ class Roles extends Component {
         }
     }
 
-    selectedRole = (event) => {
+    async selectedRole(event) {
         let role = event.target.name;
 
         if (this.state.addr.length === 42) {
-            if (this.state[role]) eth.removeRole(this.state.addr, role);
-            else eth.addRole(this.state.addr, role);
+            let result;
+            if (this.state[role])
+                result = await eth.removeRole(this.state.addr, role);
+            else
+                result = await eth.addRole(this.state.addr, role);
+
+            Notification.success(result.hash);
         }
     };
 
@@ -94,11 +108,17 @@ class Roles extends Component {
                                     <button type="button" className="btn" style={this.getColor('Admin')}
                                             name="Admin" disabled={this.state.addr.length !== 42} onClick={this.selectedRole}>Admin
                                     </button>
+                                    <button type="button" className="btn btn-primay"
+                                            disabled={this.state.addr.length !== 42}
+                                            onClick={this.refresh}>
+                                        <img src={refreshIcon} alt="" className="refreshIcon"/>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </form>
                 </div>
+                <NotificationContainer/>
             </div>
         );
     }

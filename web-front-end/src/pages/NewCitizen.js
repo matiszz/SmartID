@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import Navbar from '../components/Navbar';
 import * as eth from '../Ethereum/Api';
 import { withRouter } from "react-router";
-import Modal from "react-responsive-modal";
+
+import * as Notification from '../components/Notification';
+import { NotificationContainer } from "react-notifications";
 
 class NewCitizen extends Component {
 
@@ -20,8 +22,7 @@ class NewCitizen extends Component {
                 idNum: '',
                 picture: null
             },
-            transactionHash: '',
-            openModal: false
+            imageLabel: 'Select image'
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -38,28 +39,10 @@ class NewCitizen extends Component {
     /* Handler for submit */
     async handleSubmit(event) {
         event.preventDefault();
-        let res = await eth.registerCitizen(this.state.citizen);
-        console.log('heyy', res);
-        //     .then(
-        //     (res) => {
-        //         console.log(res);
-        //         if (res && res.success) this.setState({transactionHash: res.hash, openModal: true});
-        //     }
-        // );
-    }
+        let result = await eth.registerCitizen(this.state.citizen);
 
-    /* To display the image label */
-    getImgLabel() {
-        if (this.state.citizen.picture)
-            return this.state.citizen.picture.split("\\")[2];
-        else
-            return "Select picture";
+        Notification.success(result.hash);
     }
-
-    /* Close the modal */
-    onCloseModal = () => {
-        this.setState({openModal: false});
-    };
 
     /* Capture uploaded file */
     captureFile = event => {
@@ -67,6 +50,10 @@ class NewCitizen extends Component {
         event.preventDefault();
 
         const file = event.target.files[0];
+
+        // Set the label
+        this.setState({imageLabel: file.name});
+
         let reader = new window.FileReader();
         reader.readAsArrayBuffer(file);
         reader.onloadend = () => this.convertToBuffer(reader);
@@ -140,7 +127,7 @@ class NewCitizen extends Component {
                                 <div className="custom-file">
                                     <input type="file" className="custom-file-input" id="picture" name="picture"
                                            onChange={this.captureFile}/>
-                                        <label className="custom-file-label" htmlFor="customFile">Image</label>
+                                        <label className="custom-file-label" htmlFor="customFile">{this.state.imageLabel}</label>
                                 </div>
 
                                 <div className="form-group mt-5">
@@ -150,14 +137,8 @@ class NewCitizen extends Component {
                         </div>
 
                     </form>
+                    <NotificationContainer/>
                 </div>
-
-                {/*MODAL*/}
-                <Modal open={this.state.openModal} onClose={this.onCloseModal} center>
-                    <h4>Citizen uploaded</h4>
-                    <p>The transaction hash is: <a href={`https://ropsten.etherscan.io/tx/${this.state.transactionHash}`} target='_blank' rel="noopener noreferrer">{this.state.transactionHash}</a></p>
-                    <button className="btn btn-info" onClick={this.accesInfo}>Access information</button>
-                </Modal>
             </div>
         );
     }

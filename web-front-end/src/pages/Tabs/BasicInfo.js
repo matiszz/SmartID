@@ -3,11 +3,16 @@ import * as eth from '../../Ethereum/Api';
 import ReactLoading from 'react-loading';
 import { withRouter } from "react-router";
 
+import * as Notification from '../../components/Notification';
+import { NotificationContainer } from "react-notifications";
+
 class BasicInfo extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            imageLabel: 'Select Image'
+        };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,20 +28,16 @@ class BasicInfo extends Component {
         this.setState({citizen: citizen});
     }
 
-    /* To display the image label */
-    getImgLabel() {
-        if (this.state.citizen.picture)
-            return this.state.citizen.picture.split("\\")[2];
-        else
-            return "Select picture";
-    }
-
     /* Capture uploaded file */
     captureFile = event => {
         event.stopPropagation();
         event.preventDefault();
 
         const file = event.target.files[0];
+
+        // Set the label
+        this.setState({imageLabel: file.name});
+
         let reader = new window.FileReader();
         reader.readAsArrayBuffer(file);
         reader.onloadend = () => this.convertToBuffer(reader);
@@ -60,19 +61,12 @@ class BasicInfo extends Component {
         this.setState({citizen});
     }
 
-
     /* Handler for submit */
     async handleSubmit(event) {
         event.preventDefault();
-        console.log('Modificando...', this.state.citizen);
-        let res = await eth.modify_citizen(this.state.citizen);
-        console.log('heyy', res);
-        //     .then(
-        //     (res) => {
-        //         console.log(res);
-        //         if (res && res.success) this.setState({transactionHash: res.hash, openModal: true});
-        //     }
-        // );
+        let result = await eth.modify_citizen(this.state.citizen);
+
+        Notification.success(result.hash);
     }
 
     render() {
@@ -144,7 +138,7 @@ class BasicInfo extends Component {
                             <div className="custom-file">
                                 <input type="file" className="custom-file-input" id="picture" name="picture"
                                        onChange={this.captureFile}/>
-                                <label className="custom-file-label" htmlFor="customFile">Image</label>
+                                <label className="custom-file-label" htmlFor="customFile">{this.state.imageLabel}</label>
                             </div>
                             <div className="form-group mt-5">
                                 <button type="submit" className="btn btn-primary float-right">Save</button>
@@ -152,6 +146,7 @@ class BasicInfo extends Component {
                         </div>
                     </div>
                 </form>
+                <NotificationContainer/>
             </div>
         );
     }

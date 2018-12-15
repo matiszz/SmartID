@@ -2,27 +2,6 @@ import { web3, ipfs } from "./config";
 import contract from "./config";
 
 /**
- * Returns the image from IPFS.
- *
- * @param {string} imageHash Hash of the image
- *
- * @return {Object} image Returns image object.
- */
-export async function getImageIPFS(imageHash) {
-    const Http = new XMLHttpRequest();
-    const url='https://gateway.ipfs.io/ipfs/' + imageHash;
-    Http.open("GET", url);
-    Http.send();
-    
-    Http.onreadystatechange=function(){
-        //comprobar si la petición se ha servido correctamente
-        if (this.readyState === 4 && this.status === 200)
-            return(Http.responseText);
-        else return -1;
-    }
-}
-
-/**
  * Returns the address of the contract.
  */
 export function getAddress() {
@@ -33,7 +12,6 @@ export function getAddress() {
  * Returns an array with all the accounts.
  */
 export async function getAccounts() {
-    let tmp = await web3.eth.getAccounts();
     return await web3.eth.getAccounts();
 }
 
@@ -94,7 +72,6 @@ export async function registerCitizen(citizen) {
         });
     });
     await Promise.all([hashReg]);
-    console.log('Stage 5');
     return {success: true, hash: rt};
 }
 
@@ -441,7 +418,7 @@ export async function getLegalRecords(id) {
     let records = [];
 
     let len = await this.getNumberLegalRecords(id);
-    if (len != 0) {
+    if (len !== 0) {
         for (let i = 0; i < len; ++i) {
             let newRecord = await this.getLegalRecord(id, i);
             records.push(newRecord);
@@ -494,10 +471,10 @@ export async function addRole(addr, roleName) {
     let rt = 0;
 
     let roleNum;
-    if      (roleName == 'Presi')  roleNum = 0;
-    else if (roleName == 'Police') roleNum = 1;
-    else if (roleName == 'Doctor') roleNum = 2;
-    else if (roleName == 'Admin')  roleNum = 3;
+    if      (roleName === 'Presi')  roleNum = 0;
+    else if (roleName === 'Police') roleNum = 1;
+    else if (roleName === 'Doctor') roleNum = 2;
+    else if (roleName === 'Admin')  roleNum = 3;
 
     const hashAdd = new Promise(resolve => {
         contract.methods.addRole(addr, roleNum).send({from: accounts[0]},(err, transHash) => {
@@ -530,10 +507,10 @@ export async function removeRole(addr, roleName) {
     let rt = 0;
 
     let roleNum;
-    if      (roleName == 'Presi')  roleNum = 0;
-    else if (roleName == 'Police') roleNum = 1;
-    else if (roleName == 'Doctor') roleNum = 2;
-    else if (roleName == 'Admin')  roleNum = 3;
+    if      (roleName === 'Presi')  roleNum = 0;
+    else if (roleName === 'Police') roleNum = 1;
+    else if (roleName === 'Doctor') roleNum = 2;
+    else if (roleName === 'Admin')  roleNum = 3;
 
     const hashRemove = new Promise(resolve => {
         contract.methods.removeRole(addr, roleNum).send({from: accounts[0]},(err, transHash) =>{
@@ -567,10 +544,10 @@ export async function hasSpecificRole(addr, roleName) {
     const accounts = await this.getAccounts();
 
     let roleNum;
-    if      (roleName == 'Presi')  roleNum = 0;
-    else if (roleName == 'Police') roleNum = 1;
-    else if (roleName == 'Doctor') roleNum = 2;
-    else if (roleName == 'Admin')  roleNum = 3;
+    if      (roleName === 'Presi')  roleNum = 0;
+    else if (roleName === 'Police') roleNum = 1;
+    else if (roleName === 'Doctor') roleNum = 2;
+    else if (roleName === 'Admin')  roleNum = 3;
 
     const rName = new Promise (resolve => {
 	    contract.methods.hasSpecificRole(addr, roleNum).call({ from: accounts[0] }, (err,  h_role) => {
@@ -596,8 +573,7 @@ export async function isAdmin() {
     const accounts = await this.getAccounts();
     let user = accounts[0];
 
-    let result = await this.hasSpecificRole(user, 'Admin');
-    return result;
+    return await this.hasSpecificRole(user, 'Admin');
 }
 
 /**
@@ -609,8 +585,7 @@ export async function isDoctor() {
     const accounts = await this.getAccounts();
     let user = accounts[0];
 
-    let result = await this.hasSpecificRole(user, 'Doctor');
-    return result;
+    return await this.hasSpecificRole(user, 'Doctor');
 }
 
 /**
@@ -622,8 +597,7 @@ export async function isPresi() {
     const accounts = await this.getAccounts();
     let user = accounts[0];
 
-    let result = await this.hasSpecificRole(user, 'Presi');
-    return result;
+    return await this.hasSpecificRole(user, 'Presi');
 }
 
 /**
@@ -635,8 +609,7 @@ export async function isPolice() {
     const accounts = await this.getAccounts();
     let user = accounts[0];
 
-    let result = await this.hasSpecificRole(user, 'Police');
-    return result;
+    return await this.hasSpecificRole(user, 'Police');
 }
 
 /**
