@@ -27,9 +27,7 @@ export default class Navbar extends React.Component {
                         <li className="nav-item">
                             <a className="nav-link" href="/">Home</a>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/new">Add Citizen</a>
-                        </li>
+                        {(this.state.admin || this.state.presi) && <li className="nav-item"><a className="nav-link" href="/new">Add Citizen</a></li>}
                         {this.state.admin && <li className="nav-item"> <a className="nav-link" href="/roles">Manage Roles</a> </li>}
                     </ul>
                 </div>
