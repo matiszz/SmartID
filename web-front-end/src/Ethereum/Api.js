@@ -87,7 +87,6 @@ export async function modify_citizen(citizen) {
     const accounts = await this.getAccounts();
     let rt = 0;
 
-    // TODO: Falta subir la imagen a IPFS (mirar registerCitizen)
     if (citizen.pictureChange) {
         const imagePromise = new Promise (resolve => {
             ipfs.add(citizen.picture, (err, ipfsHash) => {
