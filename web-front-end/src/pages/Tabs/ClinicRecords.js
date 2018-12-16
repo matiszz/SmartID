@@ -10,10 +10,6 @@ class BasicInfo extends Component {
         this.state = {
             records: [],
             newRecord: '',
-            doctor: false,
-            police: false,
-            admin: false,
-            presi: false,
             noRecords: false
         };
 
@@ -27,7 +23,7 @@ class BasicInfo extends Component {
         const {match} = this.props;
         const ID = parseInt(match.params.id, 10);
 
-        let numRecords = await eth.getNumberLegalRecords(ID);
+        let numRecords = await eth.getNumberClinicRecords(ID);
         if (numRecords === 0) this.setState({noRecords: true});
 
         let recordsClinic = await eth.getClinicRecords(ID);

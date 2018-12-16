@@ -329,8 +329,9 @@ export async function getNumberLegalRecords(id) {
       else {
         const res = (len);
         lenght = parseInt(res, 10);
-      }
+      };
       resolve();
+
     });
   });
   await Promise.all([lnght]);

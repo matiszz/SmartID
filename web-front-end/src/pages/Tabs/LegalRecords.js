@@ -10,10 +10,6 @@ class BasicInfo extends Component {
         this.state = {
             records: [],
             newRecord: '',
-            doctor: false,
-            police: false,
-            admin: false,
-            presi: false,
             noRecords: false
         };
 
