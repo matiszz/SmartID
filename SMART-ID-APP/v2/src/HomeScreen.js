@@ -4,6 +4,7 @@ import {
     Text,
     Button,
     Image,
+    TextInput,
     ScrollView,
     Dimensions,
     StyleSheet,
@@ -13,6 +14,7 @@ import {
 } from "react-native";
 import {Header,Left,Right,Icon} from 'native-base'
 import * as eth from '../Ethereum/Api';
+import QRCode from 'react-native-qrcode';
 
 class HomeScreen extends Component {
 
@@ -36,7 +38,7 @@ class HomeScreen extends Component {
   
   async componentDidMount() {
     const {match} = this.props;
-    //console.log(this.props.navigation.state.params.user);
+    console.log('first:',this.props.navigation.state.params.user);
           this.setState({loading: true})
 
     const res = await eth.getCitizenBasicInfo(this.props.navigation.state.params.user)
@@ -45,7 +47,7 @@ class HomeScreen extends Component {
   }
 
   async componentDidUpdate(prevProps) {
-    //console.log(this.props.navigation.state.params.user);
+    console.log('second: ',this.props.navigation.state.params.user);
     if (this.props.navigation.state.params.user !== prevProps.navigation.state.params.user) {
       const {match} = this.props;
       this.setState({loading: true})
@@ -60,62 +62,87 @@ class HomeScreen extends Component {
         <Icon name="home" style={{fontSize:24, color:tintColor}}/>
       )
   }  
-  callFun = () =>
-  {
-      alert("Show QR Code");
-  }
-    
+  
+
   render() {
       var pic = require ('../assets/smart-ID.png');
       
-      return this.state.loading
-        ? (<ActivityIndicator style={styles.loader} size="large" color="#0000ff" />)
-        : ( 
-          <View style={styles.container}>
+      if(this.state.citizen.name == ''){
+
+          return this.state.loading
+          ? (<ActivityIndicator style={styles.loader} size="large" color="#0000ff" />)
+          : (
+            <View style={styles.container}>
               <Header style={styles.header}> 
-                <Left>
-                  <Icon name="menu" onPress={() =>
-                    this.props.navigation.openDrawer()} />  
-                </Left>
+                  <Left>
+                    <Icon name="menu" onPress={() =>
+                      this.props.navigation.openDrawer()} />  
+                  </Left>
               </Header>
               <View style={{flexDirection: 'row', flex: 1}}>
-                  <View style={styles.infoblock}>
-                      <Text style={styles.title}>Information</Text>
-                      <Text style={styles.info}>
-                        <Text style={{fontWeight: "bold"}}>Name:</Text>
-                        <Text> {this.state.citizen.name} {this.state.citizen.surname}</Text>
-                      </Text>
-                      <Text style={styles.info}>
-                        <Text style={{fontWeight: "bold"}}>Birthday:</Text>
-                        <Text> {this.state.citizen.birthDate}</Text>
-                      </Text>
-                      <Text style={styles.info}>
-                        <Text style={{fontWeight: "bold"}}>Gender:</Text>
-                        <Text> {this.state.citizen.gender}</Text>
-                      </Text>
-                      <Text style={styles.info}>
-                        <Text style={{fontWeight: "bold"}}>Nacionality:</Text>
-                        <Text> {this.state.citizen.nationality}</Text>
-                      </Text>
-                      <Text style={styles.info}>
-                        <Text style={{fontWeight: "bold"}}>Address:</Text>
-                        <Text> {this.state.citizen.residence}</Text>
-                      </Text>
-                      <Text style={styles.info}>
-                        <Text style={{fontWeight: "bold"}}>City:</Text>
-                        <Text> {this.state.citizen.city}</Text>
-                      </Text>
-                  </View>
-                  <View style={styles.picblock}>
-
-                      <Image source={{uri:`https://cloudflare-ipfs.com/ipfs/${this.state.citizen.image}`}} style={styles.image}/> 
-                  </View>
+                <Text style={styles.error}>Not valid ID</Text>
               </View>
-              <View style={styles.QR}>
+              <View style={styles.footer}>
                 <Image source={pic} style={styles.image2}/> 
               </View>
-          </View>
-      );
+            </View>
+            );
+      }else{
+        return this.state.loading
+          ? (<ActivityIndicator style={styles.loader} size="large" color="#0000ff" />)
+          : ( 
+            <View style={styles.container}>
+                <Header style={styles.header}> 
+                  <Left>
+                    <Icon name="menu" onPress={() =>
+                      this.props.navigation.openDrawer()} />  
+                  </Left>
+                </Header>
+                <View style={{flexDirection: 'row', flex: 1}}>
+                    <View style={styles.infoblock}>
+                        <Text style={styles.title}>Information</Text>
+                        <Text style={styles.info}>
+                          <Text style={{fontWeight: "bold"}}>Name:</Text>
+                          <Text> {this.state.citizen.name} {this.state.citizen.surname}</Text>
+                        </Text>
+                        <Text style={styles.info}>
+                          <Text style={{fontWeight: "bold"}}>Birthday:</Text>
+                          <Text> {this.state.citizen.birthDate}</Text>
+                        </Text>
+                        <Text style={styles.info}>
+                          <Text style={{fontWeight: "bold"}}>Gender:</Text>
+                          <Text> {this.state.citizen.gender}</Text>
+                        </Text>
+                        <Text style={styles.info}>
+                          <Text style={{fontWeight: "bold"}}>Nacionality:</Text>
+                          <Text> {this.state.citizen.nationality}</Text>
+                        </Text>
+                        <Text style={styles.info}>
+                          <Text style={{fontWeight: "bold"}}>Address:</Text>
+                          <Text> {this.state.citizen.residence}</Text>
+                        </Text>
+                        <Text style={styles.info}>
+                          <Text style={{fontWeight: "bold"}}>City:</Text>
+                          <Text> {this.state.citizen.city}</Text>
+                        </Text>
+                    </View>
+                    <View style={styles.picblock}>
+                        <Image source={{uri:`https://cloudflare-ipfs.com/ipfs/${this.state.citizen.image}`}} style={styles.image}/> 
+                    </View>
+                </View>
+                <View style={styles.QR}>
+                  <QRCode
+                    value={this.props.navigation.state.params.user}
+                    size={250}
+                    bgColor='#6200EE'
+                    fgColor='white'/>
+                </View>
+                <View style={styles.footer}>
+                  <Image source={pic} style={styles.image2}/> 
+                </View>
+            </View>
+        );
+      }
   }
 }
 export default HomeScreen;
@@ -132,6 +159,15 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 40,
     marginBottom: 20,
+  },
+  error: {
+    color: "red",
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    fontSize: 40,
+    marginTop: 150,
+    marginLeft: 150,
   },
   id: {
     color: "white",
@@ -169,25 +205,11 @@ const styles = StyleSheet.create({
     marginLeft:50,
     width: 200,
     height: 60,
+  },
+  QR: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 35,
   }
   
 }); 
-
-/*
-   <Button
-                      onPress={this.callFun}
-                      //onPress={onPressLearnMore}
-                      title="Show QR"
-                      color="#BB86FC"
-                      containerStyle={{
-                        width: 200,
-                        height: 40,
-                        marginTop: 20,
-                      }}
-                      buttonStyle={{
-                        width: 200,
-                        height: 40,
-                        marginTop: 20,
-                      }}
-                      
-                    />*/

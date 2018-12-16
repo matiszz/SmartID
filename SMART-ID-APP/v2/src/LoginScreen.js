@@ -52,7 +52,7 @@ class LoginScreen extends Component {
           this.props.updateUser(this.state.id)
           this.props.navigation.navigate('Home', {user: this.state.id})
         }}
-        //onPress={onPressLearnMore}
+        
         title="Login"
         color="#BB86FC"
         containerStyle={{

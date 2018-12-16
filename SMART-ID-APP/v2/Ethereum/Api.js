@@ -9,8 +9,6 @@ import contract from "./config";
 export async function getCitizenBasicInfo(id) {
     let citizen = {name: '', surname: '', birthDate: '', gender: '', nationality: '', residence: '', city: '', idNum: '',image: ''};
 
-    // Get the accounts vector from our function
-    //const accounts = await getAccounts();
     // We had to split the Get's in 3 different methods in order to stop Remix complains
     // We call contract.methods.[SmartContractMethod](params)
     // Then .call, passing this object as parameter and assigning the elements of the res vector to our citizen object.
@@ -67,25 +65,3 @@ await Promise.all([name, residency, basic])
 return citizen;
 }
  
-/**
- * Give the number of clinic records of the citizen
- * @param {number} id ID number
- * @return {Object} number of clinic records.
- */
-export async function getNumberClinicRecords(id) {
-    let lenght = -1;
-    const lnght = new Promise(resolve => {
-      contract.getNumberClinicRecords(id, function(err, len) {
-          if (err){
-           console.error(err);
-         } else {
-            const res = (len);
-            lenght = res;
-            console.log(res);
-        }
-        resolve();
-      });
-  });
-  await Promise.all(lnght);
-  return lenght;
-}
