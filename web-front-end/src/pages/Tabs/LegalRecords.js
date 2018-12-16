@@ -29,9 +29,9 @@ class BasicInfo extends Component {
 
         let numRecords = await eth.getNumberLegalRecords(ID);
         if (numRecords === 0) this.setState({noRecords: true});
-
-        let recordsClinic = await eth.getClinicRecords(ID);
-        this.setState({records: recordsClinic});
+;
+        let recordsLegal = await eth.getLegalRecords(ID);
+        this.setState({records: recordsLegal});
     }
 
     /* Handler for inputs */
@@ -47,7 +47,7 @@ class BasicInfo extends Component {
         let date = new Date().toLocaleDateString('es-Es');
 
         if (record !== ''){
-            let result = await eth.registerClinicRecord(ID, record, date);
+            let result = await eth.registerLegalRecord(ID, record, date);
             Notification.success(result.hash);
         }
     }
@@ -56,7 +56,7 @@ class BasicInfo extends Component {
         const {match} = this.props;
         let ID = parseInt(match.params.id, 10);
 
-        let result = await eth.deleteClinicRecord(ID, pos);
+        let result = await eth.deleteLegalRecord(ID, pos);
         Notification.success(result.hash);
     }
 
@@ -65,7 +65,7 @@ class BasicInfo extends Component {
             return (
                 <div>
                     <div className="container h-100-justify-content-center align-items-center">
-                        <h2>No clinic records</h2>
+                        <h2>No legal records</h2>
                     </div>
                     <div className="input-group my-5">
                         <input type="text" className="form-control" placeholder="Add new record"

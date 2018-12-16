@@ -7,7 +7,7 @@ import ReactLoading from 'react-loading';
 import Navbar from '../components/Navbar';
 import BasicInfo from './Tabs/BasicInfo';
 import ClinicRecords from './Tabs/ClinicRecords';
-// import LegalRecords from './Tabs/LegalRecords';
+import LegalRecords from './Tabs/LegalRecords';
 import * as eth from '../Ethereum/Api';
 
 class Citizen extends Component {
@@ -21,9 +21,13 @@ class Citizen extends Component {
         // Get ID and Citizen
         const {match} = this.props;
         const ID = parseInt(match.params.id, 10);
-        let citizen = await eth.getCitizenBasicInfo(ID);
 
-        // Set State
+        this.setState({doctor: await eth.isDoctor()});
+        this.setState({police: await eth.isPolice()});
+        this.setState({admin: await eth.isAdmin()});
+        this.setState({presi: await eth.isPresi()});
+
+        let citizen = await eth.getCitizenBasicInfo(ID);
         this.setState({citizen: citizen});
     }
 
@@ -79,14 +83,14 @@ class Citizen extends Component {
                     {/*Tabs*/}
                     <Tabs className="mt-2">
                         <TabList>
-                            {/** TODO: If(hasRole)*/}<Tab>Basic information</Tab>
-                            {/** TODO: If(hasRole)*/}{/*<Tab>Legal records</Tab>*/}
-                            {/** TODO: If(hasRole)*/}<Tab>Clinic records</Tab>
+                            {(this.state.admin || this.state.presi) && <Tab>Basic information</Tab>}
+                            {this.state.doctor && <Tab>Clinic records</Tab>}
+                            {this.state.police && <Tab>Legal records</Tab>}
                         </TabList>
 
-                        {/** TODO: If(hasRole)*/}<TabPanel><BasicInfo></BasicInfo></TabPanel>
-                        {/** TODO: If(hasRole)*/}{/*<TabPanel><LegalRecords></LegalRecords></TabPanel>*/}
-                        {/** TODO: If(hasRole)*/}<TabPanel><ClinicRecords></ClinicRecords></TabPanel>
+                        {(this.state.admin || this.state.presi) && <TabPanel><BasicInfo></BasicInfo></TabPanel>}
+                        {this.state.doctor && <TabPanel><ClinicRecords></ClinicRecords></TabPanel>}
+                        {this.state.police && <TabPanel><LegalRecords></LegalRecords></TabPanel>}
                     </Tabs>
                 </div>
             </div>

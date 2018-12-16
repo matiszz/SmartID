@@ -187,7 +187,7 @@ contract CitizensRecord is RBAC {
     }
 
     function getNumberClinicRecords(uint32 ID) public view onlyRoles(msg.sender, [2, 3]) returns (uint) {
-        require(is_available(ID), "The ID it's not available");
+        require(!is_available(ID), "The ID it's not available");
         return clinicStorage[ID].records.length;
     }
 

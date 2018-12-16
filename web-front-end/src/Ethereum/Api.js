@@ -21,11 +21,11 @@ export async function getAccounts() {
 export async function getTransactionReceipt(trasnsactionHash) {
   try {
     await web3.eth.getTransactionReceipt(trasnsactionHash, (err, receipt) => {
-      if (err) console.error('Error al obtener el recibo', err);
+      if (err) console.error('An error occurred on the getTransactionReceipt function', err);
       else return receipt;
     });
   } catch (err) {
-    console.error('Error al obtener el recibo', err);
+    console.error('An error occurred on the getTransactionReceipt function', err);
     return err;
   }
 }
@@ -58,11 +58,10 @@ export async function registerCitizen(citizen) {
           ipfsHash[0].hash)
           .send({ from: accounts[0] }, (err, transHash) => {
             if (err) {
-              console.error('Error on register', err);
+              console.error('An error occurred on the registerCitizen function', 'Error on register', err);
               return { success: false };
             } else {
               const res = (transHash);
-              console.log('Success', res);
               rt = res;
             }
             resolve();
@@ -105,11 +104,10 @@ export async function modify_citizen(citizen) {
             ipfsHash[0].hash)
             .send({ from: accounts[0] }, (err, transHash) => {
               if (err) {
-                console.error('Error on register', err);
+                console.error('An error occurred on the modify_citizen function', err);
                 return { success: false };
               } else {
                 const res = (transHash);
-                console.log('Success', res);
                 rt = res;
               }
               resolve();
@@ -132,11 +130,10 @@ export async function modify_citizen(citizen) {
         citizen.idNum,
         citizen.picture).send({ from: accounts[0] }, (err, transHash) => {
         if (err) {
-          console.error(err);
+          console.error('An error occurred on the modify_citizen function', err);
           return { success: false };
         } else {
           const res = (transHash);
-          console.log(res);
           rt = res;
         }
         resolve();
@@ -162,11 +159,10 @@ export async function removeCitizen(id) {
   const hashReg = new Promise(resolve => {
     contract.methods.removeUser(id).send({ from: accounts[0] }, (err, transHash) => {
       if (err) {
-        console.error(err);
+        console.error('An error occurred on the removeCitizen function', err);
         return { success: false };
       } else {
         const res = (transHash);
-        console.log(res);
         rt = res;
       }
       resolve();
@@ -192,11 +188,10 @@ export async function registerClinicRecord(id, record, date) {
   const hashReg = new Promise(resolve => {
     contract.methods.registerClinicRecord(id, record, date).send({ from: accounts[0] }, (err, transHash) => {
       if (err) {
-        console.error(err);
+        console.error('An error occurred on the registerClinicRecord function', err);
         return { success: false };
       } else {
         const res = (transHash);
-        console.log(res);
         rt = res;
       }
       resolve();
@@ -222,11 +217,10 @@ export async function registerLegalRecord(id, record, date) {
   const hashReg = new Promise(resolve => {
     contract.methods.registerLegalRecord(id, record, date).send({ from: accounts[0] }, (err, transHash) => {
       if (err) {
-        console.error(err);
+        console.error('An error occurred on the registerLegalRecord function', err);
         return { success: false };
       } else {
         const res = (transHash);
-        console.log(res);
         rt = res;
       }
       resolve();
@@ -249,19 +243,18 @@ export async function deleteClinicRecord(id, record_position) {
   let rt = 0;
 
   const hashDel = new Promise(resolve => {
-    contract.deleteClinicRecord(id, record_position, { from: accounts[0] }, (err, transHash) => {
+    contract.methods.deleteClinicRecord(id, record_position).send({ from: accounts[0] }, (err, transHash) => {
       if (err) {
-        console.error(err);
+        console.error('An error occurred on the deleteClinicRecord function', err);
         return { success: false };
       } else {
         const res = (transHash);
-        console.log(res);
         rt = res;
       }
       resolve();
     });
   });
-  await Promise.all(hashDel);
+  await Promise.all([hashDel]);
   return { success: true, hash: rt };
 }
 
@@ -280,11 +273,10 @@ export async function deleteLegalRecord(id, record_position) {
   const hashDel = new Promise(resolve => {
     contract.methods.deleteLegalRecord(id, record_position).send({ from: accounts[0] }, (err, transHash) => {
       if (err) {
-        console.error(err);
+        console.error('An error occurred on the deleteLegalRecord function', err);
         return { success: false };
       } else {
         const res = (transHash);
-        console.log(res);
         rt = res;
       }
       resolve();
@@ -307,11 +299,10 @@ export async function getNumberClinicRecords(id) {
 
   const lnght = new Promise(resolve => {
     contract.methods.getNumberClinicRecords(id).call({ from: accounts[0] }, (err, len) => {
-      if (err) console.error(err);
+      if (err) console.error('An error occurred on the getNumberClinicRecords function', err);
       else {
         const res = (len);
         lenght = parseInt(res, 10);
-        console.log(res);
       }
       resolve();
     });
@@ -332,14 +323,12 @@ export async function getNumberLegalRecords(id) {
   const accounts = await this.getAccounts();
 
   const lnght = new Promise(resolve => {
-    console.log(contract.methods.getNumberLegalRecords);
     contract.methods.getNumberLegalRecords(id).call({ from: accounts[0] }, (err, len) => {
 
-      if (err) console.error(err);
+      if (err) console.error('An error occurred on the getNumberLegalRecords function', err);
       else {
         const res = (len);
         lenght = parseInt(res, 10);
-        console.log(res);
       }
       resolve();
     });
@@ -361,11 +350,10 @@ export async function getClinicRecord(id, position) {
 
   const pos = new Promise(resolve => {
     contract.methods.getClinicRecords(id, position).call({ from: accounts[0] }, (err, rec) => {
-      if (err) console.error(err);
+      if (err) console.error('An error occurred on the getClinicRecord function', err);
       else {
         const res = (rec);
         record = res;
-        console.log(res);
       }
       resolve();
     });
@@ -387,7 +375,7 @@ export async function getLegalRecord(id, position) {
   return new Promise(resolve => {
     contract.methods.getLegalRecords(id, position).call({ from: accounts[0] }, (err, rec) => {
       if (err) {
-        console.error(err);
+        console.error('An error occurred on the getLegalRecord function', err);
       }
       resolve(rec);
     });
@@ -395,7 +383,7 @@ export async function getLegalRecord(id, position) {
 }
 
 /**
- * Give all the clinic records of the citizen
+ * Give all the legal records of the citizen
  *
  * @param {number} id ID number
  *
@@ -410,6 +398,13 @@ export async function getLegalRecords(id) {
   );
 }
 
+/**
+ * Give all the clinic records of the citizen
+ *
+ * @param {number} id ID number
+ *
+ * @return {Object} ClinicRecords Clinic records array
+ */
 export async function getClinicRecords(id) {
   let len = await this.getNumberClinicRecords(id);
 
@@ -433,12 +428,11 @@ export async function changeStatus(state) {
   const hashChange = new Promise(resolve => {
     contract.methods.changeStatus(state).send({ from: accounts[0] }, (err, transHash) => {
       if (err) {
-        console.error(err);
+        console.error('An error occurred on the changeStatus function', err);
         return { success: false };
       } else {
         const res = (transHash);
         rt = res;
-        console.log(res);
       }
       resolve();
     });
@@ -469,12 +463,11 @@ export async function addRole(addr, roleName) {
   const hashAdd = new Promise(resolve => {
     contract.methods.addRole(addr, roleNum).send({ from: accounts[0] }, (err, transHash) => {
       if (err) {
-        console.error(err);
+        console.error('An error occurred on the addRole function', err);
         return { success: false };
       } else {
         const res = (transHash);
         rt = res;
-        console.log(res);
       }
       resolve();
     });
@@ -505,11 +498,10 @@ export async function removeRole(addr, roleName) {
   const hashRemove = new Promise(resolve => {
     contract.methods.removeRole(addr, roleNum).send({ from: accounts[0] }, (err, transHash) => {
       if (err) {
-        console.error(err);
+        console.error('An error occurred on the removeRole function', err);
         return { success: false };
       } else {
         const res = (transHash);
-        console.log(res);
         rt = res;
       }
       resolve();
@@ -540,11 +532,10 @@ export async function hasSpecificRole(addr, roleName) {
 
   const rName = new Promise(resolve => {
     contract.methods.hasSpecificRole(addr, roleNum).call({ from: accounts[0] }, (err, h_role) => {
-      if (err) console.error(err);
+      if (err) console.error('An error occurred on the hasSpecificRole function', err);
       else {
         const res = (h_role);
         has_role = res;
-        console.log(res);
       }
       resolve();
     });
@@ -612,11 +603,10 @@ export async function view_president_address() {
 
   const address = new Promise(resolve => {
     contract.methods.view_president_address().call({ from: accounts[0] }, (err, result1) => {
-      if (err) console.error(err);
+      if (err) console.error('An error occurred on the view_president_address function', err);
       else {
         const res = (result1);
         adm = res;
-        console.log(res);
       }
       resolve();
     });
@@ -651,7 +641,7 @@ export async function getCitizenBasicInfo(id) {
   // Then .call, passing this object as parameter and assigning the elements of the res vector to our citizen object.
   const name = new Promise(resolve => {
     contract.methods.get_name(id).call({ from: accounts[0] }, (err, result1) => {
-      if (err) console.error(err);
+      if (err) console.error('An error occurred on the getCitizenBasicInfo function', err);
       else {
         const res = (result1);
         citizen.idNum = res[0];
@@ -664,7 +654,7 @@ export async function getCitizenBasicInfo(id) {
 
   const residency = new Promise(resolve => {
     contract.methods.get_residency(id).call({ from: accounts[0] }, (err, result2) => {
-      if (err) console.error(err);
+      if (err) console.error('An error occurred on the getCitizenBasicInfo function', err);
       else {
         const res = (result2);
         citizen.nationality = res[2];
@@ -677,7 +667,7 @@ export async function getCitizenBasicInfo(id) {
 
   const basic = new Promise(resolve => {
     contract.methods.get_basic_info(id).call({ from: accounts[0] }, (err, result3) => {
-      if (err) console.error(err);
+      if (err) console.error('An error occurred on the getCitizenBasicInfo function', err);
       else {
         const res = (result3);
         citizen.birthDate = res[2];
