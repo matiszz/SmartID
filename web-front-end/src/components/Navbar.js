@@ -1,14 +1,22 @@
 import React from 'react'
 import logo from '../logos/logo-white-no-back.png';
 import * as eth from '../Ethereum/Api';
+import {withRouter} from 'react-router';
 
-export default class Navbar extends React.Component {
+class Navbar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             admin: false
         };
     }
+
+    navigate = (event) => {
+        let page = event.target.name;
+        this.props.history.push({
+            pathname: `/${page}`,
+        });
+    };
 
     async componentDidMount() {
         let result = await eth.isAdmin();
@@ -25,13 +33,15 @@ export default class Navbar extends React.Component {
                 <div className="collapse navbar-collapse ">
                     <ul className="navbar-nav ml-auto w-100 justify-content-end">
                         <li className="nav-item">
-                            <a className="nav-link" href="/">Home</a>
+                            <a className="nav-link" href="#" name="" onClick={this.navigate}>Home</a>
                         </li>
-                        {(this.state.admin || this.state.presi) && <li className="nav-item"><a className="nav-link" href="/new">Add Citizen</a></li>}
-                        {this.state.admin && <li className="nav-item"> <a className="nav-link" href="/roles">Manage Roles</a> </li>}
+                        {(this.state.admin || this.state.presi) && <li className="nav-item"><a className="nav-link" href="#" name="new" onClick={this.navigate}>Add Citizen</a></li>}
+                        {this.state.admin && <li className="nav-item"> <a className="nav-link" href="#" name="roles" onClick={this.navigate}>Manage Roles</a> </li>}
                     </ul>
                 </div>
             </nav>
         )
     }
 }
+
+export default withRouter(Navbar);

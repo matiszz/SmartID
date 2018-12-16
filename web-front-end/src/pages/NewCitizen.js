@@ -42,6 +42,11 @@ class NewCitizen extends Component {
         let result = await eth.registerCitizen(this.state.citizen);
 
         Notification.success(result.hash);
+        setTimeout( () => {
+            this.props.history.push({
+                pathname: '/',
+            });
+        }, 5000)
     }
 
     /* Capture uploaded file */
