@@ -44,6 +44,9 @@ class BasicInfo extends Component {
 
         if (record !== ''){
             let result = await eth.registerClinicRecord(ID, record, date);
+           const records = this.state.records.slice().concat([{ 0: record, [1]: date, [2]: true }]);
+
+            this.setState({ records, newRecord: '' });
             Notification.success(result.hash);
         }
     }
@@ -96,7 +99,7 @@ class BasicInfo extends Component {
                             <p className="mb-1">{elem[0]}</p>
                         </div>)}
                         <div className="input-group my-5">
-                            <input type="text" className="form-control" placeholder="Add new record"
+                            <input type="text" className="form-control" placeholder="Add new record" value={this.state.newRecord}
                                    onChange={this.handleChange}/>
                             <div className="input-group-append">
                                 <button className="input-group-text" onClick={this.handleSubmit}
