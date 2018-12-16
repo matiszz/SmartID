@@ -16,7 +16,7 @@ export const web3 = new Web3(web3Provider);
 
 
 // export const address = '0x374b8ce4ac89110ee2e3bcc3d76eeff8d7f38234'; Contrato Basico con IPFS
-export const address = '0xe16418da4a01d364dc1b530a8225cf54bfc96d7f';
+export const address = '0xe988b7c859ef3dddd34eff209e0abf589ad4a11d';
 const abi = [
     {
         "constant": false,
