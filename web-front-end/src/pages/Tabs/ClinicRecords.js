@@ -44,7 +44,8 @@ class BasicInfo extends Component {
 
         if (record !== ''){
             let result = await eth.registerClinicRecord(ID, record, date);
-           const records = this.state.records.slice().concat([{ 0: record, [1]: date, [2]: true }]);
+            const records = this.state.records.slice().concat([{ 0: record, [1]: date, [2]: true }]);
+            this.setState({noRecords: false});
 
             this.setState({ records, newRecord: '' });
             Notification.success(result.hash);

@@ -85,7 +85,7 @@ class Access extends React.Component {
                     </div>
 
                     <h1 className="text-center mt-5">What is Smart<b>ID</b>?</h1>
-                    <p className="text-center mb-5">Smart<b>ID</b> is a prototype of the ID ofv the future. It does not
+                    <p className="text-center mb-5">Smart<b>ID</b> is a prototype of the ID of the future. It does not
                         make sense to be in full 2018 and have to queue at the police station to ask for the municipal
                         registration papers, then another queue at the town hall to ask for a change of address, and
                         another to renew your passport. SmartID wants to put an end to bureaucracy and wasting time

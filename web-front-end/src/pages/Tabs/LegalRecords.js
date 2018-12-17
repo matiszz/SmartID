@@ -25,7 +25,7 @@ class BasicInfo extends Component {
 
         let numRecords = await eth.getNumberLegalRecords(ID);
         if (numRecords === 0) this.setState({noRecords: true});
-;
+
         let recordsLegal = await eth.getLegalRecords(ID);
         this.setState({records: recordsLegal});
     }
@@ -45,6 +45,7 @@ class BasicInfo extends Component {
         if (record !== ''){
             let result = await eth.registerLegalRecord(ID, record, date);
             const records = this.state.records.slice().concat([{ 0: record, [1]: date, [2]: true }]);
+            this.setState({noRecords: false});
 
             this.setState({ records, newRecord: '' });
 

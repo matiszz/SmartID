@@ -64,7 +64,7 @@ class BasicInfo extends Component {
     /* Handler for submit */
     async handleSubmit(event) {
         event.preventDefault();
-        let result = await eth.modify_citizen(this.state.citizen);
+        let result = await eth.modifyCitizen(this.state.citizen);
 
         Notification.success(result.hash);
     }
