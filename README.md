@@ -16,10 +16,15 @@ Please download and install [MetaMask](https://metamask.io/) in your Chrome, Fir
  1. Go to [Remix](https://remix.ethereum.org/#optimize=false&version=soljson-v0.4.22+commit.4cb486ee.js) and upload the four `.sol` files in the **smart-contract** folder.
  2. Select the compiler version: `0.4.22+commit.4cb486ee` and click **Start to compile**
  3. Navigate to the **Run** tab, and make sure you have the following configuration:
+ 
  **Environment:** Injected Web3 (Ropsten)
+ 
  **Account:** Select your account address
+ 
  **Gas limit:** 3000000
+ 
  **Value:** 0
+ 
  4. In the dropdown, make sure that the **CitizensRecord** is selected, and click deploy. 
  5. Click in the address of the new contract to copy it in the clipboard.
  
