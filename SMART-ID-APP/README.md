@@ -1,4 +1,10 @@
-# react-native-web3-sample
+# react-native-app
+
+You can try it with expo at
+
+https://expo.io/@sergio8215/smart-id
+
+
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://gitlab.com/dapps/react-native-web3-sample)
 
