@@ -2,9 +2,12 @@ import React, {Component} from 'react';
 import Navbar from '../components/Navbar';
 import * as eth from '../Ethereum/Api';
 import { withRouter } from "react-router";
-import Modal from "react-responsive-modal";
+
+import * as Notification from '../components/Notification';
+import { NotificationContainer } from "react-notifications";
 
 class NewCitizen extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -19,42 +22,56 @@ class NewCitizen extends Component {
                 idNum: '',
                 picture: null
             },
-            transactionHash: '',
-            openModal: false
+            imageLabel: 'Select image'
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    async componentDidMount() { }
-
+    /* Handler for inputs */
     handleChange(event) {
         let citizen = {...this.state.citizen};
         citizen[event.target.name] = event.target.value;
         this.setState({citizen});
-        console.log(this.state.citizen);
     }
 
-    handleSubmit(event) {
+    /* Handler for submit */
+    async handleSubmit(event) {
         event.preventDefault();
-        eth.registerCitizen(this.state.citizen).then(
-            (res) => {
-                console.log(res);
-                if (res && res.success) this.setState({transactionHash: res.hash, openModal: true});
-            }
-        );
+        let result = await eth.registerCitizen(this.state.citizen);
+
+        Notification.success(result.hash);
+        setTimeout( () => {
+            this.props.history.push({
+                pathname: '/',
+            });
+        }, 5000)
     }
 
-    getImgLabel() {
-        if (this.state.citizen.picture)
-            return this.state.citizen.picture.split("\\")[2];
-        else
-            return "Select picture";
-    }
+    /* Capture uploaded file */
+    captureFile = event => {
+        event.stopPropagation();
+        event.preventDefault();
 
-    onCloseModal = () => {
-        this.setState({openModal: false});
+        const file = event.target.files[0];
+
+        // Set the label
+        this.setState({imageLabel: file.name});
+
+        let reader = new window.FileReader();
+        reader.readAsArrayBuffer(file);
+        reader.onloadend = () => this.convertToBuffer(reader);
+    };
+
+    /* Convert file to buffer and set it in state*/
+    convertToBuffer = async reader => {
+        // Primero convertimos a buffer el archivo
+        const buffer = await Buffer.from(reader.result);
+        // Luego lo asignamos a nuestro state
+        let ctz = this.state.citizen;
+        ctz.picture = buffer;
+        this.setState({citizen: ctz});
     };
 
     render() {
@@ -114,8 +131,8 @@ class NewCitizen extends Component {
                                 <label htmlFor="picture" className="control-label">Picture</label>
                                 <div className="custom-file">
                                     <input type="file" className="custom-file-input" id="picture" name="picture"
-                                           onChange={this.handleChange}/>
-                                        <label className="custom-file-label" htmlFor="customFile">{this.getImgLabel()}</label>
+                                           onChange={this.captureFile}/>
+                                        <label className="custom-file-label" htmlFor="customFile">{this.state.imageLabel}</label>
                                 </div>
 
                                 <div className="form-group mt-5">
@@ -125,14 +142,8 @@ class NewCitizen extends Component {
                         </div>
 
                     </form>
+                    <NotificationContainer/>
                 </div>
-
-                {/*MODAL*/}
-                <Modal open={this.state.openModal} onClose={this.onCloseModal} center>
-                    <h4>Citizen uploaded</h4>
-                    <p>The transaction hash is: <a href={`https://ropsten.etherscan.io/tx/${this.state.transactionHash}`} target='_blank' rel="noopener noreferrer">{this.state.transactionHash}</a></p>
-                    <button className="btn btn-info" onClick={this.accesInfo}>Access information</button>
-                </Modal>
             </div>
         );
     }
